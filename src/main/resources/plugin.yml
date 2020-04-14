@@ -1,0 +1,8 @@
+name: MCDNDC
+version: ${project.version}
+main: top.jingwenmc.mcdndc.main
+api-version: 1.13
+depend: [TAB]
+authors: [jingwenMC]
+description: MinecraftDoNotDoChallange
+website: jingwenmc.top
