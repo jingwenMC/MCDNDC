@@ -12,6 +12,8 @@ public final class main extends JavaPlugin {
         System.out.println("[MCDNDC]正在加载指令:dndc...");
         getCommand("dndc").setExecutor(new dndc());
         System.out.println("[MCDNDC]dndc指令加载成功!");
+        System.out.println("[MCDNDC]正在加载配置文件:config.yml...");
+        System.out.println("[MCDNDC]config.yml配置文件加载成功!");
         System.out.println("[MCDNDC]插件加载成功!");
         System.out.println("[MCDNDC]=====MCDNDC v0.1=====");
         System.out.println("[MCDNDC]作者:jingwenMC");
