@@ -1,10 +1,14 @@
 package top.jingwenmc.mcdndc;
 
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.jingwenmc.mcdndc.commands.dndc;
 
-public final class main extends JavaPlugin {
+import java.util.List;
 
+public final class main extends JavaPlugin {
+    public static List<String> words;
+    Plugin plugin = top.jingwenmc.mcdndc.main.getPlugin(top.jingwenmc.mcdndc.main.class);
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -13,7 +17,11 @@ public final class main extends JavaPlugin {
         getCommand("dndc").setExecutor(new dndc());
         System.out.println("[MCDNDC]dndc指令加载成功!");
         System.out.println("[MCDNDC]正在加载配置文件:config.yml...");
-        System.out.println("[MCDNDC]config.yml配置文件加载成功!");
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+        words = plugin.getConfig().getStringList("words");
+        if(words.size()==0) System.out.println("[MCDNDC]读取config.yml时遇到致命错误,请检查你的配置文件.");
+        else System.out.println("[MCDNDC]config.yml配置文件加载成功!");
         System.out.println("[MCDNDC]插件加载成功!");
         System.out.println("[MCDNDC]=====MCDNDC v0.1=====");
         System.out.println("[MCDNDC]作者:jingwenMC");
