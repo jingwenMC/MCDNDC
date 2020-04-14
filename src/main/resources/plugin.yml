@@ -6,3 +6,14 @@ depend: [TAB]
 authors: [jingwenMC]
 description: MinecraftDoNotDoChallange
 website: jingwenmc.top
+commands:
+  dndc:
+    description: Main Command Of MCDNDC
+    aliases: [dnd]
+permissions:
+  dndc.reload:
+    description: Reload Plugin
+    default: op
+  dndc.play:
+    description: Play MCDNDC
+    default: true

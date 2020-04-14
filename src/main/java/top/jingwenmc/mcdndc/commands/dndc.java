@@ -21,12 +21,12 @@ public class dndc implements CommandExecutor {
         {
             Player player = (Player)sender;
             player.sendMessage(ChatColor.RED+"[MCDNDC]执行的指令发生异常,错误信息:");
-            System.out.println(ChatColor.RED+str);
+            player.sendMessage(ChatColor.RED+str);
         }
         else
         {
-            System.out.println("[MCDNDC]执行的指令发生异常,错误信息:");
-            System.out.println(str);
+            System.out.println(ChatColor.RED+"[MCDNDC]执行的指令发生异常,错误信息:");
+            System.out.println(ChatColor.RED+str);
         }
     }
     private boolean checkPerm (CommandSender sender,String perm)
@@ -56,11 +56,11 @@ public class dndc implements CommandExecutor {
             if(checkPerm(sender,"dndc.reload"))
             {
                 if(sender instanceof Player)player.sendMessage(ChatColor.GOLD+"[MCDNDC]正在重载配置文件...");
-                System.out.println("[MCDNDC]正在重载配置文件...");
+                System.out.println(ChatColor.GOLD+"[MCDNDC]正在重载配置文件...");
                 top.jingwenmc.mcdndc.main.words = plugin.getConfig().getStringList("words");
                 if(top.jingwenmc.mcdndc.main.words.size()==0) errmsg(sender,"读取config.yml时遇到致命错误,请检查你的配置文件.");
-                else {if(sender instanceof Player)player.sendMessage(ChatColor.GOLD+"[MCDNDC]配置文件已重载.");
-                System.out.println("[MCDNDC]配置文件已重载.");}
+                else {if(sender instanceof Player)player.sendMessage(ChatColor.GREEN+"[MCDNDC]配置文件已重载.");
+                System.out.println(ChatColor.GREEN+"[MCDNDC]配置文件已重载.");}
             }
             else errmsg(sender,"权限不足.");
         }
