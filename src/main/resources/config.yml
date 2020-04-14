@@ -2,11 +2,12 @@
 #MCDNDC V0.1 Config File
 #作者:jingwenMC
 #开源许可:GPLv3
+#版本:v0.1
 ####################
 
 #Name:选择语言
-#Note:目前还没有任何作用
-#Updated:v1.0
+#Note:在1.0版本前没有任何作用
+#WillUpdate:v1.0
 lang: zh_CN
 
 #Name:词库列表

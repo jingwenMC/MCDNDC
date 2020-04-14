@@ -1,5 +1,6 @@
 package top.jingwenmc.mcdndc.commands;
 
+import me.neznamy.tab.api.EnumProperty;
 import me.neznamy.tab.api.TABAPI;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -67,7 +68,19 @@ public class dndc implements CommandExecutor {
         {
             if(checkPerm(sender,"dndc.play"))
             {
-
+                if(sender instanceof Player)
+                {
+                    long rand=System.currentTimeMillis();
+                    int r2 = ((int)rand)%top.jingwenmc.mcdndc.main.words.size();
+                    if(r2<0)r2=0-r2;
+                    String now = top.jingwenmc.mcdndc.main.words.get(r2);
+                    me.neznamy.tab.api.TABAPI.setValueTemporarily(player.getUniqueId(), EnumProperty.TAGPREFIX,"["+now+"]");
+                    top.jingwenmc.mcdndc.main.words.remove(r2);
+                }
+                else
+                {
+                    errmsg(sender,"请在游戏中使用这个指令.");
+                }
             }
             else
             {
