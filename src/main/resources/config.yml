@@ -5,13 +5,18 @@
 #版本:v0.1
 ####################
 
+#Name:配置文件版本
+#Note:此项用于配置文件结构版本的确认。为防止出错，请不要自行更改
+#Updated:v0.1
+config_version: 1
+
 #Name:选择语言
 #Note:在1.0版本前没有任何作用
 #WillUpdate:v1.0
-lang: zh_CN
+lang: 'zh_CN'
 
 #Name:词库列表
-#Note:请按照示例填写,避免出错
+#Note:请按照第一次释放配置时的格式填写,避免出错
 #Updated:v0.1
 words:
   - 'Word1'
