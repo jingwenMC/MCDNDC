@@ -12,6 +12,7 @@ import java.util.Objects;
 
 public final class main extends JavaPlugin {
     public static List<String> words;
+    public static String notify_player_after_next_word = null;
     //Plugin plugin = top.jingwenmc.mcdndc.main.getPlugin(top.jingwenmc.mcdndc.main.class);
     @Override
     public void onEnable() {
@@ -25,6 +26,7 @@ public final class main extends JavaPlugin {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
         int cv=plugin.getConfig().getInt("config_version");
+        notify_player_after_next_word = plugin.getConfig().getString("notify_player_after_next_word");
         boolean isntRightConfig = !(cv==2);
         words = plugin.getConfig().getStringList("words");
         if(words.size()==0||isntRightConfig) {

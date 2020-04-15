@@ -11,8 +11,8 @@ commands:
     description: Main Command Of MCDNDC
     aliases: [dnd,byz]
 permissions:
-  dndc.reload:
-    description: Reload Plugin
+  dndc.restart:
+    description: Restart Game
     default: op
   dndc.play:
     description: Play MCDNDC

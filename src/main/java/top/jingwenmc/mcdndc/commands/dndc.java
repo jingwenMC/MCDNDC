@@ -13,8 +13,10 @@ import org.bukkit.plugin.Plugin;
 import top.jingwenmc.mcdndc.main;
 
 import java.util.List;
+import java.util.Objects;
 
 public class dndc implements CommandExecutor {
+    //public String type = null;
     Plugin plugin = top.jingwenmc.mcdndc.main.getPlugin(top.jingwenmc.mcdndc.main.class);
     private void errmsg(CommandSender sender,String str)
     {
@@ -54,12 +56,14 @@ public class dndc implements CommandExecutor {
         //String option = args[0];
         //if(args[0].equalsIgnoreCase("reload"))errmsg(sender,"[DEBUG]你选择了1:"+args[0]);
         //errmsg(sender,"[DEBUG]你选择了:"+args[0]);
-        if(args[0].equalsIgnoreCase("reload"))
+        if(args[0].equalsIgnoreCase("restart"))
         {
-            if(checkPerm(sender,"dndc.reload"))
+            if(checkPerm(sender,"dndc.restart"))
             {
-                if(sender instanceof Player){Player player = (Player) sender;player.sendMessage(ChatColor.GOLD+"[MCDNDC]正在重载配置文件...");}
-                System.out.println(ChatColor.GOLD+"[MCDNDC]正在重载配置文件...");
+                if(sender instanceof Player){Player player = (Player) sender;player.sendMessage(ChatColor.GOLD+"[MCDNDC]正在重启游戏...");}
+                System.out.println(ChatColor.GOLD+"[MCDNDC]正在重启游戏...");
+                //type = null;
+                main.notify_player_after_next_word = plugin.getConfig().getString("notify_player_after_next_word");
                 main.words = plugin.getConfig().getStringList("words");
                 if(main.words.size()==0) errmsg(sender,"配置文件错误:Config-Words-Matches-0.");
                 else {
@@ -68,13 +72,13 @@ public class dndc implements CommandExecutor {
                     if (isntRightConfig)
                         errmsg(sender,"配置文件版本错误:Config-Version-Expected-2-Got-" + cv + ".");
                     else {
-                        if(plugin.getConfig().getBoolean("reset_tag_on_reload"))
+                        if(plugin.getConfig().getBoolean("reset_tag_on_restart"))
                         for(Player p : Bukkit.getOnlinePlayers())
                         {
-                            TABAPI.setValueTemporarily(p.getUniqueId(), EnumProperty.TAGPREFIX,"");
+                            TABAPI.setValueTemporarily(p.getUniqueId(), EnumProperty.TAGPREFIX,null);
                         }
-                        if (sender instanceof Player) {Player player = (Player) sender;player.sendMessage(ChatColor.GREEN + "[MCDNDC]配置文件已重载.");}
-                        System.out.println(ChatColor.GREEN + "[MCDNDC]配置文件已重载.");
+                        if (sender instanceof Player) {Player player = (Player) sender;player.sendMessage(ChatColor.GREEN + "[MCDNDC]游戏已重载.");}
+                        System.out.println(ChatColor.GREEN + "[MCDNDC]游戏已重载.");
                     }
                 }
             }
@@ -83,7 +87,6 @@ public class dndc implements CommandExecutor {
         }
         if(args[0].equalsIgnoreCase("next"))
         {
-            String type = plugin.getConfig().getString("notify_player_after_next_word");
             if(checkPerm(sender,"dndc.play"))
             {
                 if(sender instanceof Player)
@@ -98,18 +101,17 @@ public class dndc implements CommandExecutor {
                         TABAPI.setValueTemporarily(player.getUniqueId(), EnumProperty.TAGPREFIX,"["+now+"]");
                         main.words.remove(r2);
                         player.sendMessage(ChatColor.GREEN+"[MCDNDC]成功抽取下个词语");
-                        assert type != null;
-                        if(type.equalsIgnoreCase("message")&&!prev.equalsIgnoreCase("")) {
+                        if(Objects.requireNonNull(main.notify_player_after_next_word).equalsIgnoreCase("message")&&(prev!=null)) {
                             player.sendMessage(ChatColor.AQUA+"[MCDNDC]你之前的词语是"+prev);
                         }
-                        if(type.equalsIgnoreCase("broadcast")&&!prev.equalsIgnoreCase(""))
+                        if(Objects.requireNonNull(main.notify_player_after_next_word).equalsIgnoreCase("broadcast")&&(prev!=null))
                         {
                             for(Player p : Bukkit.getOnlinePlayers())
                             {
                                 p.sendMessage(ChatColor.AQUA+"[MCDNDC]"+player.getDisplayName()+"刚刚抽取了一个词语，他之前的词语是"+prev);
                             }
                         }
-                        else if(prev.equalsIgnoreCase(""))
+                        else if(prev==null)
                         {
                             for(Player p : Bukkit.getOnlinePlayers())
                             {
@@ -142,8 +144,8 @@ public class dndc implements CommandExecutor {
                 player.sendMessage(ChatColor.YELLOW+"[MCDNDC]====================");
                 player.sendMessage(ChatColor.YELLOW+"[MCDNDC]/dndc(/dnd,/byz) - 插件主命令");
                 player.sendMessage(ChatColor.YELLOW+"[MCDNDC]子命令:");
-                if(player.hasPermission("dndc.reload"))
-                player.sendMessage(ChatColor.YELLOW+"[MCDNDC]  reload - 重载词库&配置文件");
+                if(player.hasPermission("dndc.restart"))
+                player.sendMessage(ChatColor.YELLOW+"[MCDNDC]  restart - 重新加载游戏");
                 if(player.hasPermission("dndc.play"))
                 player.sendMessage(ChatColor.YELLOW+"[MCDNDC]  next   - 从词库抽取词语");
                 player.sendMessage(ChatColor.YELLOW+"[MCDNDC]  help   - 帮助页面");
@@ -155,7 +157,7 @@ public class dndc implements CommandExecutor {
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]====================");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]/dndc(/dnd,/byz) - 插件主命令");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]子命令:");
-                System.out.println(ChatColor.YELLOW+"[MCDNDC]  reload - 重载词库&配置文件");
+                System.out.println(ChatColor.YELLOW+"[MCDNDC]  restart - 重新加载游戏");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]  next   - 从词库抽取词语");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]  help   - 帮助页面");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]====================");

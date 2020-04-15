@@ -17,18 +17,18 @@ config_version: 2
 #WillUpdate:v1.0
 lang: 'zh_CN'
 
-#Name:重载配置时是否重置玩家的TAG状态(前缀)
-#Note:设置为false将在重载时不会清除玩家当前的TAG状态(前缀)
+#Name:重启时是否重置玩家的TAG状态(前缀)
+#Note:设置为false将在重启时不会清除玩家当前的TAG状态(前缀)
 #Default: true
 #Updated:v0.1.1
-reset_tag_on_reload: true
+reset_tag_on_restart: true
 
 #Name:当玩家抽取词语时显示上一个词语的类型
 #Note:当玩家抽取词语时显示上一个词语(即玩家之前抽取的词语)的类型，有3种：
 #     broadcast:向服务器内所有玩家发送信息
 #     message:只向抽取的玩家发送信息
 #     none:不显示
-#Default: broadcast
+#Default: 'broadcast'
 #Updated:v0.1.1
 notify_player_after_next_word: 'broadcast'
 
