@@ -88,6 +88,7 @@ public class dndc implements CommandExecutor {
                         String now = top.jingwenmc.mcdndc.main.words.get(r2);
                         me.neznamy.tab.api.TABAPI.setValueTemporarily(player.getUniqueId(), EnumProperty.TAGPREFIX,"["+now+"]");
                         top.jingwenmc.mcdndc.main.words.remove(r2);
+                        player.sendMessage(ChatColor.GREEN+"[MCDNDC]成功抽取下个词语");
                     }
                     else
                     {
@@ -132,6 +133,7 @@ public class dndc implements CommandExecutor {
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]  help   - 帮助页面");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]====================");
             }
+            return true;
         }
         errmsg(sender,"未知指令!请输入指令\"/dndc help\"获得帮助!");
         return false;

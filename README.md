@@ -3,6 +3,10 @@ MinecraftDoNotDoChallenge
 当前版本:v0.1(Alpha)  
 ##插件功能
 一个能在MC中实现一种小游戏(不要做挑战)的插件
+##前置插件
+```
+TAB 最新版本 - 可以在 https://www.spigotmc.org/resources/57806/ 下载
+```
 ##插件指令
 ```text
 /dndc(/dnd) - 插件主命令
