@@ -2,15 +2,15 @@
 MineCraftDoNotDoChallenge  
 当前版本:v0.1.1(Alpha)  
 
-##插件功能
+## 插件功能
 一个能在MC中实现一种小游戏(不要做挑战)的插件
 
-##前置插件
+## 前置插件
 ```
 TAB 最新版本 - 可以在 https://www.spigotmc.org/resources/57806/ 获取
 ```
 
-##插件指令
+## 插件指令
 ```text
 /dndc(/dnd,/byz) - 插件主命令
 子命令:
@@ -25,7 +25,7 @@ dndc.restart - 允许重新加载游戏
 dndc.play   - 允许进行游玩
 ```
 
-##配置文件
+## 配置文件
 ```yaml
 ####################
 #MCDNDC Config File
@@ -74,5 +74,5 @@ words:
   - 'Word3'
 ```
 
-##未来计划
+## 未来计划
 计划加入自动裁判功能
