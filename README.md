@@ -5,7 +5,7 @@ MinecraftDoNotDoChallenge
 一个能在MC中实现一种小游戏(不要做挑战)的插件
 ##前置插件
 ```
-TAB 最新版本 - 可以在 https://www.spigotmc.org/resources/57806/ 下载
+TAB 最新版本 - 可以在 https://www.spigotmc.org/resources/57806/ 获取
 ```
 ##插件指令
 ```text
