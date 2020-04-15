@@ -1,7 +1,7 @@
 name: MCDNDC
 version: ${project.version}
 main: top.jingwenmc.mcdndc.main
-api-version: 1.13
+api-version: '1.13'
 depend: [TAB]
 authors: [jingwenMC]
 description: MinecraftDoNotDoChallange
@@ -9,7 +9,7 @@ website: jingwenmc.top
 commands:
   dndc:
     description: Main Command Of MCDNDC
-    aliases: [dnd]
+    aliases: [dnd,byz]
 permissions:
   dndc.reload:
     description: Reload Plugin

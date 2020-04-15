@@ -25,32 +25,32 @@ public final class main extends JavaPlugin {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
         int cv=plugin.getConfig().getInt("config_version");
-        boolean isntRightConfig = !(cv==1);
+        boolean isntRightConfig = !(cv==2);
         words = plugin.getConfig().getStringList("words");
         if(words.size()==0||isntRightConfig) {
             System.out.println(ChatColor.RED+"[MCDNDC]读取config.yml时遇到错误,请检查你的配置文件后进行重载.错误信息:");
             if(words.size()==0) System.out.println(ChatColor.RED+"配置文件错误:Config-Words-Matches-0.");
-            if(isntRightConfig) System.out.println(ChatColor.RED+"配置文件版本错误:Config-Version-Expected-1-Got-"+cv+".");
+            if(isntRightConfig) System.out.println(ChatColor.RED+"配置文件版本错误:Config-Version-Expected-2-Got-"+cv+".");
         }
         else System.out.println(ChatColor.GREEN+"[MCDNDC]config.yml配置文件加载成功!");
         System.out.println(ChatColor.GREEN+"[MCDNDC]插件加载成功!");
-        System.out.println(ChatColor.AQUA+"[MCDNDC]=====MCDNDC v0.1=====");
+        System.out.println(ChatColor.AQUA+"[MCDNDC]=======MCDNDC=======");
         System.out.println(ChatColor.AQUA+"[MCDNDC]作者:jingwenMC");
-        System.out.println(ChatColor.AQUA+"[MCDNDC]版本:v0.1(ALPHA)");
+        System.out.println(ChatColor.AQUA+"[MCDNDC]版本:v0.1.1(ALPHA)");
         System.out.println(ChatColor.AQUA+"[MCDNDC]许可:开源,GPLv3");
         System.out.println(ChatColor.AQUA+"[MCDNDC]启动成功,祝君愉快!");
-        System.out.println(ChatColor.AQUA+"[MCDNDC]=====MCDNDC v0.1=====");
+        System.out.println(ChatColor.AQUA+"[MCDNDC]=======MCDNDC=======");
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
         System.out.println(ChatColor.AQUA+"[MCDNDC]插件关闭...");
-        System.out.println(ChatColor.AQUA+"[MCDNDC]=====MCDNDC v0.1=====");
+        System.out.println(ChatColor.AQUA+"[MCDNDC]=======MCDNDC=======");
         System.out.println(ChatColor.AQUA+"[MCDNDC]作者:jingwenMC");
-        System.out.println(ChatColor.AQUA+"[MCDNDC]版本:v0.1(ALPHA)");
+        System.out.println(ChatColor.AQUA+"[MCDNDC]版本:v0.1.1(ALPHA)");
         System.out.println(ChatColor.AQUA+"[MCDNDC]许可:开源,GPLv3");
         System.out.println(ChatColor.AQUA+"[MCDNDC]关闭成功,下次再见!");
-        System.out.println(ChatColor.AQUA+"[MCDNDC]=====MCDNDC v0.1=====");
+        System.out.println(ChatColor.AQUA+"[MCDNDC]=======MCDNDC=======");
     }
 }

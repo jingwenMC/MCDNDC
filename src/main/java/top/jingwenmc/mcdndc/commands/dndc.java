@@ -2,6 +2,7 @@ package top.jingwenmc.mcdndc.commands;
 
 import me.neznamy.tab.api.EnumProperty;
 import me.neznamy.tab.api.TABAPI;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -9,6 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import top.jingwenmc.mcdndc.main;
 
 import java.util.List;
 
@@ -58,14 +60,19 @@ public class dndc implements CommandExecutor {
             {
                 if(sender instanceof Player){Player player = (Player) sender;player.sendMessage(ChatColor.GOLD+"[MCDNDC]正在重载配置文件...");}
                 System.out.println(ChatColor.GOLD+"[MCDNDC]正在重载配置文件...");
-                top.jingwenmc.mcdndc.main.words = plugin.getConfig().getStringList("words");
-                if(top.jingwenmc.mcdndc.main.words.size()==0) errmsg(sender,"配置文件错误:Config-Words-Matches-0.");
+                main.words = plugin.getConfig().getStringList("words");
+                if(main.words.size()==0) errmsg(sender,"配置文件错误:Config-Words-Matches-0.");
                 else {
                     int cv = plugin.getConfig().getInt("config_version");
-                    boolean isntRightConfig = !(cv == 1);
+                    boolean isntRightConfig = !(cv == 2);
                     if (isntRightConfig)
-                        errmsg(sender,"配置文件版本错误:Config-Version-Expected-1-Got-" + cv + ".");
+                        errmsg(sender,"配置文件版本错误:Config-Version-Expected-2-Got-" + cv + ".");
                     else {
+                        if(plugin.getConfig().getBoolean("reset_tag_on_reload"))
+                        for(Player p : Bukkit.getOnlinePlayers())
+                        {
+                            TABAPI.setValueTemporarily(p.getUniqueId(), EnumProperty.TAGPREFIX,"");
+                        }
                         if (sender instanceof Player) {Player player = (Player) sender;player.sendMessage(ChatColor.GREEN + "[MCDNDC]配置文件已重载.");}
                         System.out.println(ChatColor.GREEN + "[MCDNDC]配置文件已重载.");
                     }
@@ -76,19 +83,39 @@ public class dndc implements CommandExecutor {
         }
         if(args[0].equalsIgnoreCase("next"))
         {
+            String type = plugin.getConfig().getString("notify_player_after_next_word");
             if(checkPerm(sender,"dndc.play"))
             {
                 if(sender instanceof Player)
                 {
                     Player player = (Player) sender;
-                    if(top.jingwenmc.mcdndc.main.words.size()!=0){
+                    String prev = TABAPI.getTemporaryValue(player.getUniqueId(),EnumProperty.TAGPREFIX);
+                    if(main.words.size()!=0){
                         long rand=System.currentTimeMillis();
-                        int r2 = ((int)rand)%top.jingwenmc.mcdndc.main.words.size();
+                        int r2 = ((int)rand)% main.words.size();
                         if(r2<0)r2=-r2;
-                        String now = top.jingwenmc.mcdndc.main.words.get(r2);
-                        me.neznamy.tab.api.TABAPI.setValueTemporarily(player.getUniqueId(), EnumProperty.TAGPREFIX,"["+now+"]");
-                        top.jingwenmc.mcdndc.main.words.remove(r2);
+                        String now = main.words.get(r2);
+                        TABAPI.setValueTemporarily(player.getUniqueId(), EnumProperty.TAGPREFIX,"["+now+"]");
+                        main.words.remove(r2);
                         player.sendMessage(ChatColor.GREEN+"[MCDNDC]成功抽取下个词语");
+                        assert type != null;
+                        if(type.equalsIgnoreCase("message")&&!prev.equalsIgnoreCase("")) {
+                            player.sendMessage(ChatColor.AQUA+"[MCDNDC]你之前的词语是"+prev);
+                        }
+                        if(type.equalsIgnoreCase("broadcast")&&!prev.equalsIgnoreCase(""))
+                        {
+                            for(Player p : Bukkit.getOnlinePlayers())
+                            {
+                                p.sendMessage(ChatColor.AQUA+"[MCDNDC]"+player.getDisplayName()+"刚刚抽取了一个词语，他之前的词语是"+prev);
+                            }
+                        }
+                        else if(prev.equalsIgnoreCase(""))
+                        {
+                            for(Player p : Bukkit.getOnlinePlayers())
+                            {
+                                p.sendMessage(ChatColor.AQUA+"[MCDNDC]"+player.getDisplayName()+"刚刚抽取了一个词语.");
+                            }
+                        }
                     }
                     else
                     {
@@ -111,9 +138,9 @@ public class dndc implements CommandExecutor {
             if(sender instanceof Player)
             {
                 Player player = (Player) sender;
-                player.sendMessage(ChatColor.YELLOW+"[MCDNDC]MCDNDCv0.1-帮助页面");
+                player.sendMessage(ChatColor.YELLOW+"[MCDNDC]MCDNDCv0.1.1-帮助页面");
                 player.sendMessage(ChatColor.YELLOW+"[MCDNDC]====================");
-                player.sendMessage(ChatColor.YELLOW+"[MCDNDC]/dndc(/dnd) - 插件主命令");
+                player.sendMessage(ChatColor.YELLOW+"[MCDNDC]/dndc(/dnd,/byz) - 插件主命令");
                 player.sendMessage(ChatColor.YELLOW+"[MCDNDC]子命令:");
                 if(player.hasPermission("dndc.reload"))
                 player.sendMessage(ChatColor.YELLOW+"[MCDNDC]  reload - 重载词库&配置文件");
@@ -124,9 +151,9 @@ public class dndc implements CommandExecutor {
             }
             else
             {
-                System.out.println(ChatColor.YELLOW+"[MCDNDC]MCDNDCv0.1-帮助页面");
+                System.out.println(ChatColor.YELLOW+"[MCDNDC]MCDNDCv0.1.1-帮助页面");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]====================");
-                System.out.println(ChatColor.YELLOW+"[MCDNDC]/dndc(/dnd) - 插件主命令");
+                System.out.println(ChatColor.YELLOW+"[MCDNDC]/dndc(/dnd,/byz) - 插件主命令");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]子命令:");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]  reload - 重载词库&配置文件");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]  next   - 从词库抽取词语");
