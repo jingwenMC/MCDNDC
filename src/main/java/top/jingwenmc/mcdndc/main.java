@@ -38,7 +38,7 @@ public final class main extends JavaPlugin {
         System.out.println(ChatColor.GREEN+"[MCDNDC]插件加载成功!");
         System.out.println(ChatColor.AQUA+"[MCDNDC]=======MCDNDC=======");
         System.out.println(ChatColor.AQUA+"[MCDNDC]作者:jingwenMC");
-        System.out.println(ChatColor.AQUA+"[MCDNDC]版本:v0.1.1(ALPHA)");
+        System.out.println(ChatColor.AQUA+"[MCDNDC]版本:v0.1.2(ALPHA)");
         System.out.println(ChatColor.AQUA+"[MCDNDC]许可:开源,GPLv3");
         System.out.println(ChatColor.AQUA+"[MCDNDC]启动成功,祝君愉快!");
         System.out.println(ChatColor.AQUA+"[MCDNDC]=======MCDNDC=======");
@@ -50,7 +50,7 @@ public final class main extends JavaPlugin {
         System.out.println(ChatColor.AQUA+"[MCDNDC]插件关闭...");
         System.out.println(ChatColor.AQUA+"[MCDNDC]=======MCDNDC=======");
         System.out.println(ChatColor.AQUA+"[MCDNDC]作者:jingwenMC");
-        System.out.println(ChatColor.AQUA+"[MCDNDC]版本:v0.1.1(ALPHA)");
+        System.out.println(ChatColor.AQUA+"[MCDNDC]版本:v0.1.2(ALPHA)");
         System.out.println(ChatColor.AQUA+"[MCDNDC]许可:开源,GPLv3");
         System.out.println(ChatColor.AQUA+"[MCDNDC]关闭成功,下次再见!");
         System.out.println(ChatColor.AQUA+"[MCDNDC]=======MCDNDC=======");

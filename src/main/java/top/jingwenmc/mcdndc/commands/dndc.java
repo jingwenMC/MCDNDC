@@ -18,6 +18,19 @@ import java.util.Objects;
 public class dndc implements CommandExecutor {
     //public String type = null;
     Plugin plugin = top.jingwenmc.mcdndc.main.getPlugin(top.jingwenmc.mcdndc.main.class);
+    private void sendmsg(CommandSender sender,String str)
+    {
+        //In Stance Of
+        if(sender instanceof Player)
+        {
+            Player player = (Player)sender;
+            player.sendMessage(ChatColor.AQUA+"[MCDNDC]"+str);
+        }
+        else
+        {
+            System.out.println(ChatColor.AQUA +"[MCDNDC]"+str);
+        }
+    }
     private void errmsg(CommandSender sender,String str)
     {
         //In Stance Of
@@ -56,6 +69,17 @@ public class dndc implements CommandExecutor {
         //String option = args[0];
         //if(args[0].equalsIgnoreCase("reload"))errmsg(sender,"[DEBUG]你选择了1:"+args[0]);
         //errmsg(sender,"[DEBUG]你选择了:"+args[0]);
+        if(args[0].equalsIgnoreCase("reload"))
+        {
+            if(checkPerm(sender,"dndc.reload"))
+            {
+                sendmsg(sender,"正在重载配置文件.");
+                plugin.reloadConfig();
+                sendmsg(sender,"配置文件重载完成.");
+            }
+            else errmsg(sender,"权限不足.");
+            return true;
+        }
         if(args[0].equalsIgnoreCase("restart"))
         {
             if(checkPerm(sender,"dndc.restart"))
@@ -140,10 +164,12 @@ public class dndc implements CommandExecutor {
             if(sender instanceof Player)
             {
                 Player player = (Player) sender;
-                player.sendMessage(ChatColor.YELLOW+"[MCDNDC]MCDNDCv0.1.1-帮助页面");
+                player.sendMessage(ChatColor.YELLOW+"[MCDNDC]MCDNDCv0.1.2-帮助页面");
                 player.sendMessage(ChatColor.YELLOW+"[MCDNDC]====================");
                 player.sendMessage(ChatColor.YELLOW+"[MCDNDC]/dndc(/dnd,/byz) - 插件主命令");
                 player.sendMessage(ChatColor.YELLOW+"[MCDNDC]子命令:");
+                if(player.hasPermission("dndc.reload"))
+                player.sendMessage(ChatColor.YELLOW+"[MCDNDC]  reload  - 重载配置文件");
                 if(player.hasPermission("dndc.restart"))
                 player.sendMessage(ChatColor.YELLOW+"[MCDNDC]  restart - 重新加载游戏");
                 if(player.hasPermission("dndc.play"))
@@ -153,10 +179,11 @@ public class dndc implements CommandExecutor {
             }
             else
             {
-                System.out.println(ChatColor.YELLOW+"[MCDNDC]MCDNDCv0.1.1-帮助页面");
+                System.out.println(ChatColor.YELLOW+"[MCDNDC]MCDNDCv0.1.2-帮助页面");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]====================");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]/dndc(/dnd,/byz) - 插件主命令");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]子命令:");
+                System.out.println(ChatColor.YELLOW+"[MCDNDC]  reload  - 重载配置文件");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]  restart - 重新加载游戏");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]  next   - 从词库抽取词语");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]  help   - 帮助页面");

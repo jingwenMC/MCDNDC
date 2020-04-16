@@ -14,6 +14,9 @@ permissions:
   dndc.restart:
     description: Restart Game
     default: op
+  dndc.reload:
+    description: Reload Config
+    default: op
   dndc.play:
     description: Play MCDNDC
     default: true
