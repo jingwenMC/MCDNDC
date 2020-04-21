@@ -14,7 +14,7 @@ import top.jingwenmc.mcdndc.main;
 
 import java.util.List;
 import java.util.Objects;
-
+//Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),"命令");
 public class dndc implements CommandExecutor {
     //public String type = null;
     Plugin plugin = top.jingwenmc.mcdndc.main.getPlugin(top.jingwenmc.mcdndc.main.class);
@@ -61,7 +61,7 @@ public class dndc implements CommandExecutor {
     }
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(args.length!=1)
+        if(args.length<1||((!args[0].equalsIgnoreCase("reload"))&&args.length<2)||args.length>2)
         {
             errmsg(sender,"太少的条件!请输入指令\"/dndc help\"获得帮助!");
             return false;
@@ -71,11 +71,30 @@ public class dndc implements CommandExecutor {
         //errmsg(sender,"[DEBUG]你选择了:"+args[0]);
         if(args[0].equalsIgnoreCase("reload"))
         {
-            if(checkPerm(sender,"dndc.reload"))
-            {
-                sendmsg(sender,"正在重载配置文件.");
+            if(checkPerm(sender,"dndc.reload")) {
+                sendmsg(sender, "正在重载配置文件...");
                 plugin.reloadConfig();
-                sendmsg(sender,"配置文件重载完成.");
+                sendmsg(sender, "配置文件重载完成,正在重启游戏...");
+                main.notify_player_after_next_word = plugin.getConfig().getString("notify_player_after_next_word");
+                main.words = plugin.getConfig().getStringList("words");
+                if (main.words.size() == 0) errmsg(sender, "配置文件错误:Config-Words-Matches-0.");
+                else {
+                    int cv = plugin.getConfig().getInt("config_version");
+                    boolean isntRightConfig = !(cv == 2);
+                    if (isntRightConfig)
+                        errmsg(sender, "配置文件版本错误:Config-Version-Expected-2-Got-" + cv + ".");
+                    else {
+                        if (plugin.getConfig().getBoolean("reset_tag_on_restart"))
+                            for (Player p : Bukkit.getOnlinePlayers()) {
+                                TABAPI.setValueTemporarily(p.getUniqueId(), EnumProperty.TAGPREFIX, null);
+                            }
+                        if (sender instanceof Player) {
+                            Player player = (Player) sender;
+                            player.sendMessage(ChatColor.GREEN + "[MCDNDC]游戏已重载.");
+                        }
+                        System.out.println(ChatColor.GREEN + "[MCDNDC]游戏已重载.");
+                    }
+                }
             }
             else errmsg(sender,"权限不足.");
             return true;
@@ -159,6 +178,7 @@ public class dndc implements CommandExecutor {
             }
             return true;
         }
+        //XXX:help
         if(args[0].equalsIgnoreCase("help"))
         {
             if(sender instanceof Player)
@@ -189,6 +209,10 @@ public class dndc implements CommandExecutor {
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]  help   - 帮助页面");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]====================");
             }
+            return true;
+        }
+        if(args[0].equalsIgnoreCase("debug"))
+        {
             return true;
         }
         errmsg(sender,"未知指令!请输入指令\"/dndc help\"获得帮助!");
