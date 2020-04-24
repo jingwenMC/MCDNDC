@@ -89,21 +89,27 @@ public class dndc implements CommandExecutor {
                 sendmsg(sender, "配置文件重载完成,正在重启游戏...");
                 main.notify_player_after_next_word = plugin.getConfig().getString("notify_player_after_next_word");
                 main.words = plugin.getConfig().getStringList("words");
-                if (main.words.size() == 0) errmsg(sender, "配置文件错误:Config-Words-Matches-0.");
+                if(main.words.size()==0) errmsg(sender,"配置文件错误:Config-Words-Matches-0.");
                 else {
                     int cv = plugin.getConfig().getInt("config_version");
                     boolean isntRightConfig = !(cv == main.ecv);
                     if (isntRightConfig)
-                        errmsg(sender, "配置文件版本错误:Config-Version-Expected-"+main.ecv+"-Got-" + cv + ".");
+                        errmsg(sender,"配置文件版本错误:Config-Version-Expected-"+main.ecv+"-Got-" + cv + ".");
                     else {
-                        if (plugin.getConfig().getBoolean("reset_tag_on_restart"))
-                            for (Player p : Bukkit.getOnlinePlayers()) {
-                                TABAPI.setValueTemporarily(p.getUniqueId(), EnumProperty.TAGPREFIX, null);
+                        if(plugin.getConfig().getBoolean("reset_tag_on_restart"))
+                            for(Player p : Bukkit.getOnlinePlayers())
+                            {
+                                TABAPI.setValueTemporarily(p.getUniqueId(), EnumProperty.TAGPREFIX,null);
                             }
-                        if (sender instanceof Player) {
-                            Player player = (Player) sender;
-                            player.sendMessage(ChatColor.GREEN + "[MCDNDC]游戏已重载.");
+                        if(plugin.getConfig().getBoolean("reset_score_on_restart"))
+                        {
+                            sendmsg(sender,"正在重置分数...");
+                            for(Player p : Bukkit.getOnlinePlayers())
+                            {
+                                TABAPI.setValueTemporarily(p.getUniqueId(),EnumProperty.TABSUFFIX,ChatColor.GOLD+"[分数:"+0+"]");
+                            }
                         }
+                        if (sender instanceof Player) {Player player = (Player) sender;player.sendMessage(ChatColor.GREEN + "[MCDNDC]游戏已重载.");}
                         System.out.println(ChatColor.GREEN + "[MCDNDC]游戏已重载.");
                     }
                 }
