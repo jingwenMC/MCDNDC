@@ -20,3 +20,6 @@ permissions:
   dndc.play:
     description: Play MCDNDC
     default: true
+  dndc.admin:
+    description: Plugin Admin
+    default: op

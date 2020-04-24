@@ -1,6 +1,6 @@
 # MCDNDC
 MineCraftDoNotDoChallenge  
-当前版本:v0.1.2(Alpha)  
+当前版本:v0.2.0(Alpha)  
 
 ## 插件功能
 一个能在MC中实现一种小游戏(不要做挑战)的插件
@@ -17,6 +17,7 @@ TAB 最新版本 - 可以在 https://www.spigotmc.org/resources/57806/ 获取
   reload  - 重载配置文件
   restart - 重新加载游戏
   next    - 从词库抽取词语
+  set     - 设置分数
   help    - 帮助页面
 ```
 
@@ -78,3 +79,11 @@ words:
 
 ## 未来计划
 计划加入自动裁判功能
+
+## 作者的话
+我目前只是个Java以及BukkitAPI的初学者，有些代码可能不是很熟练，
+有些代码可能不是很好，敬请谅解！（同时欢迎各位dalao提交issue以及PullRequest）  
+联系我的一些方式：  
+Bilibili:https://space.bilibili.com/289155331  
+Email:2313055824@qq.com(本插件问题请不要给我发送邮件，请提交一个issue)  
+_ps.我可以进行一些**基本**的插件定制,有意可联系我。_
