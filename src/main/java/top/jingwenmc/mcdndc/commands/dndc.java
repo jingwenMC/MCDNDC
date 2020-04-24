@@ -4,19 +4,13 @@ import me.neznamy.tab.api.EnumProperty;
 import me.neznamy.tab.api.TABAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Score;
-import org.bukkit.scoreboard.Scoreboard;
 import top.jingwenmc.mcdndc.main;
 
-import java.util.List;
 import java.util.Objects;
 //Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),"命令");
 public class dndc implements CommandExecutor {
@@ -70,11 +64,17 @@ public class dndc implements CommandExecutor {
         i = Integer.parseInt(string);
         return i;
     }
+    private boolean argsAction(CommandSender sender,int al,int goal)
+    {
+        if(al==goal)return false;
+        errmsg(sender,"不正确的条件!请输入指令\"/dndc help\"获得帮助!");
+        return true;
+    }
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(args.length<1||((!(args[0].equalsIgnoreCase("debug")||args[0].equalsIgnoreCase("set")))&&args.length<3)||args.length>3)
+        if(args.length<1)
         {
-            errmsg(sender,"太少的条件!请输入指令\"/dndc help\"获得帮助!");
+            errmsg(sender,"不正确的条件!请输入指令\"/dndc help\"获得帮助!");
             return false;
         }
         //String option = args[0];
@@ -82,6 +82,7 @@ public class dndc implements CommandExecutor {
         //errmsg(sender,"[DEBUG]你选择了:"+args[0]);
         if(args[0].equalsIgnoreCase("reload"))
         {
+            if(argsAction(sender, 1, args.length))return true;
             if(checkPerm(sender,"dndc.reload")) {
                 sendmsg(sender, "正在重载配置文件...");
                 plugin.reloadConfig();
@@ -91,9 +92,9 @@ public class dndc implements CommandExecutor {
                 if (main.words.size() == 0) errmsg(sender, "配置文件错误:Config-Words-Matches-0.");
                 else {
                     int cv = plugin.getConfig().getInt("config_version");
-                    boolean isntRightConfig = !(cv == 2);
+                    boolean isntRightConfig = !(cv == main.ecv);
                     if (isntRightConfig)
-                        errmsg(sender, "配置文件版本错误:Config-Version-Expected-2-Got-" + cv + ".");
+                        errmsg(sender, "配置文件版本错误:Config-Version-Expected-"+main.ecv+"-Got-" + cv + ".");
                     else {
                         if (plugin.getConfig().getBoolean("reset_tag_on_restart"))
                             for (Player p : Bukkit.getOnlinePlayers()) {
@@ -112,6 +113,7 @@ public class dndc implements CommandExecutor {
         }
         if(args[0].equalsIgnoreCase("restart"))
         {
+            if(argsAction(sender, 1, args.length))return true;
             if(checkPerm(sender,"dndc.restart"))
             {
                 if(sender instanceof Player){
@@ -125,9 +127,9 @@ public class dndc implements CommandExecutor {
                 if(main.words.size()==0) errmsg(sender,"配置文件错误:Config-Words-Matches-0.");
                 else {
                     int cv = plugin.getConfig().getInt("config_version");
-                    boolean isntRightConfig = !(cv == 3);
+                    boolean isntRightConfig = !(cv == main.ecv);
                     if (isntRightConfig)
-                        errmsg(sender,"配置文件版本错误:Config-Version-Expected-3-Got-" + cv + ".");
+                        errmsg(sender,"配置文件版本错误:Config-Version-Expected-"+main.ecv+"-Got-" + cv + ".");
                     else {
                         if(plugin.getConfig().getBoolean("reset_tag_on_restart"))
                         for(Player p : Bukkit.getOnlinePlayers())
@@ -152,6 +154,7 @@ public class dndc implements CommandExecutor {
         }
         if(args[0].equalsIgnoreCase("next"))
         {
+            if(argsAction(sender, 1, args.length))return true;
             if(checkPerm(sender,"dndc.play"))
             {
                 if(sender instanceof Player)
@@ -209,6 +212,7 @@ public class dndc implements CommandExecutor {
         //XXX:help
         if(args[0].equalsIgnoreCase("set"))
         {
+            if(argsAction(sender, 3, args.length))return true;
             if(args.length==1)
             {
                 errmsg(sender,"太少的条件!正确的用法是\"/dndc set <玩家> <分数>\"!");
@@ -230,6 +234,7 @@ public class dndc implements CommandExecutor {
         }
         if(args[0].equalsIgnoreCase("help"))
         {
+            if(argsAction(sender, 1, args.length))return true;
             if(sender instanceof Player)
             {
                 Player player = (Player) sender;
@@ -242,9 +247,9 @@ public class dndc implements CommandExecutor {
                 if(player.hasPermission("dndc.restart"))
                 player.sendMessage(ChatColor.YELLOW+"[MCDNDC]  restart - 重新加载游戏");
                 if(player.hasPermission("dndc.play"))
-                player.sendMessage(ChatColor.YELLOW+"[MCDNDC]  next   - 从词库抽取词语");
-                player.sendMessage(ChatColor.YELLOW+"[MCDNDC]  set    - 设置分数");
-                player.sendMessage(ChatColor.YELLOW+"[MCDNDC]  help   - 帮助页面");
+                player.sendMessage(ChatColor.YELLOW+"[MCDNDC]  next    - 从词库抽取词语");
+                player.sendMessage(ChatColor.YELLOW+"[MCDNDC]  set     - 设置分数");
+                player.sendMessage(ChatColor.YELLOW+"[MCDNDC]  help    - 帮助页面");
                 player.sendMessage(ChatColor.YELLOW+"[MCDNDC]====================");
             }
             else
@@ -255,15 +260,16 @@ public class dndc implements CommandExecutor {
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]子命令:");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]  reload  - 重载配置文件");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]  restart - 重新加载游戏");
-                System.out.println(ChatColor.YELLOW+"[MCDNDC]  next   - 从词库抽取词语");
-                System.out.println(ChatColor.YELLOW+"[MCDNDC]  set    - 设置分数");
-                System.out.println(ChatColor.YELLOW+"[MCDNDC]  help   - 帮助页面");
+                System.out.println(ChatColor.YELLOW+"[MCDNDC]  next    - 从词库抽取词语");
+                System.out.println(ChatColor.YELLOW+"[MCDNDC]  set     - 设置分数");
+                System.out.println(ChatColor.YELLOW+"[MCDNDC]  help    - 帮助页面");
                 System.out.println(ChatColor.YELLOW+"[MCDNDC]====================");
             }
             return true;
         }
         if(args[0].equalsIgnoreCase("debug")&&checkPerm(sender,"dndc.admin"))
         {
+            if(argsAction(sender, 3, args.length))return true;
             if(args.length==1||args.length==3)
             {
                 sendmsg(sender,"=====JDebugTool@MCDNDC=====");

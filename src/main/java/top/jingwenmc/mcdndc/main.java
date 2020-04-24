@@ -14,6 +14,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public final class main extends JavaPlugin {
+    public static int ecv = 3;
     public static List<String> words;
     public static String notify_player_after_next_word = null;
     //Plugin plugin = top.jingwenmc.mcdndc.main.getPlugin(top.jingwenmc.mcdndc.main.class);
@@ -39,12 +40,12 @@ public final class main extends JavaPlugin {
         saveDefaultConfig();
         int cv=plugin.getConfig().getInt("config_version");
         notify_player_after_next_word = plugin.getConfig().getString("notify_player_after_next_word");
-        boolean isntRightConfig = !(cv==3);
+        boolean isntRightConfig = !(cv==ecv);
         words = plugin.getConfig().getStringList("words");
         if(words.size()==0||isntRightConfig) {
             System.out.println(ChatColor.RED+"[MCDNDC]读取config.yml时遇到错误,请检查你的配置文件后进行重载.错误信息:");
             if(words.size()==0) System.out.println(ChatColor.RED+"配置文件错误:Config-Words-Matches-0.");
-            if(isntRightConfig) System.out.println(ChatColor.RED+"配置文件版本错误:Config-Version-Expected-3-Got-"+cv+".");
+            if(isntRightConfig) System.out.println(ChatColor.RED+"配置文件版本错误:Config-Version-Expected-"+ecv+"-Got-"+cv+".");
         }
         else System.out.println(ChatColor.GREEN+"[MCDNDC]config.yml配置文件加载完成!");
         System.out.println(ChatColor.GREEN+"[MCDNDC]插件加载完成!");
