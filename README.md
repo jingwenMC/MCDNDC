@@ -1,6 +1,6 @@
 # MCDNDC
 MineCraftDoNotDoChallenge  
-当前版本:v0.2.0(Alpha)  
+当前版本:v0.2.0(Snapshot)|v0.1.1(Alpha)  
 本插件的源码使用GPL-3.0进行授权，具体条款已在LICENSE文件写出  
 
 ## 插件功能
