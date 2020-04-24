@@ -52,7 +52,7 @@ public final class main extends JavaPlugin {
         System.out.println(ChatColor.AQUA+"[MCDNDC]=======MCDNDC=======");
         System.out.println(ChatColor.AQUA+"[MCDNDC]作者:jingwenMC");
         System.out.println(ChatColor.AQUA+"[MCDNDC]版本:v0.2.0(ALPHA)");
-        System.out.println(ChatColor.AQUA+"[MCDNDC]许可:开源,GPLv3");
+        System.out.println(ChatColor.AQUA+"[MCDNDC]许可:开源,GPL-3.0");
         System.out.println(ChatColor.AQUA+"[MCDNDC]启动完成,祝君愉快!");
         System.out.println(ChatColor.AQUA+"[MCDNDC]=======MCDNDC=======");
     }
@@ -64,7 +64,7 @@ public final class main extends JavaPlugin {
         System.out.println(ChatColor.AQUA+"[MCDNDC]=======MCDNDC=======");
         System.out.println(ChatColor.AQUA+"[MCDNDC]作者:jingwenMC");
         System.out.println(ChatColor.AQUA+"[MCDNDC]版本:v0.2.0(ALPHA)");
-        System.out.println(ChatColor.AQUA+"[MCDNDC]许可:开源,GPLv3");
+        System.out.println(ChatColor.AQUA+"[MCDNDC]许可:开源,GPL-3.0");
         System.out.println(ChatColor.AQUA+"[MCDNDC]关闭完成,下次再见!");
         System.out.println(ChatColor.AQUA+"[MCDNDC]=======MCDNDC=======");
     }

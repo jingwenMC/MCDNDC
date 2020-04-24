@@ -1,6 +1,7 @@
 # MCDNDC
 MineCraftDoNotDoChallenge  
 当前版本:v0.2.0(Alpha)  
+本插件的源码使用GPL-3.0进行授权，具体条款已在LICENSE文件写出  
 
 ## 插件功能
 一个能在MC中实现一种小游戏(不要做挑战)的插件
