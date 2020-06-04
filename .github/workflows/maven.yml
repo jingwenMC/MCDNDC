@@ -26,6 +26,6 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
     # Artifact name
-        name: Artifact_Output_Snapshot # optional
+        name: 快照_Snapshot_Build # optional
     # A file, directory or wildcard pattern that describes what to upload
         path: target/MCDNDC-*.jar
