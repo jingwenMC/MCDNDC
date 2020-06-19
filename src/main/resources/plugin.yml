@@ -9,7 +9,8 @@ website: jingwenmc.top
 commands:
   dndc:
     description: Main Command Of MCDNDC
-    aliases: [dnd,byz]
+    aliases: [dnd,byz,mcdndc]
+    usage: /dndc help
 permissions:
   dndc.restart:
     description: Restart Game
@@ -20,6 +21,6 @@ permissions:
   dndc.play:
     description: Play MCDNDC
     default: true
-  dndc.admin:
-    description: Plugin Admin
+  dndc.set:
+    description: Set Score
     default: op

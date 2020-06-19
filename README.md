@@ -23,31 +23,37 @@ TAB 最新版本 - 可以在 https://www.spigotmc.org/resources/57806/ 获取
 ```
 
 ## 插件权限
-```text
-dndc.restart - 允许重新加载游戏
-dndc.reload  - 允许重新加载配置文件
-dndc.play    - 允许进行游玩
-```
+
+权限 | 说明 | 默认
+----|----|----
+dndc.restart | 允许重新加载游戏 |OP
+dndc.reload  | 允许重新加载配置文件 |OP
+dndc.play    | 允许进行/dndc next |玩家
+dndc.set     | 允许设置分数 |OP
+
 
 ## 配置文件
 ```yaml
 ####################
 #MCDNDC Config File
+#Config Language: 简体中文/Chinese(Simplified)
+#You Can Download More Language At https://github.com/jingwenMC/MCDNDC/tree/master/langs
+####################
 #作者:jingwenMC
 #开源许可:GPLv3
-#版本:v0.1.2
+#版本:v1.0.0
 ####################
 
 #Name:配置文件版本
 #Note:此项用于配置文件结构版本的确认。为防止出错，请不要自行更改
-#Default: 2
+#Default: 4
 #Updated:v0.1
-config_version: 2
+config_version: 4
 
 #Name:选择语言
-#Note:在1.0版本前没有任何作用
+#Note:取决于lang.yml的设定
 #Defaut: 'zh_CN'
-#WillUpdate:v1.0
+#Updated:v1.0.0
 lang: 'zh_CN'
 
 #Name:重启时是否重置玩家的TAG状态(前缀)
@@ -56,14 +62,32 @@ lang: 'zh_CN'
 #Updated:v0.1.1
 reset_tag_on_restart: true
 
-#Name:当玩家抽取词语时显示上一个词语的类型
-#Note:当玩家抽取词语时显示上一个词语(即玩家之前抽取的词语)的类型，有3种：
-#     broadcast:向服务器内所有玩家发送信息
-#     message:只向抽取的玩家发送信息
-#     none:不显示
-#Default: 'broadcast'
-#Updated:v0.1.1
-notify_player_after_next_word: 'broadcast'
+#Name:重启时是否重置玩家的分数(TAB后缀)
+#Note:设置为false将在重启时不会重置玩家的分数(TAB后缀)
+#Default: true
+#Updated:v0.2.0
+reset_score_on_restart: true
+
+#Name:是否切换时增长分数
+#Note:是否在切换词语的时候增长分数
+#Default: true
+#Updated:v0.2.0
+add_point: true
+
+#Name:计分板位置
+#Note:计分板的显示位置,请从[SIDEBAR,BELOW_NAME,PLAYER_LIST]中填写一个
+#  SIDEBAR:侧边栏
+#  BELOW_NAME:名称下方(可能会与TAB插件冲突,而且比较丑,不推荐)
+#  PLAYER_LIST:TAB列表
+#Default: SIDEBAR
+#Updated:v1.0.0
+scoreboard: 'SIDEBAR'
+
+#Name:计分板更新频率
+#Note:单位为tick(1/20秒)
+#Default: 40
+#Updated:v1.0.0
+interval: 40
 
 #Name:词库列表
 #Note:请按照第一次释放配置时的格式填写,避免出错
