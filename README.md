@@ -1,6 +1,9 @@
 # MCDNDC
 MineCraftDoNotDoChallenge  
-当前版本:v0.2.0(Snapshot)|v0.1.1(Alpha)  
+  
+当前版本:  
+稳定版:v1.0.0(Release)    |   开发版:v1.0.0(Release)  
+
 本插件的源码使用GPL-3.0进行授权，具体条款已在LICENSE文件写出  
 
 ## 插件功能
@@ -11,15 +14,30 @@ MineCraftDoNotDoChallenge
 TAB 最新版本 - 可以在 https://www.spigotmc.org/resources/57806/ 获取
 ```
 
+## 插件下载
+#### 稳定版下载方式
+1. 进入稳定版发布页https://github.com/jingwenMC/MCDNDC/releases  
+2. 下载`Latest release`中的第一个Jar文件(插件本体)  
+3. 下载前置插件  
+4. 将下载的两个Jar文件复制到服务器的`/plugins`目录  
+5. 启动服务器，并进行配置
+#### 开发版下载方式
+1. 进入开发版CI https://github.com/jingwenMC/MCDNDC/actions
+2. 在`All workflows`中点击最新的一次构建
+3. 在`Artifacts`中下载zip文件`Jar_Snapshot_Build`
+4. 提取其中的Jar文件
+5. 下载前置插件
+6. 将提取和下载的两个Jar文件复制到服务器的`/plugins`目录
+7. 启动服务器，并进行配置
 ## 插件指令
 ```text
-/dndc(/dnd,/byz) - 插件主命令
+/dndc:插件主指令. 别名:[/mcdndc,/dnd,/byz]
 子命令:
-  reload  - 重载配置文件
-  restart - 重新加载游戏
-  next    - 从词库抽取词语
-  set     - 设置分数
-  help    - 帮助页面
+   help    - 打开帮助菜单
+   next    - 切换词语
+   set     - 设置分数
+   reload  - 重载配置
+   restart - 重载游戏
 ```
 
 ## 插件权限
@@ -56,29 +74,11 @@ config_version: 4
 #Updated:v1.0.0
 lang: 'zh_CN'
 
-#Name:重启时是否重置玩家的TAG状态(前缀)
-#Note:设置为false将在重启时不会清除玩家当前的TAG状态(前缀)
-#Default: true
-#Updated:v0.1.1
-reset_tag_on_restart: true
-
-#Name:重启时是否重置玩家的分数(TAB后缀)
-#Note:设置为false将在重启时不会重置玩家的分数(TAB后缀)
-#Default: true
-#Updated:v0.2.0
-reset_score_on_restart: true
-
-#Name:是否切换时增长分数
-#Note:是否在切换词语的时候增长分数
-#Default: true
-#Updated:v0.2.0
-add_point: true
-
 #Name:计分板位置
 #Note:计分板的显示位置,请从[SIDEBAR,BELOW_NAME,PLAYER_LIST]中填写一个
 #  SIDEBAR:侧边栏
-#  BELOW_NAME:名称下方(可能会与TAB插件冲突,而且比较丑,不推荐)
-#  PLAYER_LIST:TAB列表
+#  BELOW_NAME:名称下方(可能会与TAB插件冲突,可能需要对TAB插件进行配置,比较丑,不推荐)
+#  PLAYER_LIST:TAB列表(可能会与TAB插件冲突,可能需要对TAB插件进行配置)
 #Default: SIDEBAR
 #Updated:v1.0.0
 scoreboard: 'SIDEBAR'
@@ -103,7 +103,7 @@ words:
 ```
 
 ## 未来计划
-计划加入自动裁判功能
+暂无,欢迎提交issues
 
 ## 作者的话
 我目前只是个Java以及BukkitAPI的初学者，有些代码可能不是很熟练，

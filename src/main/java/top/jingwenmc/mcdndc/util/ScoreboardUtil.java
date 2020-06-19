@@ -17,7 +17,7 @@ public class ScoreboardUtil {
     private static Scoreboard getEmptyScoreBoard() {
         Scoreboard board = Objects.requireNonNull(Bukkit.getScoreboardManager()).getNewScoreboard();
         Objective ob = board.registerNewObjective("sidebar","dummy","");
-        ob.setDisplayName(ChatColor.YELLOW + ChatColor.BOLD.toString() + "积分");
+        ob.setDisplayName(ChatColor.YELLOW + ChatColor.BOLD.toString() + "Score");
         if(main.getInstance().getConfigAccessor().getConfig().getString("scoreboard").equals("SIDEBAR"))
         ob.setDisplaySlot(DisplaySlot.SIDEBAR);
         else if(main.getInstance().getConfigAccessor().getConfig().getString("scoreboard").equals("BELOW_NAME"))
