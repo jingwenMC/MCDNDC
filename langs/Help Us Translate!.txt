@@ -1,0 +1,5 @@
+How To Help Us:
+1. Download The Plugin
+2. Translate Config/Lang File
+3. Send An Issue With The File
+4. Done!
