@@ -2,7 +2,7 @@
 MineCraftDoNotDoChallenge  
   
 当前版本:  
-稳定版:v1.0.0(Release)    |   开发版:v1.0.0(Release)  
+稳定版:v1.0.0(Release)    |   开发版:v1.0.0(Snapshot)  
 
 本插件的源码使用GPL-3.0进行授权，具体条款已在LICENSE文件写出  
 
