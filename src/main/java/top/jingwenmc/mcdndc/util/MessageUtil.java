@@ -1,5 +1,6 @@
 package top.jingwenmc.mcdndc.util;
 
+import org.bukkit.command.CommandSender;
 import top.jingwenmc.mcdndc.main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -16,7 +17,7 @@ public class MessageUtil {
     {
         Bukkit.broadcastMessage(getPrefix()+getMessage(path));
     }
-    public static void sendPlayer(Player player,String path)
+    public static void sendPlayer(CommandSender player, String path)
     {
         player.sendMessage(getPrefix()+getMessage(path));
     }

@@ -11,6 +11,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
+import top.jingwenmc.mcdndc.commands.wordkeeper;
 import top.jingwenmc.mcdndc.managers.GameManager;
 import top.jingwenmc.mcdndc.managers.PlayerManager;
 import top.jingwenmc.mcdndc.util.ConfigAccessor;
@@ -45,6 +46,7 @@ public final class main extends JavaPlugin implements Listener {
         gameManager.resetList();
         MessageUtil.sendConsole("console.during_load");
         Objects.requireNonNull(getCommand("dndc")).setExecutor(new mcdndc());
+        Objects.requireNonNull(getCommand("wordkeeper")).setExecutor(new wordkeeper());
         BukkitTask task = new BukkitRunnable()
         {
             @Override
@@ -56,6 +58,7 @@ public final class main extends JavaPlugin implements Listener {
             }
         }.runTaskTimer(this,configAccessor.getConfig().getInt("interval"),configAccessor.getConfig().getInt("interval"));
         getServer().getPluginManager().registerEvents(this,this);
+        MessageUtil.sendConsole("console.post_load");
     }
 
     @Override

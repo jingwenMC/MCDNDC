@@ -2,7 +2,7 @@
 MineCraftDoNotDoChallenge  
   
 当前版本:  
-稳定版:v1.0.0(Release)    |   开发版:v1.0.0(Snapshot)  
+稳定版:v1.0.0(Release)    |   开发版:v1.1.0(Snapshot)  
 
 本插件的源码使用GPL-3.0进行授权，具体条款已在LICENSE文件写出  
 
@@ -33,24 +33,33 @@ TAB 最新版本 - 可以在 https://www.spigotmc.org/resources/57806/ 获取
 ```text
 /dndc:插件主指令. 别名:[/mcdndc,/dnd,/byz]
 子命令:
-   help    - 打开帮助菜单
-   next    - 切换词语
-   set     - 设置分数
-   reload  - 重载配置
-   restart - 重载游戏
+   help              - 打开帮助菜单
+   next              - 切换词语
+   set <玩家> <分数> - 设置分数
+   reload            - 重载配置
+   restart           - 重载游戏
+/wordkeeper*:词语保管器. 别名:[/wk,/wkeeper]
+子命令:
+   set* <词语代号> <词语> - 设置代号对应的词语
+   get* <词语代号>        - 获取代号对应的词语
+     注:获取词语指显示在头上,不会直接透露词语
 ```
+注:带`*`的指令为开发版指令 
 
 ## 插件权限
 
 权限 | 说明 | 默认
 ----|----|----
-dndc.restart | 允许重新加载游戏 |OP
-dndc.reload  | 允许重新加载配置文件 |OP
-dndc.play    | 允许进行/dndc next |玩家
-dndc.set     | 允许设置分数 |OP
+dndc.restart      | 允许重新加载游戏     |OP
+dndc.reload       | 允许重新加载配置文件 |OP
+dndc.play         | 允许进行/dndc next   |玩家
+dndc.set          | 允许设置分数         |OP
+dndc.keep.add*     | 允许添加词语到保管器 |玩家
+dndc.keep.use*     | 允许从保管器获取词语 |玩家
+注:带`*`的权限为开发版权限
 
 
-## 配置文件
+## 配置文件(稳定版)
 ```yaml
 ####################
 #MCDNDC Config File

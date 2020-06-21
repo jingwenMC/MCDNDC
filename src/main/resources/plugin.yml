@@ -11,6 +11,10 @@ commands:
     description: Main Command Of MCDNDC
     aliases: [dnd,byz,mcdndc]
     usage: /dndc help
+  wordkeeper:
+    description: Word Keeper of MCDNDC
+    aliases: [wk,wkeeper]
+    usage: /dndc help
 permissions:
   dndc.restart:
     description: Restart Game
@@ -24,3 +28,9 @@ permissions:
   dndc.set:
     description: Set Score
     default: op
+  dndc.keep.add:
+    description: Add Word To Keeper
+    default: true
+  dndc.keep.use:
+    description: Set Word From Keeper
+    default: true

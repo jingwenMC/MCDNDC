@@ -17,7 +17,7 @@ import top.jingwenmc.mcdndc.util.MessageUtil;
 public class mcdndc implements CommandExecutor {
     public boolean sendCommandError(CommandSender sender)
     {
-        MessageUtil.sendPlayer((Player) sender,"server.no_cmd");
+        MessageUtil.sendPlayer(sender,"server.no_cmd");
         return false;
     }
     @Override
@@ -28,7 +28,7 @@ public class mcdndc implements CommandExecutor {
             if(args.length!=1)return sendCommandError(sender);
             if(sender.hasPermission("dndc.reload"))
             {
-                MessageUtil.sendPlayer((Player) sender,"game.reload");
+                MessageUtil.sendPlayer(sender,"game.reload");
                 main.getInstance().getConfigAccessor().reloadConfig();
                 main.getInstance().getLangAccessor().reloadConfig();
                 MessageUtil.sendServer("game.restart");
@@ -42,7 +42,7 @@ public class mcdndc implements CommandExecutor {
             }
             else
             {
-                MessageUtil.sendPlayer((Player) sender,"server.no_perm");
+                MessageUtil.sendPlayer(sender,"server.no_perm");
             }
             return true;
         }
@@ -62,7 +62,7 @@ public class mcdndc implements CommandExecutor {
             }
             else
             {
-                MessageUtil.sendPlayer((Player) sender,"server.no_perm");
+                MessageUtil.sendPlayer(sender,"server.no_perm");
             }
             return true;
         }
@@ -70,7 +70,7 @@ public class mcdndc implements CommandExecutor {
         {
             if(!sender.hasPermission("dndc.play"))
             {
-                MessageUtil.sendPlayer((Player) sender,"server.no_perm");
+                MessageUtil.sendPlayer(sender,"server.no_perm");
                 return true;
             }
             Player player;
@@ -80,17 +80,8 @@ public class mcdndc implements CommandExecutor {
                     player = (Player) sender;
                 else
                 {
-                    MessageUtil.sendPlayer((Player) sender,"server.not_player");
-                    return false;
-                }
-            }
-            else if(args.length==2)
-            {
-                player = Bukkit.getPlayerExact(args[1]);
-                if(player==null)
-                {
-                    MessageUtil.sendPlayer((Player) sender,"server.not_player");
-                    return false;
+                    MessageUtil.sendPlayer(sender,"server.not_player");
+                    return true;
                 }
             }
             else return sendCommandError(sender);
@@ -99,7 +90,7 @@ public class mcdndc implements CommandExecutor {
             else Bukkit.broadcastMessage(MessageUtil.getPrefix()+MessageUtil.getMessage("game.new_word").replaceAll("%player",player.getName()).replaceAll("%word",gamePlayer.getTopic()));
             if(!gamePlayer.setNewTopic())
             {
-                MessageUtil.sendPlayer((Player)sender,"game.no_word");
+                MessageUtil.sendPlayer(sender,"game.no_word");
                 return false;
             }
             TABAPI.setValueTemporarily(player.getUniqueId(), EnumProperty.TAGPREFIX,"["+gamePlayer.getTopic()+"]");
@@ -110,7 +101,7 @@ public class mcdndc implements CommandExecutor {
         {
             if(!sender.hasPermission("dndc.set"))
             {
-                MessageUtil.sendPlayer((Player) sender,"server.no_perm");
+                MessageUtil.sendPlayer(sender,"server.no_perm");
                 return true;
             }
             if(args.length!=3)return sendCommandError(sender);
@@ -118,12 +109,12 @@ public class mcdndc implements CommandExecutor {
             player = Bukkit.getPlayerExact(args[1]);
             if(player==null)
             {
-                MessageUtil.sendPlayer((Player) sender,"server.not_player");
+                MessageUtil.sendPlayer(sender,"server.not_player");
                 return false;
             }
             GamePlayer gamePlayer = main.getInstance().getPlayerManager().getGamePlayer(player);
             gamePlayer.setScore(Integer.parseInt(args[2]));
-            MessageUtil.sendPlayer((Player) sender,"game.score_set");
+            MessageUtil.sendPlayer(sender,"game.score_set");
             return true;
         }
         if(args[0].equalsIgnoreCase("help"))
