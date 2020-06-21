@@ -38,7 +38,11 @@ public class ScoreboardUtil {
         for(GamePlayer gamePlayer : main.getInstance().getPlayerManager().map.values())
         {
             assert obj != null;
-            Score s = obj.getScore(ChatColor.WHITE+gamePlayer.getPlayer().getPlayerListName());
+            Score s;
+            if(main.getInstance().getConfigAccessor().getConfig().getString("scoreboard").equals("SIDEBAR"))
+            s = obj.getScore(ChatColor.WHITE+gamePlayer.getPlayer().getName());
+            else
+                s = obj.getScore(gamePlayer.getPlayer().getName());
             s.setScore(gamePlayer.getScore());
         }
         p.setScoreboard(sb);
