@@ -90,7 +90,6 @@ public class mcdndc implements CommandExecutor {
             if(gamePlayer.getTopic()==null)
             {
                 flag = false;
-                gamePlayer.setScore(gamePlayer.getScore()-1);
                 Bukkit.broadcastMessage(MessageUtil.getPrefix()+MessageUtil.getMessage("game.first_word").replaceAll("%player",player.getName()).replaceAll("%word",gamePlayer.getTopic()));
             }
             else Bukkit.broadcastMessage(MessageUtil.getPrefix()+MessageUtil.getMessage("game.new_word").replaceAll("%player",player.getName()).replaceAll("%word",gamePlayer.getTopic()));

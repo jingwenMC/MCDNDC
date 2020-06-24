@@ -10,9 +10,9 @@
 
 #Name:配置文件版本
 #Note:此项用于配置文件结构版本的确认。为防止出错，请不要自行更改
-#Default: 4
+#Default: 5
 #Updated:v0.1
-config_version: 4
+config_version: 5
 
 #Name:选择语言
 #Note:取决于lang.yml的设定
@@ -46,3 +46,19 @@ words:
   - 'Word1'
   - 'Word2'
   - 'Word3'
+
+#Name:模块列表
+#Note:请按照第一次释放配置时的格式填写,避免出错
+#     模块相当于官方扩展,可根据自身需求进行启用/禁用
+#Default:
+#Updated:v1.2
+modules:
+  #自动在达到一定分值时，以玩家ID作为词语代号,对玩家进行词语设置
+  #Updated:v1.2
+  auto_switch_from_keeper:
+    #是否启用
+    enabled: true
+    #要求的分值
+    required_score: 4
+    #切换时的提示信息
+    msg_switch: '&b[MCDNDC]由于达到指定分值,玩家%player新的词语来自于词语保管器.'

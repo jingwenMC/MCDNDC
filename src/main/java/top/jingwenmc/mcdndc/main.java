@@ -30,7 +30,7 @@ public final class main extends JavaPlugin implements Listener {
     private ConfigAccessor langAccessor = null;
     private PlayerManager playerManager = null;
     private GameManager gameManager = null;
-    public static int cv = 4;
+    public static int cv = 5;
 
     @Override
     public void onEnable() {
@@ -61,7 +61,7 @@ public final class main extends JavaPlugin implements Listener {
         for(Player p : Bukkit.getOnlinePlayers())
         {
             //in case of reload confirm
-            getServer().getPluginManager().callEvent(new PlayerJoinEvent(p,"MCDNDC RELOAD"));
+            getServer().getPluginManager().callEvent(new PlayerJoinEvent(p,""));
         }
         MessageUtil.sendConsole("console.post_load");
     }
@@ -95,7 +95,7 @@ public final class main extends JavaPlugin implements Listener {
     public void onJoin(PlayerJoinEvent evt)
     {
         playerManager.createGamePlayer(evt.getPlayer());
-        if(evt.getJoinMessage()!="MCDNDC RELOAD")evt.setJoinMessage(ChatColor.YELLOW+evt.getPlayer().getName()+" "+MessageUtil.getMessage("server.join"));
+        evt.setJoinMessage(ChatColor.YELLOW+evt.getPlayer().getName()+" "+MessageUtil.getMessage("server.join"));
     }
     @EventHandler
     public void onQuit(PlayerQuitEvent evt)

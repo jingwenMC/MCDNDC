@@ -1,6 +1,7 @@
 package top.jingwenmc.mcdndc.util;
 
 import org.bukkit.entity.Player;
+import top.jingwenmc.mcdndc.events.NewWordEvent;
 import top.jingwenmc.mcdndc.main;
 
 public class GamePlayer {
@@ -35,6 +36,8 @@ public class GamePlayer {
     {
         this.topic = main.getInstance().getGameManager().newWord();
         if(topic==null)return false;
-        else return true;
+        else
+            main.getInstance().getServer().getPluginManager().callEvent(new NewWordEvent(this));
+            return true;
     }
 }
