@@ -86,7 +86,13 @@ public class mcdndc implements CommandExecutor {
             }
             else return sendCommandError(sender);
             GamePlayer gamePlayer = main.getInstance().getPlayerManager().getGamePlayer(player);
-            if(gamePlayer.getTopic()==null)Bukkit.broadcastMessage(MessageUtil.getPrefix()+MessageUtil.getMessage("game.first_word").replaceAll("%player",player.getName()).replaceAll("%word",gamePlayer.getTopic()));
+            Boolean flag = true;
+            if(gamePlayer.getTopic()==null)
+            {
+                flag = false;
+                gamePlayer.setScore(gamePlayer.getScore()-1);
+                Bukkit.broadcastMessage(MessageUtil.getPrefix()+MessageUtil.getMessage("game.first_word").replaceAll("%player",player.getName()).replaceAll("%word",gamePlayer.getTopic()));
+            }
             else Bukkit.broadcastMessage(MessageUtil.getPrefix()+MessageUtil.getMessage("game.new_word").replaceAll("%player",player.getName()).replaceAll("%word",gamePlayer.getTopic()));
             if(!gamePlayer.setNewTopic())
             {
@@ -94,7 +100,7 @@ public class mcdndc implements CommandExecutor {
                 return false;
             }
             TABAPI.setValueTemporarily(player.getUniqueId(), EnumProperty.TAGPREFIX,"["+gamePlayer.getTopic()+"]");
-            if(gamePlayer.getTopic()!=null)gamePlayer.setScore(gamePlayer.getScore()+1);
+            if(flag)gamePlayer.setScore(gamePlayer.getScore());
             return true;
         }
         if(args[0].equalsIgnoreCase("set"))

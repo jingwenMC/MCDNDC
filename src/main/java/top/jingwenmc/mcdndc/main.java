@@ -58,6 +58,11 @@ public final class main extends JavaPlugin implements Listener {
             }
         }.runTaskTimer(this,configAccessor.getConfig().getInt("interval"),configAccessor.getConfig().getInt("interval"));
         getServer().getPluginManager().registerEvents(this,this);
+        for(Player p : Bukkit.getOnlinePlayers())
+        {
+            //in case of reload confirm
+            getServer().getPluginManager().callEvent(new PlayerJoinEvent(p,"MCDNDC RELOAD"));
+        }
         MessageUtil.sendConsole("console.post_load");
     }
 
@@ -90,7 +95,7 @@ public final class main extends JavaPlugin implements Listener {
     public void onJoin(PlayerJoinEvent evt)
     {
         playerManager.createGamePlayer(evt.getPlayer());
-        evt.setJoinMessage(ChatColor.YELLOW+evt.getPlayer().getName()+" "+MessageUtil.getMessage("server.join"));
+        if(evt.getJoinMessage()!="MCDNDC RELOAD")evt.setJoinMessage(ChatColor.YELLOW+evt.getPlayer().getName()+" "+MessageUtil.getMessage("server.join"));
     }
     @EventHandler
     public void onQuit(PlayerQuitEvent evt)
