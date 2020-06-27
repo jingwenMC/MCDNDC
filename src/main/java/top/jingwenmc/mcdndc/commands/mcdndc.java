@@ -93,20 +93,23 @@ public class mcdndc implements CommandExecutor {
             }
             else return sendCommandError(sender);
             GamePlayer gamePlayer = main.getInstance().getPlayerManager().getGamePlayer(player);
-            Boolean flag = true;
+            boolean flag = true;
             if(gamePlayer.getTopic()==null)
             {
                 flag = false;
-                Bukkit.broadcastMessage(MessageUtil.getPrefix()+MessageUtil.getMessage("game.first_word").replaceAll("%player",player.getName()).replaceAll("%word",gamePlayer.getTopic()));
             }
-            else Bukkit.broadcastMessage(MessageUtil.getPrefix()+MessageUtil.getMessage("game.new_word").replaceAll("%player",player.getName()).replaceAll("%word",gamePlayer.getTopic()));
             if(!gamePlayer.setNewTopic())
             {
                 MessageUtil.sendPlayer(sender,"game.no_word");
                 return false;
             }
             TABAPI.setValueTemporarily(player.getUniqueId(), EnumProperty.TAGPREFIX,"["+gamePlayer.getTopic()+"]");
-            if(flag)gamePlayer.setScore(gamePlayer.getScore());
+            if(flag)
+            {
+                Bukkit.broadcastMessage(MessageUtil.getPrefix()+MessageUtil.getMessage("game.new_word").replaceAll("%player",player.getName()).replaceAll("%word",gamePlayer.getTopic()));
+                gamePlayer.setScore(gamePlayer.getScore()+1);
+            }
+            else Bukkit.broadcastMessage(MessageUtil.getPrefix()+MessageUtil.getMessage("game.first_word").replaceAll("%player",player.getName()).replaceAll("%word",gamePlayer.getTopic()));
             return true;
         }
         if(args[0].equalsIgnoreCase("set"))
