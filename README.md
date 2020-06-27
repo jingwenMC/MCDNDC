@@ -38,10 +38,10 @@ TAB 最新版本 - 可以在 https://www.spigotmc.org/resources/57806/ 获取
    set <玩家> <分数> - 设置分数
    reload            - 重载配置
    restart           - 重载游戏
-/wordkeeper*:词语保管器. 别名:[/wk,/wkeeper]
+/wordkeeper:词语保管器. 别名:[/wk,/wkeeper]
 子命令:
-   set* <词语代号> <词语> - 设置代号对应的词语
-   get* <词语代号>        - 获取代号对应的词语
+   set <词语代号> <词语> - 设置代号对应的词语
+   get <词语代号>        - 获取代号对应的词语
      注:获取词语指显示在头上,不会直接透露词语
 ```
 注:带`*`的指令为开发版指令 
@@ -54,8 +54,8 @@ dndc.restart      | 允许重新加载游戏     |OP
 dndc.reload       | 允许重新加载配置文件,需要`dndc.restart` |OP
 dndc.play         | 允许进行/dndc next   |玩家
 dndc.set          | 允许设置分数         |OP
-dndc.keep.add*     | 允许添加词语到保管器 |玩家
-dndc.keep.use*     | 允许从保管器获取词语 |玩家
+dndc.keep.add     | 允许添加词语到保管器 |玩家
+dndc.keep.use     | 允许从保管器获取词语 |玩家
 注:带`*`的权限为开发版权限,  
 `dndc.reload`权限必须要有`dndc.restart`权限才能起到作用
 
@@ -69,14 +69,14 @@ dndc.keep.use*     | 允许从保管器获取词语 |玩家
 ####################
 #作者:jingwenMC
 #开源许可:GPLv3
-#版本:v1.0.0
+#版本:v1.2.0-RELEASE
 ####################
 
 #Name:配置文件版本
 #Note:此项用于配置文件结构版本的确认。为防止出错，请不要自行更改
-#Default: 4
+#Default: 5
 #Updated:v0.1
-config_version: 4
+config_version: 5
 
 #Name:选择语言
 #Note:取决于lang.yml的设定
@@ -89,7 +89,7 @@ lang: 'zh_CN'
 #  SIDEBAR:侧边栏
 #  BELOW_NAME:名称下方(可能会与TAB插件冲突,可能需要对TAB插件进行配置,比较丑,不推荐)
 #  PLAYER_LIST:TAB列表(可能会与TAB插件冲突,可能需要对TAB插件进行配置)
-#Default: SIDEBAR
+#Default: 'SIDEBAR'
 #Updated:v1.0.0
 scoreboard: 'SIDEBAR'
 
@@ -98,6 +98,28 @@ scoreboard: 'SIDEBAR'
 #Default: 40
 #Updated:v1.0.0
 interval: 40
+
+#Name:模块列表
+#Note:请按照第一次释放配置时的格式填写,避免出错
+#     模块相当于官方扩展,可根据自身需求进行启用/禁用
+#Default:访问https://github.com/jingwenMC/MCDNDC/blob/master/src/main/resources/config.yml
+#Updated:v1.2
+modules:
+  #自动在达到一定分值时，以玩家ID作为词语代号,对玩家进行词语设置
+  #Updated:v1.2
+  auto_switch_from_keeper:
+    #是否启用
+    enabled: true
+    #要求的分值
+    required_score: 4
+    #切换时的提示信息
+    msg_switch: '&b[MCDNDC]由于达到指定分值,玩家%player新的词语来自于词语保管器.'
+  #是否在每一局游戏的开始显示广告(插件作者及开源地址)信息
+  #如果你开启,我会感谢你!
+  #Updated:v1.2
+  ads:
+    #是否启用
+    enabled: true
 
 #Name:词库列表
 #Note:请按照第一次释放配置时的格式填写,避免出错
