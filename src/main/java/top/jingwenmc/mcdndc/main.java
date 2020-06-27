@@ -14,6 +14,8 @@ import org.bukkit.scheduler.BukkitTask;
 import top.jingwenmc.mcdndc.commands.wordkeeper;
 import top.jingwenmc.mcdndc.managers.GameManager;
 import top.jingwenmc.mcdndc.managers.PlayerManager;
+import top.jingwenmc.mcdndc.modules.Ads;
+import top.jingwenmc.mcdndc.modules.AutoSwitchFromKeeper;
 import top.jingwenmc.mcdndc.util.ConfigAccessor;
 import top.jingwenmc.mcdndc.util.GamePlayer;
 import top.jingwenmc.mcdndc.util.MessageUtil;
@@ -63,6 +65,7 @@ public final class main extends JavaPlugin implements Listener {
             //in case of reload confirm
             getServer().getPluginManager().callEvent(new PlayerJoinEvent(p,""));
         }
+        registerModules();
         MessageUtil.sendConsole("console.post_load");
     }
 
@@ -102,5 +105,10 @@ public final class main extends JavaPlugin implements Listener {
     {
         playerManager.removeGamePlayer(evt.getPlayer().getName());
         evt.setQuitMessage(ChatColor.YELLOW+evt.getPlayer().getName()+" "+MessageUtil.getMessage("server.quit"));
+    }
+    public void registerModules()
+    {
+        getServer().getPluginManager().registerEvents(new Ads(),this);
+        getServer().getPluginManager().registerEvents(new AutoSwitchFromKeeper(),this);
     }
 }

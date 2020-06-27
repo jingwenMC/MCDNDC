@@ -9,6 +9,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerJoinEvent;
+import top.jingwenmc.mcdndc.events.NewGameEvent;
 import top.jingwenmc.mcdndc.main;
 import top.jingwenmc.mcdndc.managers.GameManager;
 import top.jingwenmc.mcdndc.util.GamePlayer;
@@ -59,6 +61,11 @@ public class mcdndc implements CommandExecutor {
                     gamePlayer.setTopic(null);
                     TABAPI.setValueTemporarily(gamePlayer.getPlayer().getUniqueId(), EnumProperty.TAGPREFIX,null);
                 }
+                for(Player p : Bukkit.getOnlinePlayers())
+                {
+                    Bukkit.dispatchCommand(p,"dndc next");
+                }
+                main.getInstance().getServer().getPluginManager().callEvent(new NewGameEvent());
             }
             else
             {
