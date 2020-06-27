@@ -9,6 +9,8 @@ import top.jingwenmc.mcdndc.events.NewWordEvent;
 import top.jingwenmc.mcdndc.main;
 import top.jingwenmc.mcdndc.util.GamePlayer;
 
+import java.util.Objects;
+
 public class AutoSwitchFromKeeper implements Listener {
     @EventHandler
     public void onNewWord(NewWordEvent newWordEvent)
@@ -20,8 +22,9 @@ public class AutoSwitchFromKeeper implements Listener {
                 GamePlayer gp = newWordEvent.getGamePlayer();
                 Bukkit.dispatchCommand(gp.getPlayer(),"wordkeeper get "+gp.getPlayer().getName());
                 Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&',
-                        main.getInstance().getConfigAccessor().getConfig().getString("modules.auto_switch_from_keeper.msg_switch")
+                        Objects.requireNonNull(main.getInstance().getConfigAccessor().getConfig().getString("modules.auto_switch_from_keeper.msg_switch"))
                 .replaceAll("%player",gp.getPlayer().getName())));
+                gp.setScore(gp.getScore()-1);
             }
         }
     }

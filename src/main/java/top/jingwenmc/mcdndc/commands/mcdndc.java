@@ -28,19 +28,12 @@ public class mcdndc implements CommandExecutor {
         if(args[0].equalsIgnoreCase("reload"))
         {
             if(args.length!=1)return sendCommandError(sender);
-            if(sender.hasPermission("dndc.reload"))
+            if(sender.hasPermission("dndc.reload")&&sender.hasPermission("dndc.restart"))
             {
                 MessageUtil.sendPlayer(sender,"game.reload");
                 main.getInstance().getConfigAccessor().reloadConfig();
                 main.getInstance().getLangAccessor().reloadConfig();
-                MessageUtil.sendServer("game.restart");
-                main.getInstance().getGameManager().resetList();
-                for(GamePlayer gamePlayer : main.getInstance().getPlayerManager().map.values())
-                {
-                    gamePlayer.setScore(0);
-                    gamePlayer.setTopic(null);
-                    TABAPI.setValueTemporarily(gamePlayer.getPlayer().getUniqueId(), EnumProperty.TAGPREFIX,null);
-                }
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"dndc restart");
             }
             else
             {
@@ -94,7 +87,8 @@ public class mcdndc implements CommandExecutor {
             else return sendCommandError(sender);
             GamePlayer gamePlayer = main.getInstance().getPlayerManager().getGamePlayer(player);
             boolean flag = true;
-            if(gamePlayer.getTopic()==null)
+            String str = gamePlayer.getTopic();
+            if(str==null)
             {
                 flag = false;
             }
@@ -106,10 +100,13 @@ public class mcdndc implements CommandExecutor {
             TABAPI.setValueTemporarily(player.getUniqueId(), EnumProperty.TAGPREFIX,"["+gamePlayer.getTopic()+"]");
             if(flag)
             {
-                Bukkit.broadcastMessage(MessageUtil.getPrefix()+MessageUtil.getMessage("game.new_word").replaceAll("%player",player.getName()).replaceAll("%word",gamePlayer.getTopic()));
+                Bukkit.broadcastMessage(MessageUtil.getPrefix()+MessageUtil.getMessage("game.new_word").replaceAll("%player",player.getName()).replaceAll("%word",str));
                 gamePlayer.setScore(gamePlayer.getScore()+1);
             }
-            else Bukkit.broadcastMessage(MessageUtil.getPrefix()+MessageUtil.getMessage("game.first_word").replaceAll("%player",player.getName()).replaceAll("%word",gamePlayer.getTopic()));
+            else {
+                assert false;
+                Bukkit.broadcastMessage(MessageUtil.getPrefix()+MessageUtil.getMessage("game.first_word").replaceAll("%player",player.getName()).replaceAll("%word",str));
+            }
             return true;
         }
         if(args[0].equalsIgnoreCase("set"))

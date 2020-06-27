@@ -1,5 +1,6 @@
 zh_CN:
   prefix: '&b[MCDNDC]'
+  scoreboard: '&e&l积分'
   console:
     check_version: '正在检查配置文件版本...'
     version_not_correct: '配置文件版本错误,插件将关闭.'

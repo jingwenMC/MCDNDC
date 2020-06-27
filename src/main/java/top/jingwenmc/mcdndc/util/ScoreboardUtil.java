@@ -16,30 +16,35 @@ import java.util.Objects;
 public class ScoreboardUtil {
     private static Scoreboard getEmptyScoreBoard() {
         Scoreboard board = Objects.requireNonNull(Bukkit.getScoreboardManager()).getNewScoreboard();
-        Objective ob = board.registerNewObjective("sidebar","dummy","");
-        ob.setDisplayName(ChatColor.YELLOW + ChatColor.BOLD.toString() + "Score");
-        if(main.getInstance().getConfigAccessor().getConfig().getString("scoreboard").equals("SIDEBAR"))
-        ob.setDisplaySlot(DisplaySlot.SIDEBAR);
-        else if(main.getInstance().getConfigAccessor().getConfig().getString("scoreboard").equals("BELOW_NAME"))
-            ob.setDisplaySlot(DisplaySlot.BELOW_NAME);
-            else if(main.getInstance().getConfigAccessor().getConfig().getString("scoreboard").equals("PLAYER_LIST"))
-            ob.setDisplaySlot(DisplaySlot.PLAYER_LIST);
+        Objective ob = board.registerNewObjective("sidebar","dummy","TITLE_NOT_SET");
+        ob.setDisplayName(MessageUtil.getMessage("scoreboard"));
+        switch (Objects.requireNonNull(main.getInstance().getConfigAccessor().getConfig().getString("scoreboard"))) {
+            case "SIDEBAR":
+                ob.setDisplaySlot(DisplaySlot.SIDEBAR);
+                break;
+            case "BELOW_NAME":
+                ob.setDisplaySlot(DisplaySlot.BELOW_NAME);
+                break;
+            case "PLAYER_LIST":
+                ob.setDisplaySlot(DisplaySlot.PLAYER_LIST);
+                break;
+        }
         return board;
     }
     public static void updateOneScoreboard(Player p) {
         Scoreboard sb = getEmptyScoreBoard();
         Objective obj = null;
-        if(main.getInstance().getConfigAccessor().getConfig().getString("scoreboard").equals("SIDEBAR"))
+        if(Objects.equals(main.getInstance().getConfigAccessor().getConfig().getString("scoreboard"), "SIDEBAR"))
         obj = sb.getObjective(DisplaySlot.SIDEBAR);
-        if(main.getInstance().getConfigAccessor().getConfig().getString("scoreboard").equals("BELOW_NAME"))
+        if(Objects.equals(main.getInstance().getConfigAccessor().getConfig().getString("scoreboard"), "BELOW_NAME"))
             obj = sb.getObjective(DisplaySlot.BELOW_NAME);
-        if(main.getInstance().getConfigAccessor().getConfig().getString("scoreboard").equals("PLAYER_LIST"))
+        if(Objects.equals(main.getInstance().getConfigAccessor().getConfig().getString("scoreboard"), "PLAYER_LIST"))
             obj = sb.getObjective(DisplaySlot.PLAYER_LIST);
         for(GamePlayer gamePlayer : main.getInstance().getPlayerManager().map.values())
         {
             assert obj != null;
             Score s;
-            if(main.getInstance().getConfigAccessor().getConfig().getString("scoreboard").equals("SIDEBAR"))
+            if(Objects.equals(main.getInstance().getConfigAccessor().getConfig().getString("scoreboard"), "SIDEBAR"))
             s = obj.getScore(ChatColor.WHITE+gamePlayer.getPlayer().getName());
             else
                 s = obj.getScore(gamePlayer.getPlayer().getName());

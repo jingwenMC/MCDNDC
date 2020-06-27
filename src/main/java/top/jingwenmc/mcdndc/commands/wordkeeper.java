@@ -24,7 +24,7 @@ public class wordkeeper implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(args.length==0)return sendCommandError(sender);
-        if(args[0].equalsIgnoreCase("add"))
+        if(args[0].equalsIgnoreCase("set"))
         {
             if(args.length==3)
             {
