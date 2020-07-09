@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class wordkeeper implements CommandExecutor {
-    Map<String,String> map = new HashMap<>();
+    public static Map<String,String> map = new HashMap<>();
     public boolean sendCommandError(CommandSender sender)
     {
         MessageUtil.sendPlayer(sender,"server.no_cmd");

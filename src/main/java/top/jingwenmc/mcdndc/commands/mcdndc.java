@@ -30,6 +30,7 @@ public class mcdndc implements CommandExecutor {
             if(args.length!=1)return sendCommandError(sender);
             if(sender.hasPermission("dndc.reload")&&sender.hasPermission("dndc.restart"))
             {
+                wordkeeper.map.clear();
                 MessageUtil.sendPlayer(sender,"game.reload");
                 main.getInstance().getConfigAccessor().reloadConfig();
                 main.getInstance().getLangAccessor().reloadConfig();
@@ -125,7 +126,13 @@ public class mcdndc implements CommandExecutor {
                 return false;
             }
             GamePlayer gamePlayer = main.getInstance().getPlayerManager().getGamePlayer(player);
-            gamePlayer.setScore(Integer.parseInt(args[2]));
+            try {
+                gamePlayer.setScore(Integer.parseInt(args[2]));
+            }catch (NumberFormatException e)
+            {
+                MessageUtil.sendPlayer(sender,"server.not_int");
+                return false;
+            }
             MessageUtil.sendPlayer(sender,"game.score_set");
             return true;
         }

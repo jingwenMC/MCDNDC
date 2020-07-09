@@ -21,6 +21,7 @@ zh_CN:
     no_perm: '权限不足.'
     no_cmd: '未找到指令/错误的使用方法.'
     not_player: '不是游戏内玩家.'
+    not_int: '不是整数.'
   keeper:
     success: '成功保管词语.'
     get: '成功获取词语.'

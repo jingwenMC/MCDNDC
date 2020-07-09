@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class mcdndctab implements TabCompleter {
+    List<String> comp = new ArrayList<>();
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if(args.length==1) {
@@ -28,6 +29,15 @@ public class mcdndctab implements TabCompleter {
             Collections.sort(completions);
             return completions;
         }
-        return null;
+        if(args.length==2&&args[0].equalsIgnoreCase("set"))
+            return null;
+        if(args.length==3&&args[0].equalsIgnoreCase("set"))
+        {
+            List<String> completions = new ArrayList<>();
+            completions.add(args[2]);
+            return completions;
+        }
+        comp.add("");
+        return comp;
     }
 }
