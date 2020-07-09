@@ -16,6 +16,8 @@ import top.jingwenmc.mcdndc.managers.GameManager;
 import top.jingwenmc.mcdndc.managers.PlayerManager;
 import top.jingwenmc.mcdndc.modules.Ads;
 import top.jingwenmc.mcdndc.modules.AutoSwitchFromKeeper;
+import top.jingwenmc.mcdndc.tabcomplete.mcdndctab;
+import top.jingwenmc.mcdndc.tabcomplete.wordkeepertab;
 import top.jingwenmc.mcdndc.util.ConfigAccessor;
 import top.jingwenmc.mcdndc.util.GamePlayer;
 import top.jingwenmc.mcdndc.util.MessageUtil;
@@ -48,7 +50,9 @@ public final class main extends JavaPlugin implements Listener {
         gameManager.resetList();
         MessageUtil.sendConsole("console.during_load");
         Objects.requireNonNull(getCommand("dndc")).setExecutor(new mcdndc());
+        Objects.requireNonNull(getCommand("dndc")).setTabCompleter(new mcdndctab());
         Objects.requireNonNull(getCommand("wordkeeper")).setExecutor(new wordkeeper());
+        Objects.requireNonNull(getCommand("wordkeeper")).setTabCompleter(new wordkeepertab());
         BukkitTask task = new BukkitRunnable()
         {
             @Override

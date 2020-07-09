@@ -1,5 +1,6 @@
 package top.jingwenmc.mcdndc.events;
 
+import org.bukkit.event.Cancellable;
 import top.jingwenmc.mcdndc.managers.GameManager;
 import top.jingwenmc.mcdndc.util.GamePlayer;
 
