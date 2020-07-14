@@ -140,10 +140,10 @@ words:
 
 ## 开发者API
 我们提供了一套API,你可以将其引用至你的项目中
-#### Javadoc
+### Javadoc
 Javadoc地址:https://jingwenmc.github.io/MCDNDC/
-#### 引用
-##### Maven
+### 引用
+#### Maven
 ```xml
 <repositories>
 	<repository>
@@ -152,11 +152,11 @@ Javadoc地址:https://jingwenmc.github.io/MCDNDC/
 	</repository>
 </repositories>
 ```
-###### 最新稳定版
+#### 最新稳定版
 ```text
 稳定版暂无开放API
 ```
-###### 最新开发版
+##### 最新开发版
 ```xml
 <dependency>
 	<groupId>com.github.jingwenMC</groupId>
@@ -165,17 +165,17 @@ Javadoc地址:https://jingwenmc.github.io/MCDNDC/
 	<scope>compile</scope>
 </dependency>
 ```
-##### Gradle
+#### Gradle
 ```text
 repositories {
 	maven { url 'https://jitpack.io' }
 }
 ```
-###### 最新开发版
+##### 最新开发版
 ```text
 稳定版暂无开放API
 ```
-###### 最新快照版
+##### 最新快照版
 ```text
 dependencies {
         provided 'com.github.jingwenMC:MCDNDC:master-SNAPSHOT'
