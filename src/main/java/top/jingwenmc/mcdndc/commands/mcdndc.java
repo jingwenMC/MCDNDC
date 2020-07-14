@@ -46,7 +46,7 @@ public class mcdndc implements CommandExecutor {
             {
                 MessageUtil.sendServer("game.restart");
                 main.getInstance().getGameManager().resetList();
-                for(GamePlayer gamePlayer : main.getInstance().getPlayerManager().map.values())
+                for(GamePlayer gamePlayer : main.getInstance().getPlayerManager().getMap().values())
                 {
                     gamePlayer.setScore(0);
                     gamePlayer.setTopic(null);

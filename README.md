@@ -2,7 +2,7 @@
 MineCraftDoNotDoChallenge  
   
 当前版本:  
-稳定版:v1.2.0(Release)    |   开发版:v1.2.2(Snapshot)  
+稳定版:v1.2.0(Release)    |   开发版:v1.2.3(Snapshot)  
 
 本插件的源码使用GPL-3.0进行授权，具体条款已在LICENSE文件写出  
 
@@ -137,6 +137,50 @@ words:
 
 ## 未来计划
 暂无,欢迎提交issues
+
+## 开发者API
+我们提供了一套API,你可以将其引用至你的项目中
+#### Javadoc
+Javadoc地址:https://jingwenmc.github.io/MCDNDC/
+#### 引用
+##### Maven
+```xml
+<repositories>
+	<repository>
+		<id>jitpack.io</id>
+		<url>https://jitpack.io</url>
+	</repository>
+</repositories>
+```
+###### 最新稳定版
+```text
+稳定版暂无开放API
+```
+###### 最新开发版
+```xml
+<dependency>
+	<groupId>com.github.jingwenMC</groupId>
+	<artifactId>MCDNDC</artifactId>
+	<version>master-SNAPSHOT</version>
+	<scope>compile</scope>
+</dependency>
+```
+##### Gradle
+```text
+repositories {
+	maven { url 'https://jitpack.io' }
+}
+```
+###### 最新开发版
+```text
+稳定版暂无开放API
+```
+###### 最新快照版
+```text
+dependencies {
+        provided 'com.github.jingwenMC:MCDNDC:master-SNAPSHOT'
+}
+```
 
 ## 作者的话
 我目前只是个Java以及BukkitAPI的初学者，有些代码可能不是很熟练，

@@ -22,18 +22,17 @@ import top.jingwenmc.mcdndc.util.MessageUtil;
 import top.jingwenmc.mcdndc.commands.mcdndc;
 import top.jingwenmc.mcdndc.util.ScoreboardUtil;
 
-import javax.naming.ConfigurationException;
-import java.util.List;
 import java.util.Objects;
-
+/**
+ * Main class of the project
+ */
 public final class main extends JavaPlugin implements Listener {
     private static main instance = null;
     private ConfigAccessor configAccessor = null;
     private ConfigAccessor langAccessor = null;
-    private PlayerManager playerManager = null;
+    private static PlayerManager playerManager = null;
     private GameManager gameManager = null;
-    public static int cv = 5;
-
+    public static final int cv = 5;
     @Override
     public void onEnable() {
         instance=this;
@@ -70,12 +69,12 @@ public final class main extends JavaPlugin implements Listener {
         registerModules();
         MessageUtil.sendConsole("console.post_load");
     }
-
     @Override
     public void onDisable() {
         // Plugin shutdown logic
         MessageUtil.sendConsole("console.unload");
     }
+
     public static main getInstance()
     {
         return instance;
@@ -84,15 +83,17 @@ public final class main extends JavaPlugin implements Listener {
     public ConfigAccessor getConfigAccessor() {
         return configAccessor;
     }
-
     public ConfigAccessor getLangAccessor() {
         return langAccessor;
     }
 
-    public PlayerManager getPlayerManager() {
+    /**
+     * Get The Plugin's PlayerManager
+     * @return PlayerManager
+     */
+    public static PlayerManager getPlayerManager() {
         return playerManager;
     }
-
     public GameManager getGameManager() {
         return gameManager;
     }
@@ -108,7 +109,7 @@ public final class main extends JavaPlugin implements Listener {
         playerManager.removeGamePlayer(evt.getPlayer().getName());
         evt.setQuitMessage(ChatColor.YELLOW+evt.getPlayer().getName()+" "+MessageUtil.getMessage("server.quit"));
     }
-    public void registerModules()
+    private void registerModules()
     {
         getServer().getPluginManager().registerEvents(new Ads(),this);
         getServer().getPluginManager().registerEvents(new AutoSwitchFromKeeper(),this);

@@ -40,7 +40,7 @@ public class ScoreboardUtil {
             obj = sb.getObjective(DisplaySlot.BELOW_NAME);
         if(Objects.equals(main.getInstance().getConfigAccessor().getConfig().getString("scoreboard"), "PLAYER_LIST"))
             obj = sb.getObjective(DisplaySlot.PLAYER_LIST);
-        for(GamePlayer gamePlayer : main.getInstance().getPlayerManager().map.values())
+        for(GamePlayer gamePlayer : main.getInstance().getPlayerManager().getMap().values())
         {
             assert obj != null;
             Score s;
