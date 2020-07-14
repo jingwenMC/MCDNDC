@@ -143,4 +143,3 @@ words:
 联系我的一些方式：  
 Bilibili:https://space.bilibili.com/289155331  
 Email:2313055824@qq.com(本插件问题请不要给我发送邮件，请提交一个issue)  
-_ps.我可以进行一些**基本**的插件定制,有意可联系我。_
