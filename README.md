@@ -152,7 +152,7 @@ Javadoc地址:https://jingwenmc.github.io/MCDNDC/
 	</repository>
 </repositories>
 ```
-#### 最新稳定版
+##### 最新稳定版
 ```text
 稳定版暂无开放API
 ```
