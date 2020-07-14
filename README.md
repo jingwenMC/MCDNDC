@@ -56,6 +56,7 @@ dndc.play         | 允许进行/dndc next   |玩家
 dndc.set          | 允许设置分数         |OP
 dndc.keep.add     | 允许添加词语到保管器 |玩家
 dndc.keep.use     | 允许从保管器获取词语 |玩家
+
 注:带`*`的权限为开发版权限,  
 `dndc.reload`权限必须要有`dndc.restart`权限才能起到作用
 
