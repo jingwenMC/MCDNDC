@@ -2,7 +2,7 @@
 MineCraftDoNotDoChallenge  
   
 当前版本:  
-稳定版:v1.2.0(Release)    |   开发版:v1.2.3(Snapshot)  
+稳定版:v1.2.3(Release)    |   开发版:v1.2.3(Release)  
 
 本插件的源码使用GPL-3.0进行授权，具体条款已在LICENSE文件写出  
 
@@ -62,78 +62,7 @@ dndc.keep.use     | 允许从保管器获取词语 |玩家
 
 
 ## 配置文件(稳定版)
-```yaml
-####################
-#MCDNDC Config File
-#Config Language: 简体中文/Chinese(Simplified)
-#You Can Download More Language At https://github.com/jingwenMC/MCDNDC/tree/master/langs
-####################
-#作者:jingwenMC
-#开源许可:GPLv3
-#版本:v1.2.0-RELEASE
-####################
-
-#Name:配置文件版本
-#Note:此项用于配置文件结构版本的确认。为防止出错，请不要自行更改
-#Default: 5
-#Updated:v0.1
-config_version: 5
-
-#Name:选择语言
-#Note:取决于lang.yml的设定
-#Defaut: 'zh_CN'
-#Updated:v1.0.0
-lang: 'zh_CN'
-
-#Name:计分板位置
-#Note:计分板的显示位置,请从[SIDEBAR,BELOW_NAME,PLAYER_LIST]中填写一个
-#  SIDEBAR:侧边栏
-#  BELOW_NAME:名称下方(可能会与TAB插件冲突,可能需要对TAB插件进行配置,比较丑,不推荐)
-#  PLAYER_LIST:TAB列表(可能会与TAB插件冲突,可能需要对TAB插件进行配置)
-#Default: 'SIDEBAR'
-#Updated:v1.0.0
-scoreboard: 'SIDEBAR'
-
-#Name:计分板更新频率
-#Note:单位为tick(1/20秒)
-#Default: 40
-#Updated:v1.0.0
-interval: 40
-
-#Name:模块列表
-#Note:请按照第一次释放配置时的格式填写,避免出错
-#     模块相当于官方扩展,可根据自身需求进行启用/禁用
-#Default:访问https://github.com/jingwenMC/MCDNDC/blob/master/src/main/resources/config.yml
-#Updated:v1.2
-modules:
-  #自动在达到一定分值时，以玩家ID作为词语代号,对玩家进行词语设置
-  #Updated:v1.2
-  auto_switch_from_keeper:
-    #是否启用
-    enabled: true
-    #要求的分值
-    required_score: 4
-    #切换时的提示信息
-    msg_switch: '&b[MCDNDC]由于达到指定分值,玩家%player新的词语来自于词语保管器.'
-  #是否在每一局游戏的开始显示广告(插件作者及开源地址)信息
-  #如果你开启,我会感谢你!
-  #Updated:v1.2
-  ads:
-    #是否启用
-    enabled: true
-
-#Name:词库列表
-#Note:请按照第一次释放配置时的格式填写,避免出错
-#Default:
-#  - 'Word1'
-#  - 'Word2'
-#  - 'Word3'
-#Updated:v0.1
-words:
-  - 'Word1'
-  - 'Word2'
-  - 'Word3'
-```
+请见https://github.com/jingwenMC/MCDNDC/blob/v1.2.3/src/main/resources/config.yml
 
 ## 未来计划
 暂无,欢迎提交issues
@@ -144,6 +73,7 @@ words:
 Javadoc地址:https://jingwenmc.github.io/MCDNDC/
 ### 引用
 #### Maven
+##### 仓库
 ```xml
 <repositories>
 	<repository>
@@ -153,8 +83,13 @@ Javadoc地址:https://jingwenmc.github.io/MCDNDC/
 </repositories>
 ```
 ##### 最新稳定版
-```text
-稳定版暂无开放API
+```xml
+<dependency>
+	<groupId>com.github.jingwenMC</groupId>
+	<artifactId>MCDNDC</artifactId>
+	<version>1.2.3</version>
+	<scope>provided</scope>
+</dependency>
 ```
 ##### 最新开发版
 ```xml
@@ -162,10 +97,11 @@ Javadoc地址:https://jingwenmc.github.io/MCDNDC/
 	<groupId>com.github.jingwenMC</groupId>
 	<artifactId>MCDNDC</artifactId>
 	<version>master-SNAPSHOT</version>
-	<scope>compile</scope>
+	<scope>provided</scope>
 </dependency>
 ```
 #### Gradle
+##### 仓库
 ```text
 repositories {
 	maven { url 'https://jitpack.io' }
@@ -173,12 +109,14 @@ repositories {
 ```
 ##### 最新开发版
 ```text
-稳定版暂无开放API
+dependencies {
+        provided 'com.github.jingwenMC:MCDNDC:master-SNAPSHOT'
+}
 ```
 ##### 最新快照版
 ```text
 dependencies {
-        provided 'com.github.jingwenMC:MCDNDC:master-SNAPSHOT'
+        provided 'com.github.jingwenMC:MCDNDC:1.2.3'
 }
 ```
 
