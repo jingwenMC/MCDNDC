@@ -1,0 +1,3 @@
+本插件部分代码来自于以下开源项目:
+https://github.com/JHXSMatthew/UHC - MIT许可证
+https://gist.github.com/3174347    - MIT许可证
