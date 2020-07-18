@@ -50,12 +50,6 @@ modules:
     required_score: 4
     #切换时的提示信息
     msg_switch: '&b[MCDNDC]由于达到指定分值,玩家%player新的词语来自于词语保管器.'
-  #是否在每一局游戏的开始显示广告(插件作者及开源地址)信息
-  #如果你开启,我会感谢你!
-  #Updated:v1.2
-  ads:
-    #是否启用
-    enabled: true
 
 #Name:词库列表
 #Note:请按照第一次释放配置时的格式填写,避免出错

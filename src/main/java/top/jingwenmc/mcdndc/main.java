@@ -13,7 +13,6 @@ import org.bukkit.scheduler.BukkitTask;
 import top.jingwenmc.mcdndc.commands.wordkeeper;
 import top.jingwenmc.mcdndc.managers.GameManager;
 import top.jingwenmc.mcdndc.managers.PlayerManager;
-import top.jingwenmc.mcdndc.modules.Ads;
 import top.jingwenmc.mcdndc.modules.AutoSwitchFromKeeper;
 import top.jingwenmc.mcdndc.tabcomplete.mcdndctab;
 import top.jingwenmc.mcdndc.tabcomplete.wordkeepertab;
@@ -111,7 +110,6 @@ public final class main extends JavaPlugin implements Listener {
     }
     private void registerModules()
     {
-        getServer().getPluginManager().registerEvents(new Ads(),this);
         getServer().getPluginManager().registerEvents(new AutoSwitchFromKeeper(),this);
     }
 }
