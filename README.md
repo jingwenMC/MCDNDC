@@ -2,7 +2,7 @@
 MineCraftDoNotDoChallenge  
   
 当前版本:  
-稳定版:v1.2.3(Release)    |   开发版:v1.2.3(Release)  
+稳定版:v1.2.4(Release)    |   开发版:v1.2.4(Release)  
 
 本插件的源码使用GPL-3.0进行授权，具体条款已在LICENSE文件写出  
 
@@ -87,7 +87,7 @@ Javadoc地址:https://jingwenmc.github.io/MCDNDC/
 <dependency>
 	<groupId>com.github.jingwenMC</groupId>
 	<artifactId>MCDNDC</artifactId>
-	<version>1.2.3</version>
+	<version>1.2.4</version>
 	<scope>provided</scope>
 </dependency>
 ```
@@ -116,7 +116,7 @@ dependencies {
 ##### 最新快照版
 ```text
 dependencies {
-        provided 'com.github.jingwenMC:MCDNDC:1.2.3'
+        provided 'com.github.jingwenMC:MCDNDC:1.2.4'
 }
 ```
 
