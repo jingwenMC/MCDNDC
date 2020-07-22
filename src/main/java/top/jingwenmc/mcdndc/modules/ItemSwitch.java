@@ -31,7 +31,9 @@ public class ItemSwitch implements Listener {
                 {
                     itemMeta.setDisplayName(ChatColor.AQUA+"切换词语");
                     itemMeta.setLore(Arrays.asList(ChatColor.AQUA+"右键点击以切换词语"));
+                    itemStack.setItemMeta(itemMeta);
                     event.getPlayer().getInventory().addItem(itemStack);
+                    MessageUtil.sendPlayer(event.getPlayer(),"item_switch.gave");
                 }
                 else
                 {
@@ -46,7 +48,13 @@ public class ItemSwitch implements Listener {
     {
         if((event.getAction() == Action.RIGHT_CLICK_AIR) && main.getInstance().getConfigAccessor().getConfig().getBoolean("modules.item_switch.enabled"))
         {
-            Bukkit.dispatchCommand(event.getPlayer(),"dndc next");
+            itemMeta.setDisplayName(ChatColor.AQUA+"切换词语");
+            itemMeta.setLore(Arrays.asList(ChatColor.AQUA+"右键点击以切换词语"));
+            itemStack.setItemMeta(itemMeta);
+            if (event.getItem().equals(itemStack)) {
+                MessageUtil.sendPlayer(event.getPlayer(),"item_switch.used");
+                Bukkit.dispatchCommand(event.getPlayer(), "dndc next");
+            }
         }
     }
 }
