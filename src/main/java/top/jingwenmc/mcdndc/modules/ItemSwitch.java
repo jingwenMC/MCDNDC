@@ -46,7 +46,7 @@ public class ItemSwitch implements Listener {
     @EventHandler
     public void onClick(PlayerInteractEvent event)
     {
-        if((event.getAction() == Action.RIGHT_CLICK_AIR) && main.getInstance().getConfigAccessor().getConfig().getBoolean("modules.item_switch.enabled"))
+        if((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) && main.getInstance().getConfigAccessor().getConfig().getBoolean("modules.item_switch.enabled"))
         {
             itemMeta.setDisplayName(ChatColor.AQUA+"切换词语");
             itemMeta.setLore(Arrays.asList(ChatColor.AQUA+"右键点击以切换词语"));
