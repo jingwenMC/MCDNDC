@@ -8,10 +8,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 import top.jingwenmc.mcdndc.events.NewGameEvent;
 import top.jingwenmc.mcdndc.main;
 import top.jingwenmc.mcdndc.util.GamePlayer;
 import top.jingwenmc.mcdndc.util.MessageUtil;
+import top.jingwenmc.mcdndc.util.ScoreboardUtil;
 
 public class mcdndc implements CommandExecutor {
     public boolean sendCommandError(CommandSender sender)
@@ -31,6 +33,17 @@ public class mcdndc implements CommandExecutor {
                 MessageUtil.sendPlayer(sender,"game.reload");
                 main.getInstance().getConfigAccessor().reloadConfig();
                 main.getInstance().getLangAccessor().reloadConfig();
+                main.getInstance().getTask().cancel();
+                main.getInstance().setTask(new BukkitRunnable()
+                {
+                    @Override
+                    public void run() {
+                        for (Player p : Bukkit.getOnlinePlayers())
+                        {
+                            ScoreboardUtil.updateOneScoreboard(p);
+                        }
+                    }
+                }.runTaskTimer(main.getInstance(),main.getInstance().getConfigAccessor().getConfig().getInt("interval"),main.getInstance().getConfigAccessor().getConfig().getInt("interval")));
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"dndc restart");
             }
             else

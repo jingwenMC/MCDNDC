@@ -26,6 +26,9 @@ zh_CN:
     success: '成功保管词语.'
     get: '成功获取词语.'
     not_found: '未找到词语.'
+  item_switch:
+    gave: '已给予物品'
+    used: '你使用了右键换词'
   help:
     - '&b[MCDNDC]MCDNDC帮助页面'
     - '&b[MCDNDC]作者:jingwenMC'

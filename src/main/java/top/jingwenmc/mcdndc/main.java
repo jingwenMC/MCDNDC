@@ -14,6 +14,7 @@ import top.jingwenmc.mcdndc.commands.wordkeeper;
 import top.jingwenmc.mcdndc.managers.GameManager;
 import top.jingwenmc.mcdndc.managers.PlayerManager;
 import top.jingwenmc.mcdndc.modules.AutoSwitchFromKeeper;
+import top.jingwenmc.mcdndc.modules.ItemSwitch;
 import top.jingwenmc.mcdndc.tabcomplete.mcdndctab;
 import top.jingwenmc.mcdndc.tabcomplete.wordkeepertab;
 import top.jingwenmc.mcdndc.util.ConfigAccessor;
@@ -31,6 +32,7 @@ public final class main extends JavaPlugin implements Listener {
     private ConfigAccessor langAccessor = null;
     private static PlayerManager playerManager = null;
     private GameManager gameManager = null;
+    BukkitTask task;
     public static final int cv = 5;
     @Override
     public void onEnable() {
@@ -49,7 +51,7 @@ public final class main extends JavaPlugin implements Listener {
         Objects.requireNonNull(getCommand("dndc")).setTabCompleter(new mcdndctab());
         Objects.requireNonNull(getCommand("wordkeeper")).setExecutor(new wordkeeper());
         Objects.requireNonNull(getCommand("wordkeeper")).setTabCompleter(new wordkeepertab());
-        BukkitTask task = new BukkitRunnable()
+        task = new BukkitRunnable()
         {
             @Override
             public void run() {
@@ -85,6 +87,14 @@ public final class main extends JavaPlugin implements Listener {
     public ConfigAccessor getLangAccessor() {
         return langAccessor;
     }
+    public BukkitTask getTask()
+    {
+        return task;
+    }
+
+    public void setTask(BukkitTask task) {
+        this.task = task;
+    }
 
     /**
      * Get The Plugin's PlayerManager
@@ -111,5 +121,6 @@ public final class main extends JavaPlugin implements Listener {
     private void registerModules()
     {
         getServer().getPluginManager().registerEvents(new AutoSwitchFromKeeper(),this);
+        getServer().getPluginManager().registerEvents(new ItemSwitch(),this);
     }
 }
