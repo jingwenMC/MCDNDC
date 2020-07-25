@@ -87,7 +87,7 @@ Javadoc地址:https://jingwenmc.github.io/MCDNDC/
 <dependency>
 	<groupId>com.github.jingwenMC</groupId>
 	<artifactId>MCDNDC</artifactId>
-	<version>1.2.4</version>
+	<version>1.3.0</version>
 	<scope>provided</scope>
 </dependency>
 ```
@@ -116,7 +116,7 @@ dependencies {
 ##### 最新快照版
 ```text
 dependencies {
-        provided 'com.github.jingwenMC:MCDNDC:1.2.4'
+        provided 'com.github.jingwenMC:MCDNDC:1.3.0'
 }
 ```
 
