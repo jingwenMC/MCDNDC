@@ -51,6 +51,7 @@ public class ItemSwitch implements Listener {
             itemMeta.setDisplayName(ChatColor.AQUA+"切换词语");
             itemMeta.setLore(Arrays.asList(ChatColor.AQUA+"右键点击以切换词语"));
             itemStack.setItemMeta(itemMeta);
+            if(event.getItem() == null)return;
             if (event.getItem().equals(itemStack)) {
                 MessageUtil.sendPlayer(event.getPlayer(),"item_switch.used");
                 Bukkit.dispatchCommand(event.getPlayer(), "dndc next");

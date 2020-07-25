@@ -11,8 +11,7 @@ public class PlayerManager {
     /**
      * Add a player to the manager
      * @param p Player that will be add
-     * @return GamePlayer that added
-     * @deprecated can be added by getGamePlayer()
+     * @return {@link GamePlayer} that added
      */
     public GamePlayer createGamePlayer(Player p){
         if(map.containsKey(p.getName())){
@@ -34,7 +33,7 @@ public class PlayerManager {
      * Get a GamePlayer from the manager by Player
      * if the Player was not found,will create a new GamePlayer
      * @param p Player that will get
-     * @return  GamePlayer that get
+     * @return  {@link GamePlayer} that get
      */
     public GamePlayer getGamePlayer(Player p){
         GamePlayer gp = map.get(p.getName());

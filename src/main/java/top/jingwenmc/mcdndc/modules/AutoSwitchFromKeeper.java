@@ -20,6 +20,7 @@ public class AutoSwitchFromKeeper implements Listener {
             if(newWordEvent.getGamePlayer().getScore()==main.getInstance().getConfigAccessor().getConfig().getInt("modules.auto_switch_from_keeper.required_score"))
             {
                 GamePlayer gp = newWordEvent.getGamePlayer();
+                newWordEvent.setCancelled(true);
                 Bukkit.dispatchCommand(gp.getPlayer(),"wordkeeper get "+gp.getPlayer().getName());
                 Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&',
                         Objects.requireNonNull(main.getInstance().getConfigAccessor().getConfig().getString("modules.auto_switch_from_keeper.msg_switch"))

@@ -1,6 +1,8 @@
 package top.jingwenmc.mcdndc.util;
 
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
+import top.jingwenmc.mcdndc.events.MCDNDCEvent;
 import top.jingwenmc.mcdndc.events.NewWordEvent;
 import top.jingwenmc.mcdndc.main;
 
@@ -58,15 +60,18 @@ public class GamePlayer {
     }
 
     /**
-     * Get a new topic and set it to player
-     * @return Return false if topic list is empty
+     * Get a new random topic and set it to player
+     * @return Return {@link CallResult}.NO_WORD if topic list is empty;
+     * Return {@link CallResult}.CANCELED if event was canceled
      */
-    public boolean setNewTopic()
+    public CallResult setNewTopic()
     {
+        NewWordEvent event = new NewWordEvent(this);
+        main.getInstance().getServer().getPluginManager().callEvent(event);
+        if(event.isCancelled())return CallResult.CANCELED;
         this.topic = main.getInstance().getGameManager().newWord();
-        if(topic==null)return false;
+        if(topic==null)return CallResult.NO_WORD;
         else
-            main.getInstance().getServer().getPluginManager().callEvent(new NewWordEvent(this));
-            return true;
+            return CallResult.SUCCESS;
     }
 }

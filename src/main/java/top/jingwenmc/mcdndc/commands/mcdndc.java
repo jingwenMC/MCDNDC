@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import top.jingwenmc.mcdndc.events.NewGameEvent;
 import top.jingwenmc.mcdndc.main;
+import top.jingwenmc.mcdndc.util.CallResult;
 import top.jingwenmc.mcdndc.util.GamePlayer;
 import top.jingwenmc.mcdndc.util.MessageUtil;
 import top.jingwenmc.mcdndc.util.ScoreboardUtil;
@@ -99,11 +100,13 @@ public class mcdndc implements CommandExecutor {
             GamePlayer gamePlayer = main.getInstance().getPlayerManager().getGamePlayer(player);
             boolean flag = true;
             String str = gamePlayer.getTopic();
+            CallResult callResult = gamePlayer.setNewTopic();
+            if(callResult== CallResult.CANCELED)return true;
             if(str==null)
             {
                 flag = false;
             }
-            if(!gamePlayer.setNewTopic())
+            if(callResult== CallResult.NO_WORD)
             {
                 MessageUtil.sendPlayer(sender,"game.no_word");
                 return false;

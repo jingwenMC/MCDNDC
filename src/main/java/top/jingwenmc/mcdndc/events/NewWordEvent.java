@@ -6,7 +6,8 @@ import top.jingwenmc.mcdndc.util.GamePlayer;
 /**
  * Custom Event that will call on a player changing his word
  */
-public class NewWordEvent extends MCDNDCEvent {
+public class NewWordEvent extends MCDNDCEvent implements Cancellable{
+    Boolean canceled = false;
     GamePlayer gamePlayer;
 
     public NewWordEvent(GamePlayer gamePlayer) {
@@ -15,9 +16,19 @@ public class NewWordEvent extends MCDNDCEvent {
 
     /**
      * Get player that changed the word
-     * @return GamePlayer that changed the word
+     * @return {@link GamePlayer} that changed the word
      */
     public GamePlayer getGamePlayer() {
         return gamePlayer;
+    }
+
+    @Override
+    public boolean isCancelled() {
+        return canceled;
+    }
+
+    @Override
+    public void setCancelled(boolean cancel) {
+        this.canceled = cancel;
     }
 }
