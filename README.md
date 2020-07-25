@@ -61,8 +61,8 @@ dndc.keep.use     | 允许从保管器获取词语 |玩家
 `dndc.reload`权限必须要有`dndc.restart`权限才能起到作用
 
 
-## 配置文件(稳定版)
-请见https://github.com/jingwenMC/MCDNDC/blob/v1.2.3/src/main/resources/config.yml
+## 默认配置文件(稳定版)
+请见https://github.com/jingwenMC/MCDNDC/blob/v1.3.0/src/main/resources/config.yml
 
 ## 未来计划
 暂无,欢迎提交issues
