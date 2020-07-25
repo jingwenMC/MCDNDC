@@ -25,7 +25,7 @@ public class AutoSwitchFromKeeper implements Listener {
                 Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&',
                         Objects.requireNonNull(main.getInstance().getConfigAccessor().getConfig().getString("modules.auto_switch_from_keeper.msg_switch"))
                 .replaceAll("%player",gp.getPlayer().getName())));
-                gp.setScore(gp.getScore()-1);
+                //gp.setScore(gp.getScore()-1);
             }
         }
     }
