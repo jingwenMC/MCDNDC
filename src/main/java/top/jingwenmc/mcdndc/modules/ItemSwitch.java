@@ -27,7 +27,8 @@ public class ItemSwitch implements Listener {
             if(main.getInstance().getConfigAccessor().getConfig().getBoolean("modules.item_switch.enabled"))
             {
                 event.setCancelled(true);
-                if(event.getPlayer().hasPermission(main.getInstance().getConfigAccessor().getConfig().getString("modules.item_switch.command_perm")))
+                if(event.getPlayer().hasPermission(main.getInstance().getConfigAccessor().getConfig().getString("modules.item_switch.command_perm"))
+                || main.getInstance().getConfigAccessor().getConfig().getString("modules.item_switch.command_perm").equalsIgnoreCase("none"))
                 {
                     itemMeta.setDisplayName(ChatColor.AQUA+"切换词语");
                     itemMeta.setLore(Arrays.asList(ChatColor.AQUA+"右键点击以切换词语"));

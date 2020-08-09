@@ -18,10 +18,13 @@ import top.jingwenmc.mcdndc.modules.ItemSwitch;
 import top.jingwenmc.mcdndc.tabcomplete.mcdndctab;
 import top.jingwenmc.mcdndc.tabcomplete.wordkeepertab;
 import top.jingwenmc.mcdndc.util.ConfigAccessor;
+import top.jingwenmc.mcdndc.util.GamePlayer;
 import top.jingwenmc.mcdndc.util.MessageUtil;
 import top.jingwenmc.mcdndc.commands.mcdndc;
 import top.jingwenmc.mcdndc.util.ScoreboardUtil;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 /**
  * Main class of the project
@@ -32,6 +35,7 @@ public final class main extends JavaPlugin implements Listener {
     private ConfigAccessor langAccessor = null;
     private static PlayerManager playerManager = null;
     private GameManager gameManager = null;
+    private Map<String,BukkitTask> offline = new HashMap<>();
     BukkitTask task;
     public static final int cv = 5;
     @Override
@@ -74,6 +78,10 @@ public final class main extends JavaPlugin implements Listener {
     public void onDisable() {
         // Plugin shutdown logic
         MessageUtil.sendConsole("console.unload");
+        for(BukkitTask t : offline.values())
+        {
+            t.cancel();
+        }
     }
 
     public static main getInstance()
@@ -109,14 +117,32 @@ public final class main extends JavaPlugin implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent evt)
     {
+        if(!offline.containsKey(evt.getPlayer().getName()))
         playerManager.createGamePlayer(evt.getPlayer());
+        else
+        {
+            offline.get(evt.getPlayer().getName()).cancel();
+            GamePlayer gp = playerManager.getGamePlayer(evt.getPlayer());
+            gp.setPlayer(evt.getPlayer());
+            playerManager.getMap().put(evt.getPlayer().getName(),gp);
+        }
         evt.setJoinMessage(ChatColor.YELLOW+evt.getPlayer().getName()+" "+MessageUtil.getMessage("server.join"));
     }
     @EventHandler
     public void onQuit(PlayerQuitEvent evt)
     {
-        playerManager.removeGamePlayer(evt.getPlayer().getName());
         evt.setQuitMessage(ChatColor.YELLOW+evt.getPlayer().getName()+" "+MessageUtil.getMessage("server.quit"));
+        String name = evt.getPlayer().getName();
+        offline.put(evt.getPlayer().getName(), new BukkitRunnable() {
+            @Override
+            public void run() {
+                GamePlayer g = playerManager.getMap().get(name);
+                String word = g.getTopic();
+                gameManager.words.add(word);
+                playerManager.removeGamePlayer(name);
+                offline.remove(name);
+            }
+        }.runTaskLater(this,getConfigAccessor().getConfig().getLong("wait",1200)));
     }
     private void registerModules()
     {

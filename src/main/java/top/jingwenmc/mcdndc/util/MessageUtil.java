@@ -4,7 +4,6 @@ import org.bukkit.command.CommandSender;
 import top.jingwenmc.mcdndc.main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 
 import java.util.Objects;
 

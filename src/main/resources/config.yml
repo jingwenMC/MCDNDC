@@ -35,6 +35,12 @@ scoreboard: 'SIDEBAR'
 #Updated:v1.0.0
 interval: 40
 
+#Name:玩家掉线后,词条和积分的保留时间
+#Note:单位为tick(1/20秒)
+#Default: 1200
+#Updated:v1.3.1
+wait: 1200
+
 #Name:模块列表
 #Note:请按照第一次释放配置时的格式填写,避免出错
 #     模块相当于官方扩展,可根据自身需求进行启用/禁用
@@ -57,8 +63,8 @@ modules:
     enabled: true
     #获取物品的指令,带"/"
     command: '/getitem'
-    #执行命令所需的权限
-    command_perm: 'dndc.play'
+    #执行命令所需的权限,填写none表示无需权限
+    command_perm: 'none'
 
 #Name:词库列表
 #Note:请按照第一次释放配置时的格式填写,避免出错

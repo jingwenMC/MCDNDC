@@ -74,4 +74,8 @@ public class GamePlayer {
         else
             return CallResult.SUCCESS;
     }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 }
