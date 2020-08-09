@@ -1,5 +1,7 @@
 package top.jingwenmc.mcdndc;
 
+import me.neznamy.tab.api.EnumProperty;
+import me.neznamy.tab.api.TABAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -125,6 +127,7 @@ public final class main extends JavaPlugin implements Listener {
             GamePlayer gp = playerManager.getGamePlayer(evt.getPlayer());
             gp.setPlayer(evt.getPlayer());
             playerManager.getMap().put(evt.getPlayer().getName(),gp);
+            TABAPI.setValueTemporarily(evt.getPlayer().getUniqueId(), EnumProperty.TAGPREFIX,"["+gp.getTopic()+"]");
         }
         evt.setJoinMessage(ChatColor.YELLOW+evt.getPlayer().getName()+" "+MessageUtil.getMessage("server.join"));
     }
