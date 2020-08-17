@@ -13,6 +13,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
+import top.jingwenmc.mcdndc.commands.mcdndc;
 import top.jingwenmc.mcdndc.main;
 
 import java.util.*;
@@ -142,8 +143,19 @@ public class GuiUtil implements Listener {
                     showWordsGui((Player) event.getWhoClicked(),Integer.valueOf(event.getCurrentItem().getItemMeta().getLore().get(1))-1);
                     return;
                 }
-                //TODO:临时阻止
-                if(event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(MessageUtil.getMessage("gui.reload_editor")))return;
+                if(event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(MessageUtil.getMessage("gui.reload_editor")))
+                {
+                    if(!(event.getWhoClicked().hasPermission("dndc.reload")&&event.getWhoClicked().hasPermission("dndc.restart")))
+                    {
+                        MessageUtil.sendPlayer(event.getWhoClicked(),"server.no_perm");
+                        return;
+                    }
+                    //else
+                    event.getWhoClicked().closeInventory();
+                    mcdndc.reloadPluginConf();
+                    showWordsGui((Player) event.getWhoClicked(),1);
+                    return;
+                }
                 String item_name = event.getCurrentItem().getItemMeta().getDisplayName().replaceFirst(ChatColor.AQUA.toString(),"");
                 List<String> list = main.getInstance().getConfigAccessor().getConfig().getStringList("words");
                 int index = list.indexOf(item_name);

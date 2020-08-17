@@ -46,7 +46,7 @@ zh_CN:
     reload_editor: '&6重载编辑器'
     reload_editor_l1: '如果你额外修改了配置文件'
     reload_editor_l2: '可以使用该按钮进行重载'
-    reload_editor_l3: '将会自动执行一次/dndc reload'
+    reload_editor_l3: '将会执行一次插件重载,但不会重启游戏'
     reload_editor_l4: '请确认你有相关权限'
     new_word: '&a新建词条'
     new_word_l1: '点击此按钮'

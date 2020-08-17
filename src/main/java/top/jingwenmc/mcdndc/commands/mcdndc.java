@@ -14,6 +14,24 @@ import top.jingwenmc.mcdndc.main;
 import top.jingwenmc.mcdndc.util.*;
 
 public class mcdndc implements CommandExecutor {
+    public static void reloadPluginConf()
+    {
+        wordkeeper.map.clear();
+        main.getInstance().getConfigAccessor().reloadConfig();
+        main.getInstance().getLangAccessor().reloadConfig();
+        main.getInstance().getTask().cancel();
+        main.getInstance().setTask(new BukkitRunnable()
+        {
+            @Override
+            public void run() {
+                for (Player p : Bukkit.getOnlinePlayers())
+                {
+                    ScoreboardUtil.updateOneScoreboard(p);
+                }
+            }
+        }.runTaskTimer(main.getInstance(),main.getInstance().getConfigAccessor().getConfig().getInt("interval"),main.getInstance().getConfigAccessor().getConfig().getInt("interval")));
+        GuiUtil.map.clear();
+    }
     public boolean sendCommandError(CommandSender sender)
     {
         MessageUtil.sendPlayer(sender,"server.no_cmd");
@@ -27,22 +45,8 @@ public class mcdndc implements CommandExecutor {
             if(args.length!=1)return sendCommandError(sender);
             if(sender.hasPermission("dndc.reload")&&sender.hasPermission("dndc.restart"))
             {
-                wordkeeper.map.clear();
                 MessageUtil.sendPlayer(sender,"game.reload");
-                main.getInstance().getConfigAccessor().reloadConfig();
-                main.getInstance().getLangAccessor().reloadConfig();
-                main.getInstance().getTask().cancel();
-                main.getInstance().setTask(new BukkitRunnable()
-                {
-                    @Override
-                    public void run() {
-                        for (Player p : Bukkit.getOnlinePlayers())
-                        {
-                            ScoreboardUtil.updateOneScoreboard(p);
-                        }
-                    }
-                }.runTaskTimer(main.getInstance(),main.getInstance().getConfigAccessor().getConfig().getInt("interval"),main.getInstance().getConfigAccessor().getConfig().getInt("interval")));
-                GuiUtil.map.clear();
+                reloadPluginConf();
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"dndc restart");
             }
             else
@@ -156,9 +160,39 @@ public class mcdndc implements CommandExecutor {
              }
              return true;
         }
-        //TODO:增加判定
         if(args[0].equalsIgnoreCase("words"))
-            GuiUtil.showWordsGui((Player) sender , Integer.valueOf(args[1]));
+        {
+            if(!sender.hasPermission("dndc.words"))
+            {
+                MessageUtil.sendPlayer(sender,"server.no_perm");
+                return true;
+            }
+            Player player;
+            if(args.length==1)
+            {
+                if(sender instanceof Player)
+                    player = (Player) sender;
+                else
+                {
+                    MessageUtil.sendPlayer(sender,"server.not_player");
+                    return true;
+                }
+                GuiUtil.showWordsGui(player , 1);
+            }
+            else if(args.length==2)
+            {
+                if(sender instanceof Player)
+                    player = (Player) sender;
+                else
+                {
+                    MessageUtil.sendPlayer(sender,"server.not_player");
+                    return true;
+                }
+                GuiUtil.showWordsGui((Player) sender , Integer.valueOf(args[1]));
+            }
+            else return sendCommandError(sender);
+            return true;
+        }
         return sendCommandError(sender);
     }
 }
