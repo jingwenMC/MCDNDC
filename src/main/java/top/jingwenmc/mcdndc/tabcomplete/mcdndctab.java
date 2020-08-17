@@ -24,6 +24,8 @@ public class mcdndctab implements TabCompleter {
                 strings.add("next");
             if (sender.hasPermission("dndc.set"))
                 strings.add("set");
+            if (sender.hasPermission("dndc.words"))
+                strings.add("words");
             strings.add("help");
             StringUtil.copyPartialMatches(args[0], strings, completions);
             Collections.sort(completions);
