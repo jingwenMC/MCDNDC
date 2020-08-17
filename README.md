@@ -24,7 +24,7 @@ TAB 最新版本 - 可以在 https://www.spigotmc.org/resources/57806/ 获取
 #### 开发版下载方式
 1. 进入开发版CI https://github.com/jingwenMC/MCDNDC/actions
 2. 在`All workflows`中点击最新的一次构建
-3. 在`Artifacts`中下载zip文件`Jar_Snapshot_Build`
+3. 在`Artifacts`中下载zip文件`Jar_Snapshot_Build`(可能需要登录GitHub才能下载)
 4. 提取其中的Jar文件
 5. 下载前置插件
 6. 将提取和下载的两个Jar文件复制到服务器的`/plugins`目录
