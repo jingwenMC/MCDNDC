@@ -19,6 +19,12 @@ import java.util.Arrays;
 public class ItemSwitch implements Listener {
     static ItemStack itemStack = new ItemStack(Material.PAPER);
     static ItemMeta itemMeta = itemStack.getItemMeta();
+    private void setupItem()
+    {
+            itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&',MessageUtil.getMessage("item_switch.title")));
+            itemMeta.setLore(Arrays.asList(ChatColor.translateAlternateColorCodes('&',MessageUtil.getMessage("item_switch.lore"))));
+            itemStack.setItemMeta(itemMeta);
+    }
     @EventHandler
     public void onCommand(PlayerCommandPreprocessEvent event)
     {
@@ -30,9 +36,7 @@ public class ItemSwitch implements Listener {
                 if(event.getPlayer().hasPermission(main.getInstance().getConfigAccessor().getConfig().getString("modules.item_switch.command_perm"))
                 || main.getInstance().getConfigAccessor().getConfig().getString("modules.item_switch.command_perm").equalsIgnoreCase("none"))
                 {
-                    itemMeta.setDisplayName(ChatColor.AQUA+"切换词语");
-                    itemMeta.setLore(Arrays.asList(ChatColor.AQUA+"右键点击以切换词语"));
-                    itemStack.setItemMeta(itemMeta);
+                    setupItem();
                     event.getPlayer().getInventory().addItem(itemStack);
                     MessageUtil.sendPlayer(event.getPlayer(),"item_switch.gave");
                 }
@@ -49,11 +53,9 @@ public class ItemSwitch implements Listener {
     {
         if((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) && main.getInstance().getConfigAccessor().getConfig().getBoolean("modules.item_switch.enabled"))
         {
-            itemMeta.setDisplayName(ChatColor.AQUA+"切换词语");
-            itemMeta.setLore(Arrays.asList(ChatColor.AQUA+"右键点击以切换词语"));
-            itemStack.setItemMeta(itemMeta);
+            setupItem();
             if(event.getItem() == null)return;
-            if (event.getItem().equals(itemStack)) {
+            if (event.getItem().isSimilar(itemStack)) {
                 MessageUtil.sendPlayer(event.getPlayer(),"item_switch.used");
                 Bukkit.dispatchCommand(event.getPlayer(), "dndc next");
             }

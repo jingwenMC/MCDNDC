@@ -11,10 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import top.jingwenmc.mcdndc.events.NewGameEvent;
 import top.jingwenmc.mcdndc.main;
-import top.jingwenmc.mcdndc.util.CallResult;
-import top.jingwenmc.mcdndc.util.GamePlayer;
-import top.jingwenmc.mcdndc.util.MessageUtil;
-import top.jingwenmc.mcdndc.util.ScoreboardUtil;
+import top.jingwenmc.mcdndc.util.*;
 
 public class mcdndc implements CommandExecutor {
     public boolean sendCommandError(CommandSender sender)
@@ -45,6 +42,7 @@ public class mcdndc implements CommandExecutor {
                         }
                     }
                 }.runTaskTimer(main.getInstance(),main.getInstance().getConfigAccessor().getConfig().getInt("interval"),main.getInstance().getConfigAccessor().getConfig().getInt("interval")));
+                GuiUtil.map.clear();
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"dndc restart");
             }
             else
@@ -158,6 +156,9 @@ public class mcdndc implements CommandExecutor {
              }
              return true;
         }
+        //TODO:增加判定
+        if(args[0].equalsIgnoreCase("words"))
+            GuiUtil.showWordsGui((Player) sender , Integer.valueOf(args[1]));
         return sendCommandError(sender);
     }
 }

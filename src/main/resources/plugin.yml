@@ -28,6 +28,9 @@ permissions:
   dndc.set:
     description: Set Score
     default: op
+  dndc.words:
+    description: Use Word Editor
+    default: op
   dndc.keep.add:
     description: Add Word To Keeper
     default: true

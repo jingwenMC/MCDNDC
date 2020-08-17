@@ -19,11 +19,8 @@ import top.jingwenmc.mcdndc.modules.AutoSwitchFromKeeper;
 import top.jingwenmc.mcdndc.modules.ItemSwitch;
 import top.jingwenmc.mcdndc.tabcomplete.mcdndctab;
 import top.jingwenmc.mcdndc.tabcomplete.wordkeepertab;
-import top.jingwenmc.mcdndc.util.ConfigAccessor;
-import top.jingwenmc.mcdndc.util.GamePlayer;
-import top.jingwenmc.mcdndc.util.MessageUtil;
+import top.jingwenmc.mcdndc.util.*;
 import top.jingwenmc.mcdndc.commands.mcdndc;
-import top.jingwenmc.mcdndc.util.ScoreboardUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -68,6 +65,7 @@ public final class main extends JavaPlugin implements Listener {
             }
         }.runTaskTimer(this,configAccessor.getConfig().getInt("interval"),configAccessor.getConfig().getInt("interval"));
         getServer().getPluginManager().registerEvents(this,this);
+        getServer().getPluginManager().registerEvents(new GuiUtil(),this);
         for(Player p : Bukkit.getOnlinePlayers())
         {
             //in case of reload confirm
