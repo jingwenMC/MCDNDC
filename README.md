@@ -2,7 +2,7 @@
 MineCraftDoNotDoChallenge  
   
 当前版本:  
-稳定版:v1.3.0(Release)    |   开发版:v1.4.0(Snapshot)  
+稳定版:v1.4.1(Release)    |   开发版:v1.4.1(Release)  
 
 本插件的源码使用GPL-3.0进行授权，具体条款已在LICENSE文件写出  
 
@@ -38,7 +38,7 @@ TAB 最新版本 - 可以在 https://www.spigotmc.org/resources/57806/ 获取
    set <玩家> <分数>  - 设置分数
    reload            - 重载配置
    restart           - 重载游戏
-  *words             - 打开词语编辑器
+   words             - 打开词语编辑器
 /wordkeeper:词语保管器. 别名:[/wk,/wkeeper]
 子命令:
    set <词语代号> <词语> - 设置代号对应的词语
@@ -57,14 +57,14 @@ dndc.play         | 允许进行/dndc next   |玩家
 dndc.set          | 允许设置分数         |OP
 dndc.keep.add     | 允许添加词语到保管器 |玩家
 dndc.keep.use     | 允许从保管器获取词语 |玩家
-*dndc.words     | 允许使用词语编辑器 |OP
+dndc.words     | 允许使用词语编辑器 |OP
 
 注:带`*`的权限为开发版权限,  
 `dndc.reload`权限必须要有`dndc.restart`权限才能起到作用
 
 
 ## 默认配置文件(稳定版)
-请见https://github.com/jingwenMC/MCDNDC/blob/v1.3.0/src/main/resources/config.yml
+请见https://github.com/jingwenMC/MCDNDC/blob/v1.4.1/src/main/resources/config.yml
 
 ## 未来计划
 暂无,欢迎提交issues
@@ -89,7 +89,7 @@ Javadoc地址:https://jingwenmc.github.io/MCDNDC/
 <dependency>
 	<groupId>com.github.jingwenMC</groupId>
 	<artifactId>MCDNDC</artifactId>
-	<version>1.3.0</version>
+	<version>1.4.1</version>
 	<scope>provided</scope>
 </dependency>
 ```
@@ -118,7 +118,7 @@ dependencies {
 ##### 最新快照版
 ```text
 dependencies {
-        provided 'com.github.jingwenMC:MCDNDC:1.3.0'
+        provided 'com.github.jingwenMC:MCDNDC:1.4.1'
 }
 ```
 
