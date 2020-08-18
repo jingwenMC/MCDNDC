@@ -17,6 +17,8 @@ public class mcdndc implements CommandExecutor {
     public static void reloadPluginConf()
     {
         wordkeeper.map.clear();
+        main.getInstance().getConfigAccessor().saveDefaultConfig();
+        main.getInstance().getLangAccessor().saveDefaultConfig();
         main.getInstance().getConfigAccessor().reloadConfig();
         main.getInstance().getLangAccessor().reloadConfig();
         main.getInstance().getTask().cancel();

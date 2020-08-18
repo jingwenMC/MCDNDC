@@ -38,7 +38,6 @@ public class GuiUtil implements Listener {
         ItemStack itemStack = new ItemStack(randomMaterial());
         ItemMeta itemMeta = itemStack.getItemMeta();
         List<String> wordList = main.getInstance().getConfigAccessor().getConfig().getStringList("words");
-        //System.out.println((wordList.size()+44)/45);
         int maxPage = (wordList.size()+44)/45;
         boolean hasNext = true;
         boolean hasPrev = true;
@@ -209,11 +208,13 @@ public class GuiUtil implements Listener {
                         event.getPlayer().sendMessage(MessageUtil.getMessage("gui.edit_cancel"));
                         event.getPlayer().sendMessage(MessageUtil.getMessage("gui.edit_not_null"));
                         map.remove(event.getPlayer().getName());
+                        showWordsGui(event.getPlayer(),1);
                         return;
                     }
                     if (event.getMessage().equalsIgnoreCase("cancel")) {
                         event.getPlayer().sendMessage(MessageUtil.getMessage("gui.edit_cancel"));
                         map.remove(event.getPlayer().getName());
+                        showWordsGui(event.getPlayer(),1);
                         return;
                     }
                     List<String> list = main.getInstance().getConfigAccessor().getConfig().getStringList("words");
@@ -224,6 +225,7 @@ public class GuiUtil implements Listener {
                     main.getInstance().getConfigAccessor().saveConfig();
                     event.getPlayer().sendMessage(MessageUtil.getMessage("gui.edit_success"));
                     map.remove(event.getPlayer().getName());
+                    showWordsGui(event.getPlayer(),1);
                 }
             }.runTask(main.getInstance());
         }

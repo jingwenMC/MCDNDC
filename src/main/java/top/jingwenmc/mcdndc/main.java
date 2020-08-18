@@ -66,6 +66,7 @@ public final class main extends JavaPlugin implements Listener {
         }.runTaskTimer(this,configAccessor.getConfig().getInt("interval"),configAccessor.getConfig().getInt("interval"));
         getServer().getPluginManager().registerEvents(this,this);
         getServer().getPluginManager().registerEvents(new GuiUtil(),this);
+        getServer().getPluginManager().registerEvents(new UpdateUtil(),this);
         for(Player p : Bukkit.getOnlinePlayers())
         {
             //in case of reload confirm
@@ -73,6 +74,7 @@ public final class main extends JavaPlugin implements Listener {
         }
         registerModules();
         MessageUtil.sendConsole("console.post_load");
+        UpdateUtil.checkUpdateAsync();
     }
     @Override
     public void onDisable() {
