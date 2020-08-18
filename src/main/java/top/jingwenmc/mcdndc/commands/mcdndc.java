@@ -190,7 +190,7 @@ public class mcdndc implements CommandExecutor {
                     MessageUtil.sendPlayer(sender,"server.not_player");
                     return true;
                 }
-                GuiUtil.showWordsGui((Player) sender , Integer.valueOf(args[1]));
+                GuiUtil.showWordsGui(player , Integer.valueOf(args[1]));
             }
             else return sendCommandError(sender);
             return true;
