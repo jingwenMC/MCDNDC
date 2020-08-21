@@ -10,15 +10,19 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.scheduler.BukkitRunnable;
 import top.jingwenmc.mcdndc.events.MCDNDCEvent;
 import top.jingwenmc.mcdndc.main;
 import top.jingwenmc.mcdndc.util.MessageUtil;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ItemSwitch implements Listener {
     static ItemStack itemStack = new ItemStack(Material.PAPER);
     static ItemMeta itemMeta = itemStack.getItemMeta();
+    static Set<String> set = new HashSet<>();
     private void setupItem()
     {
             itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&',MessageUtil.getMessage("item_switch.title")));
@@ -57,7 +61,18 @@ public class ItemSwitch implements Listener {
             if(event.getItem() == null)return;
             if (event.getItem().isSimilar(itemStack)) {
                 MessageUtil.sendPlayer(event.getPlayer(),"item_switch.used");
-                Bukkit.dispatchCommand(event.getPlayer(), "dndc next");
+                String name = event.getPlayer().getName();
+                if(!set.contains(name)) {
+                    Bukkit.dispatchCommand(event.getPlayer(), "dndc next");
+                    set.add(name);
+                    new BukkitRunnable()
+                    {
+                        @Override
+                        public void run() {
+                            set.remove(name);
+                        }
+                    }.runTaskLaterAsynchronously(main.getInstance(),30);
+                }
             }
         }
     }

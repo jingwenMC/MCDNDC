@@ -2,6 +2,7 @@ package top.jingwenmc.mcdndc;
 
 import me.neznamy.tab.api.EnumProperty;
 import me.neznamy.tab.api.TABAPI;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -75,6 +76,8 @@ public final class main extends JavaPlugin implements Listener {
         registerModules();
         MessageUtil.sendConsole("console.post_load");
         UpdateUtil.checkUpdateAsync();
+        MessageUtil.sendConsole("server.metrics");
+        Metrics metrics =  new Metrics(this , 8607);
     }
     @Override
     public void onDisable() {
