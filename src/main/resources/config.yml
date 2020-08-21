@@ -67,7 +67,7 @@ modules:
     command_perm: 'none'
 
 #Name:词库列表
-#Note:请按照第一次释放配置时的格式填写,避免出错
+#Note:请按照第一次释放配置时的格式填写,避免出错(注:可以使用/dndc words指令在游戏内编辑)
 #Default:
 #  - 'Word1'
 #  - 'Word2'
