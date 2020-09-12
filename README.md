@@ -2,9 +2,16 @@
 MineCraftDoNotDoChallenge  
   
 当前版本:  
-稳定版:v1.4.1(Release)    |   开发版:v1.4.3(Snapshot)  
+稳定版:v1.4.3(Release)(LTS)    |   开发版:v1.4.3(Release)(LTS)  
 
 本插件的源码使用GPL-3.0进行授权，具体条款已在LICENSE文件写出  
+
+## 重要说明
+本插件即将进行完全重写，近期更新可能会停止除重大BUG之外的更新。  
+重写后，我们可能将彻底移除TAB依赖，同时使用新的框架。  
+代码整洁度也会有所提高。  
+开始重写工程后，我们会在`master`分支进行更新，同时会将现有项目移至`1.x`分支。  
+新的版本会争取在寒假之前上线，敬请期待！
 
 ## 插件功能
 一个能在MC中实现一种小游戏(不要做挑战)的插件
@@ -64,7 +71,7 @@ dndc.words     | 允许使用词语编辑器 |OP
 
 
 ## 默认配置文件(稳定版)
-请见https://github.com/jingwenMC/MCDNDC/blob/v1.4.1/src/main/resources/config.yml
+请见https://github.com/jingwenMC/MCDNDC/blob/v1.4.3/src/main/resources/config.yml
 
 ## 未来计划
 暂无,欢迎提交issues
@@ -89,7 +96,7 @@ Javadoc地址:https://jingwenmc.github.io/MCDNDC/
 <dependency>
 	<groupId>com.github.jingwenMC</groupId>
 	<artifactId>MCDNDC</artifactId>
-	<version>1.4.1</version>
+	<version>1.4.3</version>
 	<scope>provided</scope>
 </dependency>
 ```
@@ -104,21 +111,21 @@ Javadoc地址:https://jingwenmc.github.io/MCDNDC/
 ```
 #### Gradle
 ##### 仓库
-```text
+```groovy
 repositories {
 	maven { url 'https://jitpack.io' }
 }
 ```
-##### 最新开发版
-```text
+##### 最新稳定版
+```groovy
 dependencies {
-        provided 'com.github.jingwenMC:MCDNDC:master-SNAPSHOT'
+        compileOnly 'com.github.jingwenMC:MCDNDC:1.4.3'
 }
 ```
-##### 最新快照版
-```text
+##### 最新开发版
+```groovy
 dependencies {
-        provided 'com.github.jingwenMC:MCDNDC:1.4.1'
+        compileOnly 'com.github.jingwenMC:MCDNDC:master-SNAPSHOT'
 }
 ```
 

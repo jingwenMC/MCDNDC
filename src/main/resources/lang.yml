@@ -1,4 +1,7 @@
 zh_CN:
+  info:
+    author: 'jingwenMC'
+    version: '1A'
   prefix: '&b[MCDNDC]'
   scoreboard: '&e&l积分'
   console:

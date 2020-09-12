@@ -23,6 +23,7 @@ import top.jingwenmc.mcdndc.tabcomplete.wordkeepertab;
 import top.jingwenmc.mcdndc.util.*;
 import top.jingwenmc.mcdndc.commands.mcdndc;
 
+import javax.naming.ConfigurationException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -38,6 +39,7 @@ public final class main extends JavaPlugin implements Listener {
     private Map<String,BukkitTask> offline = new HashMap<>();
     BukkitTask task;
     public static final int cv = 5;
+    public static final String langVer ="1A";
     @Override
     public void onEnable() {
         instance=this;
@@ -49,6 +51,16 @@ public final class main extends JavaPlugin implements Listener {
         gameManager = new GameManager();
         // Plugin startup logic
         MessageUtil.sendConsole("console.check_version");
+        if(!MessageUtil.getMessage("info.version").equalsIgnoreCase(langVer))
+        {
+            try {
+                throw new ConfigurationException("MCDCDC : Language File Version Not Correct!");
+            } catch (ConfigurationException e) {
+                e.printStackTrace();
+                System.out.println("You may delete /plugin/MCDNDC/lang.yml to generate a new Language File.");
+            }
+            Bukkit.getPluginManager().disablePlugin(main.getInstance());
+        }
         gameManager.resetList();
         MessageUtil.sendConsole("console.during_load");
         Objects.requireNonNull(getCommand("dndc")).setExecutor(new mcdndc());
