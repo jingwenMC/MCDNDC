@@ -32,7 +32,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class ConfigAccessor {
 
-    private final String fileName;
+    private String fileName;
     private final JavaPlugin plugin;
 
     private File configFile;
@@ -47,6 +47,11 @@ public class ConfigAccessor {
         if (dataFolder == null)
             throw new IllegalStateException();
         this.configFile = new File(plugin.getDataFolder(), fileName);
+    }
+
+    public void forceRename(String name) {
+        fileName = name;
+        configFile.renameTo(new File(plugin.getDataFolder(),name));
     }
 
     public void reloadConfig() {

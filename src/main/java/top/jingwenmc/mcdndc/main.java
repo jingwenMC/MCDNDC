@@ -22,6 +22,8 @@ public final class main extends JavaPlugin{
         instance = this;
         config = new ConfigAccessor(this,"config.yml");
         lang = new ConfigAccessor(this,"lang.yml");
+        config.saveDefaultConfig();
+        lang.saveDefaultConfig();
 
         dndcCM = new SubCommandManager();
         getCommand("dndc").setExecutor(dndcCM);

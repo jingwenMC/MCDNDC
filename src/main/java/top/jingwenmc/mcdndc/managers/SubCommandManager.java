@@ -16,7 +16,7 @@ public class SubCommandManager implements CommandExecutor {
     {
         if(args.length==0 || !map.containsKey(args[0])) {
             if (map.containsKey(null)) {
-                map.get(null).onCommand(null, sender);
+                return map.get(null).onCommand(null, sender);
             }
             else return false;
         }

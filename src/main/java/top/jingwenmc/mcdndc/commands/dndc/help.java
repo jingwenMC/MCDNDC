@@ -6,10 +6,12 @@ import top.jingwenmc.mcdndc.main;
 import top.jingwenmc.mcdndc.objects.JCommand;
 import top.jingwenmc.mcdndc.util.MessageUtil;
 
+import java.util.List;
+
 public class help extends JCommand {
     @Override
     public boolean onCommand(String[] args, CommandSender sender) {
-        for(String s : main.lang.getConfig().getStringList(MessageUtil.getLanguage()+".help"))
+        for(String s : (List<String>) MessageUtil.get("help"))
         {
             s = ChatColor.translateAlternateColorCodes('&',s);
             sender.sendMessage(s);
