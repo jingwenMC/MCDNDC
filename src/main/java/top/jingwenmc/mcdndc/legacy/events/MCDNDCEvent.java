@@ -1,4 +1,4 @@
-package top.jingwenmc.mcdndc.events;
+package top.jingwenmc.mcdndc.legacy.events;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;

@@ -1,13 +1,14 @@
-package top.jingwenmc.mcdndc.util;
+package top.jingwenmc.mcdndc.legacy.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
+import top.jingwenmc.mcdndc.legacy.events.NewGameEvent;
 import top.jingwenmc.mcdndc.main;
-import top.jingwenmc.mcdndc.enums.UpdateCheckResult;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -108,13 +109,11 @@ public class UpdateUtil implements Listener {
         }
         return result.toString();
     }
-    /*
     @EventHandler
     public void onNewGame(NewGameEvent event)
     {
         checkUpdateAsync();
     }
-    */
 }
 
 /* This file's some part is under the following license:

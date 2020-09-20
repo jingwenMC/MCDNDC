@@ -1,4 +1,4 @@
-package top.jingwenmc.mcdndc.util;
+package top.jingwenmc.mcdndc.legacy.util;
 
 import org.bukkit.entity.Player;
 import top.jingwenmc.mcdndc.main;
@@ -9,8 +9,6 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Objects;
 
 public class ScoreboardUtil {

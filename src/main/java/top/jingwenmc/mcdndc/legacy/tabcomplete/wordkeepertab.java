@@ -1,10 +1,10 @@
-package top.jingwenmc.mcdndc.tabcomplete;
+package top.jingwenmc.mcdndc.legacy.tabcomplete;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.util.StringUtil;
-import top.jingwenmc.mcdndc.commands.wordkeeper;
+import top.jingwenmc.mcdndc.legacy.commands.wordkeeper;
 
 import java.util.ArrayList;
 import java.util.Collections;

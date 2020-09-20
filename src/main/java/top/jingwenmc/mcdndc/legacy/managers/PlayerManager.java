@@ -1,7 +1,7 @@
-package top.jingwenmc.mcdndc.managers;
+package top.jingwenmc.mcdndc.legacy.managers;
 
 import org.bukkit.entity.Player;
-import top.jingwenmc.mcdndc.util.GamePlayer;
+import top.jingwenmc.mcdndc.legacy.util.GamePlayer;
 
 import java.util.HashMap;
 

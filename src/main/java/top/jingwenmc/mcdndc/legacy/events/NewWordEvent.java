@@ -1,8 +1,7 @@
-package top.jingwenmc.mcdndc.events;
+package top.jingwenmc.mcdndc.legacy.events;
 
 import org.bukkit.event.Cancellable;
-import top.jingwenmc.mcdndc.managers.GameManager;
-import top.jingwenmc.mcdndc.util.GamePlayer;
+import top.jingwenmc.mcdndc.legacy.util.GamePlayer;
 /**
  * Custom Event that will call on a player changing his word
  */

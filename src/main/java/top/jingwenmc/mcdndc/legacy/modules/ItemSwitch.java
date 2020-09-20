@@ -1,4 +1,4 @@
-package top.jingwenmc.mcdndc.modules;
+package top.jingwenmc.mcdndc.legacy.modules;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -11,9 +11,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
-import top.jingwenmc.mcdndc.events.MCDNDCEvent;
 import top.jingwenmc.mcdndc.main;
-import top.jingwenmc.mcdndc.util.MessageUtil;
+import top.jingwenmc.mcdndc.legacy.util.MessageUtil;
 
 import java.util.Arrays;
 import java.util.HashSet;

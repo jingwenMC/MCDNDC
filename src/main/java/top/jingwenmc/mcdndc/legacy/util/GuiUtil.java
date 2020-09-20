@@ -1,4 +1,4 @@
-package top.jingwenmc.mcdndc.util;
+package top.jingwenmc.mcdndc.legacy.util;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -13,7 +13,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
-import top.jingwenmc.mcdndc.commands.mcdndc;
+import top.jingwenmc.mcdndc.legacy.commands.mcdndc;
 import top.jingwenmc.mcdndc.main;
 
 import java.util.*;

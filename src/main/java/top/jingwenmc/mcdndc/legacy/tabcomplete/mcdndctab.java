@@ -1,4 +1,4 @@
-package top.jingwenmc.mcdndc.tabcomplete;
+package top.jingwenmc.mcdndc.legacy.tabcomplete;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

@@ -1,9 +1,7 @@
-package top.jingwenmc.mcdndc.util;
+package top.jingwenmc.mcdndc.legacy.util;
 
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
-import top.jingwenmc.mcdndc.events.MCDNDCEvent;
-import top.jingwenmc.mcdndc.events.NewWordEvent;
+import top.jingwenmc.mcdndc.legacy.events.NewWordEvent;
 import top.jingwenmc.mcdndc.main;
 
 /**

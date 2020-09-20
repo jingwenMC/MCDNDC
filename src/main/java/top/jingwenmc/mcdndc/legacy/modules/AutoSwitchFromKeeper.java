@@ -1,13 +1,12 @@
-package top.jingwenmc.mcdndc.modules;
+package top.jingwenmc.mcdndc.legacy.modules;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import top.jingwenmc.mcdndc.events.NewWordEvent;
+import top.jingwenmc.mcdndc.legacy.events.NewWordEvent;
 import top.jingwenmc.mcdndc.main;
-import top.jingwenmc.mcdndc.util.GamePlayer;
+import top.jingwenmc.mcdndc.legacy.util.GamePlayer;
 
 import java.util.Objects;
 

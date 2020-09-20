@@ -1,4 +1,4 @@
-package top.jingwenmc.mcdndc.commands;
+package top.jingwenmc.mcdndc.legacy.commands;
 
 import me.neznamy.tab.api.EnumProperty;
 import me.neznamy.tab.api.TABAPI;
@@ -9,9 +9,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-import top.jingwenmc.mcdndc.events.NewGameEvent;
+import top.jingwenmc.mcdndc.legacy.events.NewGameEvent;
 import top.jingwenmc.mcdndc.main;
-import top.jingwenmc.mcdndc.util.*;
+import top.jingwenmc.mcdndc.legacy.util.*;
 
 public class mcdndc implements CommandExecutor {
     public static void reloadPluginConf()

@@ -1,8 +1,8 @@
-package top.jingwenmc.mcdndc.managers;
+package top.jingwenmc.mcdndc.legacy.managers;
 
 import org.bukkit.Bukkit;
 import top.jingwenmc.mcdndc.main;
-import top.jingwenmc.mcdndc.util.MessageUtil;
+import top.jingwenmc.mcdndc.legacy.util.MessageUtil;
 
 import javax.naming.ConfigurationException;
 import java.util.ArrayList;
