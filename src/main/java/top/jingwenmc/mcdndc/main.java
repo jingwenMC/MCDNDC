@@ -1,6 +1,8 @@
 package top.jingwenmc.mcdndc;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import top.jingwenmc.mcdndc.commands.dndc.help;
+import top.jingwenmc.mcdndc.managers.SubCommandManager;
 import top.jingwenmc.mcdndc.util.ConfigAccessor;
 
 import javax.naming.ConfigurationException;
@@ -14,11 +16,17 @@ public final class main extends JavaPlugin{
     private static main instance;
     public static ConfigAccessor config;
     public static ConfigAccessor lang;
+    private SubCommandManager dndcCM;
     @Override
     public void onEnable() {
         instance = this;
         config = new ConfigAccessor(this,"config.yml");
         lang = new ConfigAccessor(this,"lang.yml");
+
+        dndcCM = new SubCommandManager();
+        getCommand("dndc").setExecutor(dndcCM);
+        dndcCM.register(new help(),null);
+        dndcCM.register(new help(),"help");
     }
     @Override
     public void onDisable() {
