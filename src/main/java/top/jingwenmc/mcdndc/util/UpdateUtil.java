@@ -104,7 +104,7 @@ public class UpdateUtil implements Listener {
                 result.write(buffer, 0, length);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            ExceptionUtil.print(e);
         }
         return result.toString();
     }
