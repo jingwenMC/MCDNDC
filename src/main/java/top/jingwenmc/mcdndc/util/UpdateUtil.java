@@ -89,9 +89,9 @@ public class UpdateUtil implements Listener {
             InputStream stream = connection.getInputStream();
             return streamToString(stream);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            ExceptionUtil.print(e);
         } catch (IOException e) {
-            e.printStackTrace();
+            ExceptionUtil.print(e);
         }
         return null;
     }

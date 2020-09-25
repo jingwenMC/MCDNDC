@@ -41,6 +41,10 @@ public class ConfigUtil {
         if(!main.config.getConfig().isSet(path))confError(path);
         return main.config.getConfig().getConfigurationSection(path);
     }
+    public static void reloadConfig()
+    {
+
+    }
     private static void confError(String path)
     {
         System.out.println("MCDNDC发生配置文件异常: 未找到的键:"+path);

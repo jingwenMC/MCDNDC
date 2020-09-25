@@ -2,8 +2,10 @@ package top.jingwenmc.mcdndc;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import top.jingwenmc.mcdndc.commands.dndc.help;
+import top.jingwenmc.mcdndc.commands.dndc.next;
 import top.jingwenmc.mcdndc.managers.SubCommandManager;
 import top.jingwenmc.mcdndc.util.ConfigAccessor;
+import top.jingwenmc.mcdndc.util.ExceptionUtil;
 
 import javax.naming.ConfigurationException;
 import java.util.HashMap;
@@ -29,6 +31,9 @@ public final class main extends JavaPlugin{
         getCommand("dndc").setExecutor(dndcCM);
         dndcCM.register(new help(),null);
         dndcCM.register(new help(),"help");
+        dndcCM.register(new next(),"next");
+        System.out.println("[MCDNDC DEBUG]Generating an exception...");
+        ExceptionUtil.print(new Exception("Test Exception"));
     }
     @Override
     public void onDisable() {

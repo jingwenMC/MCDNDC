@@ -1,0 +1,22 @@
+########################################
+#MCDNDC Default Word List
+#MCDNDC 默认词条列表
+#You can use it as a model
+#你可以将其作为一个模板
+########################################
+#Name of the word list
+#词语列表的名称
+name: MCDNDC_Default
+#Vesion of the schema - will not show in game
+#格式版本 - 不会在游戏中显示
+schema_version: 1
+#Words
+#词条
+words:
+  - 'Say "OK"'
+  - 'Turn Around'
+  - 'Hurt Someone'
+  - 'Break A Block'
+  - 'Place A Block'
+  - 'Kill A Mob'
+  - 'Craft Something'

@@ -39,19 +39,23 @@ public class ConfigAccessor {
     private FileConfiguration fileConfiguration;
 
     public ConfigAccessor(JavaPlugin plugin, String fileName) {
+        this(plugin,plugin.getDataFolder(),fileName);
+    }
+
+    public ConfigAccessor(JavaPlugin plugin, File folder, String fileName) {
         if (plugin == null)
             throw new IllegalArgumentException("plugin cannot be null");
         this.plugin = plugin;
         this.fileName = fileName;
-        File dataFolder = plugin.getDataFolder();
-        if (dataFolder == null)
+        if (folder == null)
             throw new IllegalStateException();
-        this.configFile = new File(plugin.getDataFolder(), fileName);
+        this.configFile = new File(folder, fileName);
     }
 
     public void forceRename(String name) {
         fileName = name;
         configFile.renameTo(new File(plugin.getDataFolder(),name));
+        reloadConfig();
     }
 
     public void reloadConfig() {
@@ -78,6 +82,7 @@ public class ConfigAccessor {
                 getConfig().save(configFile);
             } catch (IOException ex) {
                 plugin.getLogger().log(Level.SEVERE, "Could not save config to " + configFile, ex);
+                ExceptionUtil.print(ex);
             }
         }
     }
