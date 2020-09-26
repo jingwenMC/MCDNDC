@@ -20,10 +20,7 @@ package top.jingwenmc.mcdndc.util;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.logging.Level;
 
 import org.bukkit.configuration.file.FileConfiguration;
@@ -90,6 +87,31 @@ public class ConfigAccessor {
     public void saveDefaultConfig() {
         if (!configFile.exists()) {
             this.plugin.saveResource(fileName, false);
+        }
+    }
+
+    public void saveDefaultConfig(boolean manual)
+    {
+        if(!manual)saveDefaultConfig();
+        else
+        {
+            InputStream inputStream = plugin.getResource(fileName);
+            try {
+                if(!configFile.exists()) {
+                    (new File(configFile.getParent())).mkdirs();
+                    configFile.createNewFile();
+                }
+                OutputStream out = new FileOutputStream(configFile);
+                byte[] buf = new byte[1024];
+                int len;
+                while ((len = inputStream.read(buf)) > 0) {
+                    out.write(buf, 0, len);
+                }
+                out.close();
+                inputStream.close();
+            } catch (IOException e) {
+                ExceptionUtil.print(e);
+            }
         }
     }
 

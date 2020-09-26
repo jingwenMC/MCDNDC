@@ -14,11 +14,18 @@
 #Added:v1.0.0
 lang: zh_CN
 
+#Name:选择词条显示的显示方式
+#Note:目前插件自带:[TAB],外部扩展插件可以通过访问相关API进行注册
+#    TAB - 使用外部插件TAB
+#Defaut: TAB
+#Added:v2.0.0
+word_provider: TAB
+
 #Name:词库列表
 #Note:请按列表的格式填写一个或者多个yml文件,词库会保存在插件目录下的words文件夹
 #Default:
 #  - 'words.yml'
-#Added:v0.1.0
+#Added:v2.0.0
 words:
   - 'words.yml'
 

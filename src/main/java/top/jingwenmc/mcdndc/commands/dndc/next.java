@@ -6,6 +6,7 @@ import top.jingwenmc.mcdndc.objects.JCommand;
 public class next extends JCommand {
     @Override
     public boolean onCommand(String[] args, CommandSender sender) {
+        //TODO:onCommand
         return true;
     }
 }

@@ -1,13 +1,13 @@
 zh_CN:
   info:
     author: 'jingwenMC'
-    version: '1A'
+    compatable_version: '2.0.0'
   prefix: '&b[MCDNDC]'
   scoreboard: '&e&l积分'
   console:
     check_version: '正在检查配置文件版本...'
+    reload_config: '正在重载配置文件...'
     version_not_correct: '配置文件版本错误,插件将关闭.'
-    conf_not_correct: '配置文件错误,插件将关闭.'
     during_load: '正在加载插件主体...'
     post_load: '加载完成!'
     unload: '插件关闭,再见!'
@@ -26,6 +26,7 @@ zh_CN:
     not_player: '不是游戏内玩家.'
     not_int: '不是整数.'
     metrics: '正在加载插件统计...'
+    no_provider: 'MCDNDC没有找到所设置的词条显示方式,将在下次请求时尝试进行加载.'
   keeper:
     success: '成功保管词语.'
     get: '成功获取词语.'
@@ -73,6 +74,8 @@ zh_CN:
     page_now: '当前页码:'
     left: '&a左击以更改这个词条'
     shift_right: '&cSHIFT+右击以删除这个词条'
+  provider:
+    tab_load: '你正在使用 TAB插件 显示模式'
   help:
     - '&b[MCDNDC]MCDNDC帮助页面'
     - '&b[MCDNDC]作者:jingwenMC'

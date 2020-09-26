@@ -4,6 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import top.jingwenmc.mcdndc.objects.JCommand;
+import top.jingwenmc.mcdndc.util.MessageUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,6 +42,8 @@ public class SubCommandManager implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        return sendCommand(args,sender);
+        boolean isSuccess = sendCommand(args,sender);
+        if(!isSuccess) MessageUtil.sendPlayer(sender,"server.no_cmd");
+        return true;
     }
 }

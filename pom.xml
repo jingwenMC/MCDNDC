@@ -107,5 +107,12 @@
             <version>1.7</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>lib</groupId>
+            <artifactId>TAB</artifactId>
+            <version>DEFAULT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}\lib\TAB.jar</systemPath>
+        </dependency>
     </dependencies>
 </project>
