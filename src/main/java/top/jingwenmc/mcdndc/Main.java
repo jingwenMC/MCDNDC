@@ -9,18 +9,15 @@ import top.jingwenmc.mcdndc.managers.ProviderManager;
 import top.jingwenmc.mcdndc.managers.SubCommandManager;
 import top.jingwenmc.mcdndc.provider.TABProvider;
 import top.jingwenmc.mcdndc.util.ConfigAccessor;
+import top.jingwenmc.mcdndc.util.ConfigUtil;
 import top.jingwenmc.mcdndc.util.MessageUtil;
 
-import javax.naming.ConfigurationException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
 /**
  * Main class of the project
  */
-public final class main extends JavaPlugin{
+public final class Main extends JavaPlugin{
     public final static String cv = "1A";
-    private static main instance;
+    public static Main INSTANCE;
 
     public static ConfigAccessor config;
     public static ConfigAccessor lang;
@@ -30,7 +27,7 @@ public final class main extends JavaPlugin{
     public ProviderManager providerManager;
     @Override
     public void onEnable() {
-        instance = this;
+        INSTANCE = this;
         config = new ConfigAccessor(this,"config.yml");
         lang = new ConfigAccessor(this,"lang.yml");
         gameManager = new GameManager();
@@ -39,7 +36,7 @@ public final class main extends JavaPlugin{
         lang.saveDefaultConfig();
 
         MessageUtil.sendConsole("console.check_version");
-        //TODO:Version Check
+        ConfigUtil.checkConfigVersion();
 
         MessageUtil.sendConsole("console.during_load");
         dndcCM = new SubCommandManager();
@@ -50,6 +47,7 @@ public final class main extends JavaPlugin{
 
         MessageUtil.sendConsole("console.post_load");
         registerDefaultProviders();
+        gameManager.resetList();
         MessageUtil.sendConsole("server.metrics");
         Metrics metrics =  new Metrics(this , 8607);
     }
@@ -57,8 +55,8 @@ public final class main extends JavaPlugin{
     public void onDisable() {
         MessageUtil.sendConsole("console.unload");
     }
-    public static main getInstance() {
-        return instance;
+    public static Main getInstance() {
+        return INSTANCE;
     }
 
     public GameManager getGameManager() {
@@ -68,5 +66,9 @@ public final class main extends JavaPlugin{
     {
         providerManager.registerProvider(new TABProvider(),"TAB");
         providerManager.loadProvider();
+    }
+    private void startMCDNDCVersionCheck()
+    {
+
     }
 }

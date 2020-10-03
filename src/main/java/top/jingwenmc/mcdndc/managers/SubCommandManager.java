@@ -39,6 +39,14 @@ public class SubCommandManager implements CommandExecutor {
     {
         map.put(root,command);
     }
+    public void unregister(String root)
+    {
+        map.remove(root);
+    }
+    public boolean isRegistered(String root)
+    {
+        return map.containsKey(root);
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

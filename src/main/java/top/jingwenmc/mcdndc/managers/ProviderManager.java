@@ -1,6 +1,6 @@
 package top.jingwenmc.mcdndc.managers;
 
-import top.jingwenmc.mcdndc.main;
+import top.jingwenmc.mcdndc.Main;
 import top.jingwenmc.mcdndc.objects.GamePlayer;
 import top.jingwenmc.mcdndc.objects.MCDNDCProvider;
 import top.jingwenmc.mcdndc.util.ConfigUtil;
@@ -25,7 +25,6 @@ public class ProviderManager {
         if(!map.containsKey(now_provider))
         {
             request_change=true;
-            MessageUtil.sendConsole("server.no_provider");
             MessageUtil.sendServer("server.no_provider");
             return;
         }
@@ -36,14 +35,13 @@ public class ProviderManager {
     {
         if(reload) {
             MessageUtil.sendConsole("console.reload_config");
-            main.config.reloadConfig();
+            Main.config.reloadConfig();
         }
         boolean change = now_provider != ConfigUtil.getString("word_provider");
         now_provider= ConfigUtil.getString("word_provider");
         if(!map.containsKey(now_provider))
         {
             if(!silent) {
-                MessageUtil.sendConsole("server.no_provider");
                 MessageUtil.sendServer("server.no_provider");
             }
             return;

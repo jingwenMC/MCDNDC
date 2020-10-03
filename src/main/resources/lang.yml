@@ -80,7 +80,7 @@ zh_CN:
     - '&b[MCDNDC]MCDNDC帮助页面'
     - '&b[MCDNDC]作者:jingwenMC'
     - '&b[MCDNDC]开源地址:https://github.com/jingwenMC/MCDNDC/'
-    - '&b[MCDNDC]============================================='
+    - '&b[MCDNDC]=============================================='
     - '&b[MCDNDC]/dndc:插件主指令. 别名:[/mcdndc,/dnd,/byz]'
     - '&b[MCDNDC]子命令:'
     - '&b[MCDNDC]   help              - 打开帮助菜单'
@@ -93,3 +93,4 @@ zh_CN:
     - '&b[MCDNDC]   set <词语代号> <词语> - 设置代号对应的词语'
     - '&b[MCDNDC]   get <词语代号>        - 获取代号对应的词语'
     - '&b[MCDNDC]     注:获取词语指显示在头上,不会直接透露词语'
+    - '&b[MCDNDC]注2:有部分指令需要在配置中加载扩展,具体可见官方说明文档'

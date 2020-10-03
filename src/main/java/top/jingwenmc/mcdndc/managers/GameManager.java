@@ -1,8 +1,5 @@
 package top.jingwenmc.mcdndc.managers;
-import org.bukkit.Bukkit;
-import top.jingwenmc.mcdndc.main;
-import top.jingwenmc.mcdndc.util.ExceptionUtil;
-import top.jingwenmc.mcdndc.util.MessageUtil;
+import top.jingwenmc.mcdndc.util.ConfigUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,5 +19,7 @@ public class GameManager {
     public void resetList()
     {
         //TODO:Check Conf Version and load word list
+        ConfigUtil.checkConfigVersion();
+
     }
 }

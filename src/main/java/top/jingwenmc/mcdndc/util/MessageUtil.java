@@ -1,7 +1,7 @@
 package top.jingwenmc.mcdndc.util;
 
 import org.bukkit.command.CommandSender;
-import top.jingwenmc.mcdndc.main;
+import top.jingwenmc.mcdndc.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
@@ -18,7 +18,7 @@ public class MessageUtil {
         player.sendMessage(getPrefix() + getMessage(path));
     }
     public static String getPrefix() {
-        String r =  ChatColor.translateAlternateColorCodes('&', main.lang.getConfig().getString(getLanguage() + ".prefix",null));
+        String r =  ChatColor.translateAlternateColorCodes('&', Main.lang.getConfig().getString(getLanguage() + ".prefix",null));
         if(r==null) langError(getLanguage() + ".prefix");
         return r;
     }
@@ -27,16 +27,16 @@ public class MessageUtil {
         return ConfigUtil.getString("lang");
     }
     public static String getMessage(String path) {
-        if(main.lang.getConfig().isSet(getLanguage()+"."+path))
-        return ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(main.lang.getConfig().getString(getLanguage() + "." + path))).replaceAll("\n", "\r\n");
+        if(Main.lang.getConfig().isSet(getLanguage()+"."+path))
+        return ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(Main.lang.getConfig().getString(getLanguage() + "." + path))).replaceAll("\n", "\r\n");
         else
         {
             langError(getLanguage() + "." + path);
-            return ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(main.lang.getConfig().getString(getLanguage() + "." + path))).replaceAll("\n", "\r\n");
+            return ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(Main.lang.getConfig().getString(getLanguage() + "." + path))).replaceAll("\n", "\r\n");
         }
     }
     public static Object get(String path) {
-        Object r = main.lang.getConfig().get(getLanguage()+"."+path,null);
+        Object r = Main.lang.getConfig().get(getLanguage()+"."+path,null);
         if(r==null) langError(getLanguage()+"."+path);
         return r;
     }
@@ -46,8 +46,8 @@ public class MessageUtil {
         System.out.println("MCDNDC Language File Error: Key Not Found:"+path);
         System.out.println("已经将当前的语言文件保存至\"lang_backup_"+System.currentTimeMillis()+".yml\"");
         System.out.println("The current language file has been saved to\"lang_backup_"+System.currentTimeMillis()+".yml\"");
-        main.lang.forceRename("lang_backup_"+System.currentTimeMillis()+".yml");
-        main.lang = new ConfigAccessor(main.getInstance(),"lang.yml");
-        main.lang.saveDefaultConfig();
+        Main.lang.forceRename("lang_backup_"+System.currentTimeMillis()+".yml");
+        Main.lang = new ConfigAccessor(Main.getInstance(),"lang.yml");
+        Main.lang.saveDefaultConfig();
     }
 }

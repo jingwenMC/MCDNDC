@@ -2,7 +2,7 @@ package top.jingwenmc.mcdndc.objects;
 import org.bukkit.entity.Player;
 import top.jingwenmc.mcdndc.enums.CallResult;
 import top.jingwenmc.mcdndc.events.NewWordEvent;
-import top.jingwenmc.mcdndc.main;
+import top.jingwenmc.mcdndc.Main;
 
 /**
  * GamePlayer instance
@@ -65,9 +65,9 @@ public class GamePlayer {
     public CallResult setNewTopic()
     {
         NewWordEvent event = new NewWordEvent(this);
-        main.getInstance().getServer().getPluginManager().callEvent(event);
+        Main.getInstance().getServer().getPluginManager().callEvent(event);
         if(event.isCancelled())return CallResult.CANCELED;
-        this.topic = main.getInstance().getGameManager().newWord();
+        this.topic = Main.getInstance().getGameManager().newWord();
         if(topic==null)return CallResult.NO_WORD;
         else
             return CallResult.SUCCESS;

@@ -1,6 +1,6 @@
 name: MCDNDC
 version: ${project.version}
-main: top.jingwenmc.mcdndc.main
+main: top.jingwenmc.mcdndc.Main
 api-version: '1.13'
 authors: [jingwenMC]
 description: MinecraftDoNotDoChallange

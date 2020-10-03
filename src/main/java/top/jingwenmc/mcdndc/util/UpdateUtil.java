@@ -6,7 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
-import top.jingwenmc.mcdndc.main;
+import top.jingwenmc.mcdndc.Main;
 import top.jingwenmc.mcdndc.enums.UpdateCheckResult;
 
 import java.io.ByteArrayOutputStream;
@@ -53,11 +53,11 @@ public class UpdateUtil implements Listener {
                     System.out.println(MessageUtil.getPrefix()+MessageUtil.getMessage("update.error"));
                 }
             }
-        }.runTaskAsynchronously(main.getInstance());
+        }.runTaskAsynchronously(Main.getInstance());
     }
     public static UpdateCheckResult updateExists()
     {
-        String version_now = main.getInstance().getDescription().getVersion();
+        String version_now = Main.getInstance().getDescription().getVersion();
         if(version_now.contains("SNAPSHOT"))
         {
             return UpdateCheckResult.SNAPSHOT;
