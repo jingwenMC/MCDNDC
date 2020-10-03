@@ -7,8 +7,8 @@
 #Name of the word list
 #词语列表的名称
 name: MCDNDC_Default
-#Vesion of the schema - will not show in game
-#格式版本 - 不会在游戏中显示
+#Vesion of the schema - Normally it will not be displayed in the game, it should be an integer
+#格式版本 - 正常情况不会在游戏中显示,应为一个整数
 schema_version: 1
 #Words
 #词条

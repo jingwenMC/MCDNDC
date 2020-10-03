@@ -76,6 +76,17 @@ zh_CN:
     shift_right: '&cSHIFT+右击以删除这个词条'
   provider:
     tab_load: '你正在使用 TAB插件 显示模式'
+  words:
+    loading: '正在加载词库:%file'
+    name: '词库名:%name'
+    author: '作者:%name' #预留
+    outdated: '本词库使用的是过期版本的格式[词库格式版本:%ver,最新版本:%latest]' #预留
+    ask_author: '请联系作者进行更新,否则在未来可能无法使用' #预留
+    not_compatable: '此版本的MCDNDC不兼容该词库的格式版本[词库格式版本:%ver,兼容的版本:%latest]'
+    error: '本词库含有错误,请联系作者进行修复,MCDNDC将不会加载本词库'
+    not_found: '未找到该词库:%file,MCDNDC将不会加载本词库'
+    amount: '本词库含有%amount个词条'
+    line: '=============================================='
   help:
     - '&b[MCDNDC]MCDNDC帮助页面'
     - '&b[MCDNDC]作者:jingwenMC'

@@ -28,11 +28,13 @@ public class MessageUtil {
     }
     public static String getMessage(String path) {
         if(Main.lang.getConfig().isSet(getLanguage()+"."+path))
-        return ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(Main.lang.getConfig().getString(getLanguage() + "." + path))).replaceAll("\n", "\r\n");
+        return ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(Main.lang.getConfig().
+                getString(getLanguage() + "." + path))).replaceAll("\n", "\r\n");
         else
         {
             langError(getLanguage() + "." + path);
-            return ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(Main.lang.getConfig().getString(getLanguage() + "." + path))).replaceAll("\n", "\r\n");
+            return ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(Main.lang.getConfig().
+                    getString(getLanguage() + "." + path))).replaceAll("\n", "\r\n");
         }
     }
     public static Object get(String path) {

@@ -18,7 +18,6 @@ public class GameManager {
     }
     public void resetList()
     {
-        //TODO:Check Conf Version and load word list
         ConfigUtil.checkConfigVersion();
 
     }

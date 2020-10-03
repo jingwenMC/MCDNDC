@@ -50,6 +50,7 @@ public final class Main extends JavaPlugin{
 
         MessageUtil.sendConsole("console.post_load");
         registerDefaultProviders();
+        startMCDNDCVersionCheck();
         gameManager.resetList();
         MessageUtil.sendConsole("server.metrics");
         Metrics metrics =  new Metrics(this , 8607);

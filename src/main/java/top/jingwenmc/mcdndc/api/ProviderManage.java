@@ -8,15 +8,15 @@ public class ProviderManage {
     {
         Main.INSTANCE.providerManager.registerProvider(provider,providerName);
     }
-    public static void loadProvider(boolean reloadConfig,boolean silent)
+    public static void reloadProvider(boolean reloadConfig,boolean silent)
     {
         Main.INSTANCE.providerManager.loadProvider(reloadConfig,silent);
     }
-    public static void loadProvider(boolean reloadConfig)
+    public static void reloadProvider(boolean reloadConfig)
     {
         Main.INSTANCE.providerManager.loadProvider(reloadConfig);
     }
-    public static void loadProvider()
+    public static void reloadProvider()
     {
         Main.INSTANCE.providerManager.loadProvider();
     }
