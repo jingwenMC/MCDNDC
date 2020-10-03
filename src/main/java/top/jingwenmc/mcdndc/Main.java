@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import top.jingwenmc.mcdndc.commands.dndc.help;
 import top.jingwenmc.mcdndc.commands.dndc.next;
 import top.jingwenmc.mcdndc.managers.GameManager;
+import top.jingwenmc.mcdndc.managers.PlayerManager;
 import top.jingwenmc.mcdndc.managers.ProviderManager;
 import top.jingwenmc.mcdndc.managers.SubCommandManager;
 import top.jingwenmc.mcdndc.provider.TABProvider;
@@ -24,6 +25,7 @@ public final class Main extends JavaPlugin{
 
     private SubCommandManager dndcCM;
     private GameManager gameManager;
+    private PlayerManager playerManager;
     public ProviderManager providerManager;
     @Override
     public void onEnable() {
@@ -31,6 +33,7 @@ public final class Main extends JavaPlugin{
         config = new ConfigAccessor(this,"config.yml");
         lang = new ConfigAccessor(this,"lang.yml");
         gameManager = new GameManager();
+        playerManager = new PlayerManager();
         providerManager = new ProviderManager();
         config.saveDefaultConfig();
         lang.saveDefaultConfig();
@@ -61,6 +64,10 @@ public final class Main extends JavaPlugin{
 
     public GameManager getGameManager() {
         return gameManager;
+    }
+    public PlayerManager getPlayerManager()
+    {
+        return this.playerManager;
     }
     private void registerDefaultProviders()
     {
