@@ -1,9 +1,9 @@
 zh_CN:
   info:
-    author: 'jingwenMC'
-    compatable_version: '2.0.0'
+    author: 'jingwenMC' #预留
+    compatable_version: '2.0.0' #预留
   prefix: '&b[MCDNDC]'
-  scoreboard: '&e&l积分'
+  scoreboard: '&e&l积分' #需要scoreboard扩展
   console:
     check_version: '正在检查配置文件版本...'
     reload_config: '正在重载配置文件...'
@@ -24,14 +24,14 @@ zh_CN:
     no_perm: '权限不足.'
     no_cmd: '未找到指令/错误的使用方法.'
     not_player: '不是游戏内玩家.'
-    not_int: '不是整数.'
+    not_int: '不是整数.' #wordkeeper扩展
     metrics: '正在加载插件统计...'
     no_provider: 'MCDNDC没有找到所设置的词条显示方式,将在下次请求时尝试进行加载.'
-  keeper:
+  keeper: #wordkeeper扩展
     success: '成功保管词语.'
     get: '成功获取词语.'
     not_found: '未找到词语.'
-  item_switch:
+  item_switch: #itemswitch扩展
     gave: '已给予物品'
     used: '你使用了右键换词'
     title: '&b切换词语'
@@ -49,7 +49,7 @@ zh_CN:
     dev_l5: '稳定版更新地址:'
     dev_l6: 'BUG反馈地址:'
     dev_l7: '感谢你的支持.'
-  gui:
+  gui: #gui扩展
     title: '&1词语编辑器'
     edit_cancel: '&c取消编辑!'
     edit_success: '&a编辑成功!'
@@ -84,7 +84,7 @@ zh_CN:
     ask_author: '请联系作者进行更新,否则在未来可能无法使用' #预留
     not_compatable: '此版本的MCDNDC不兼容该词库的格式版本[词库格式版本:%ver,兼容的版本:%latest]'
     error: '本词库含有错误,请联系作者进行修复,MCDNDC将不会加载本词库'
-    not_found: '未找到该词库:%file,MCDNDC将不会加载本词库'
+    not_found: '未找到0该词库:%file,MCDNDC将不会加载本词库'
     amount: '本词库含有%amount个词条'
     line: '=============================================='
   help:

@@ -13,6 +13,8 @@ import top.jingwenmc.mcdndc.util.ConfigAccessor;
 import top.jingwenmc.mcdndc.util.ConfigUtil;
 import top.jingwenmc.mcdndc.util.MessageUtil;
 
+import java.io.File;
+
 /**
  * Main class of the project
  */
@@ -51,7 +53,7 @@ public final class Main extends JavaPlugin{
         MessageUtil.sendConsole("console.post_load");
         registerDefaultProviders();
         startMCDNDCVersionCheck();
-        gameManager.resetList();
+        initWords();
         MessageUtil.sendConsole("server.metrics");
         Metrics metrics =  new Metrics(this , 8607);
     }
@@ -74,6 +76,10 @@ public final class Main extends JavaPlugin{
     {
         providerManager.registerProvider(new TABProvider(),"TAB");
         providerManager.loadProvider();
+    }
+    private void initWords()
+    {
+        gameManager.resetList();
     }
     private void startMCDNDCVersionCheck()
     {

@@ -4,10 +4,17 @@ import top.jingwenmc.mcdndc.enums.CallResult;
 import top.jingwenmc.mcdndc.events.NewWordEvent;
 import top.jingwenmc.mcdndc.Main;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * GamePlayer instance
  */
 public class GamePlayer {
+    /**
+     * Storage For Extension
+     */
+    public Map<String,Object> STORAGE = new HashMap<>();
     private String topic = null;
     private int score = 0;
     private Player player;
