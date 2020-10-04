@@ -99,7 +99,7 @@ public class ConfigAccessor {
             try {
                 if(!configFile.exists()) {
                     (new File(configFile.getParent())).mkdirs();
-                    configFile.createNewFile();
+                    if(!configFile.createNewFile())throw new IllegalStateException();
                 }
                 OutputStream out = new FileOutputStream(configFile);
                 byte[] buf = new byte[1024];
@@ -109,7 +109,7 @@ public class ConfigAccessor {
                 }
                 out.close();
                 inputStream.close();
-            } catch (IOException e) {
+            } catch (Throwable e) {
                 ExceptionUtil.print(e);
             }
         }
