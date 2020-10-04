@@ -115,7 +115,7 @@
             <artifactId>TAB</artifactId>
             <version>DEFAULT</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}\lib\TAB.jar</systemPath>
+            <systemPath>${project.basedir}/lib/TAB.jar</systemPath>
         </dependency>
     </dependencies>
 </project>
