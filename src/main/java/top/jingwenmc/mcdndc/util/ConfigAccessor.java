@@ -95,18 +95,23 @@ public class ConfigAccessor {
         if(!manual)saveDefaultConfig();
         else
         {
-            try(OutputStream out = new FileOutputStream(configFile) ; InputStream inputStream = plugin.getResource(fileName)) {
-                if(!configFile.exists()) {
-                    (new File(configFile.getParent())).mkdirs();
+            if(!configFile.exists()) {
+                (new File(configFile.getParent())).mkdirs();
+                try {
                     if(!configFile.createNewFile())throw new IllegalStateException();
+                } catch (IOException e) {
+                    ExceptionUtil.print(e);
+                } catch (IllegalStateException e) {
+                    ExceptionUtil.print(e);
                 }
+            }
+            try(OutputStream out = new FileOutputStream(configFile) ; InputStream inputStream = plugin.getResource(fileName)) {
                 byte[] buf = new byte[1024];
                 int len;
                 while ((len = inputStream.read(buf)) > 0) {
                     out.write(buf, 0, len);
                 }
-                inputStream.close();
-            } catch (Throwable e) {
+            } catch (IOException e) {
                 ExceptionUtil.print(e);
             }
         }

@@ -31,7 +31,7 @@ public class GameManager {
                 File folder = new File(Main.INSTANCE.getDataFolder(), "words");
                 File file = new File(folder, s);
                 if (!file.exists()) {
-                    if(s == "words.yml")
+                    if(s.equals("words.yml"))
                     {
                         new ConfigAccessor(Main.INSTANCE,new File(Main.INSTANCE.getDataFolder(),"words"),"words.yml").saveDefaultConfig(true);
                     }

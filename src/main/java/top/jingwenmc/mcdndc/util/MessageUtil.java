@@ -14,6 +14,10 @@ public class MessageUtil {
     public static void sendServer(String path) {
         Bukkit.broadcastMessage(getPrefix() + getMessage(path));
     }
+    public static String convert(String original)
+    {
+        return getPrefix()+ChatColor.translateAlternateColorCodes('&',original);
+    }
     public static void sendPlayer(CommandSender player, String path) {
         player.sendMessage(getPrefix() + getMessage(path));
     }
@@ -32,12 +36,12 @@ public class MessageUtil {
     public static String getMessage(String path) {
         if(Main.lang.getConfig().isSet(getLanguage()+"."+path))
         return ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(Main.lang.getConfig().
-                getString(getLanguage() + "." + path))).replaceAll("\n", "\r\n");
+                getString(getLanguage() + "." + path)));
         else
         {
             langError(getLanguage() + "." + path);
             return ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(Main.lang.getConfig().
-                    getString(getLanguage() + "." + path))).replaceAll("\n", "\r\n");
+                    getString(getLanguage() + "." + path)));
         }
     }
     public static Object get(String path) {

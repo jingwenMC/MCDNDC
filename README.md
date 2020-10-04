@@ -1,17 +1,67 @@
 # MCDNDC
-MineCraftDoNotDoChallenge  
-  
-本分支重构中，请切换到`1.x`分支进行下载:
-https://github.com/jingwenMC/MCDNDC/tree/1.x
+一个能在MC中实现一种小游戏(不要做挑战)的插件
 
-本插件的源码使用GPL-3.0进行授权，具体条款已在LICENSE文件写出  
+----------
+当前的最新正式版本:1.9.90-BETA  
+当前的最新快照版本:暂无快照
 
-## 重要说明
-本插件正在进行完全重写，近期更新可能会停止除重大BUG之外的更新。  
-重写后，我们可能将彻底移除TAB依赖，同时使用新的框架。  
-代码整洁度也会有所提高。  
-开始重写工程后，我们会在`master`分支进行更新，同时会将现有项目移至`1.x`分支。  
-新的版本会争取在寒假之前上线，敬请期待！
+## 回来了!
+到了今天,MCDNDC2.x终于发布了第一个测试版。  
+目前还有些1.x的功能没有迁移过来，我会尽快迁移，但也请大家多多谅解。  
+目前MCDNDC处于`BETA`阶段，可能会有较多BUG，如果你发现了，请随时联系我。
+
+### 更新了什么？
+ * 更灵活的词库管理
+ * 更加模块化的代码
+ * 更不易出错的语言和配置文件
+ * 不刷屏的异常捕捉
+ * 更易开发的API
+ * 还有更多!
+ 
+## 前置插件
+```
+使用TAB插件显示模式需要:
+TAB 最新版本 - 可以在 https://www.spigotmc.org/resources/57806/ 获取
+```
+
+## 插件下载
+https://github.com/jingwenMC/MCDNDC/releases
+
+## 插件指令
+```text
+/dndc:插件主指令. 别名:[/mcdndc,/dnd,/byz]
+子命令:
+   help              - 打开帮助菜单
+   next              - 切换词语
+   set <玩家> <分数>  - 设置分数 [需要scoreboard扩展才会起显示作用]
+   reload            - 重载配置
+   restart           - 重载游戏
+   words             - 打开词语编辑器 [需要gui扩展才会起作用]
+/wordkeeper:词语保管器. 别名:[/wk,/wkeeper] [需要wordkeeper扩展才会起作用]
+子命令:
+   set <词语代号> <词语> - 设置代号对应的词语
+   get <词语代号>        - 获取代号对应的词语
+     注:获取词语指显示在头上,不会直接透露词语
+```
+
+## 插件权限
+
+权限 | 说明 | 默认
+----|----|----
+dndc.restart      | 允许重新加载游戏     |OP
+dndc.reload       | 允许重新加载配置文件,需要`dndc.restart` |OP
+dndc.play         | 允许进行/dndc next   |玩家
+dndc.set          | 允许设置分数         |OP
+dndc.keep.add[暂无]     | 允许添加词语到保管器 |玩家
+dndc.keep.use[暂无]     | 允许从保管器获取词语 |玩家
+dndc.words[暂无]     | 允许使用词语编辑器 |OP
+注:`dndc.reload`权限必须要有`dndc.restart`权限才能起到作用
+
+## 未来计划
+ * 完成1.x的功能迁移
+
+## 开发者API
+目前暂未提供Javadoc以及仓库地址
 
 ## 作者的话
 我目前只是个Java以及BukkitAPI的初学者，有些代码可能不是很熟练，

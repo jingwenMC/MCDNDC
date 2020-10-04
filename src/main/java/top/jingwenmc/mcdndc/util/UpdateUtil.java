@@ -62,9 +62,13 @@ public class UpdateUtil implements Listener {
         {
             return UpdateCheckResult.SNAPSHOT;
         }
-        else if(version_now.contains("RELEASE"))
+        else if(version_now.contains("RELEASE") || version_now.contains("BETA"))
         {
-            String str = getFromUrl("https://api.github.com/repos/jingwenMC/MCDNDC/releases/latest");
+            String str = getFromUrl("https://v2.kkpp.cc/repos/jingwenMC/MCDNDC/releases/latest");
+            if(str==null)
+            {
+                str = getFromUrl("https://api.github.com/repos/jingwenMC/MCDNDC/releases/latest");
+            }
             if(str==null)return UpdateCheckResult.UNEXPECTED;
             JSONObject object = JSON.parseObject(str);
             String rawVersion = object.getString("tag_name");
@@ -77,7 +81,11 @@ public class UpdateUtil implements Listener {
             {
                 return UpdateCheckResult.LATEST_RELEASE;
             }
-            else return UpdateCheckResult.NEW_RELEASE;
+            else {
+                ver_now = version_now;
+                ver_new = version;
+                return UpdateCheckResult.NEW_RELEASE;
+            }
         }
         return UpdateCheckResult.UNEXPECTED;
     }

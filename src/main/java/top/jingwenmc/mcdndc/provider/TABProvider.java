@@ -10,7 +10,8 @@ import top.jingwenmc.mcdndc.util.MessageUtil;
 public class TABProvider extends MCDNDCProvider {
     @Override
     public void onWordSet(GamePlayer gamePlayer, String word) {
-        TABAPI.setValueTemporarily(gamePlayer.getPlayer().getUniqueId(), EnumProperty.ABOVENAME, ChatColor.GOLD+word);
+        TABAPI.setValueTemporarily(gamePlayer.getPlayer().getUniqueId(), EnumProperty.TAGPREFIX, ChatColor.GOLD+"["
+                +ChatColor.translateAlternateColorCodes('&',word)+ChatColor.GOLD+"]&r");
     }
 
     @Override

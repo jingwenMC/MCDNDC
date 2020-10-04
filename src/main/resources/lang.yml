@@ -84,7 +84,7 @@ zh_CN:
     ask_author: '请联系作者进行更新,否则在未来可能无法使用' #预留
     not_compatable: '此版本的MCDNDC不兼容该词库的格式版本[词库格式版本:%ver,兼容的版本:%latest]'
     error: '本词库含有错误,请联系作者进行修复,MCDNDC将不会加载本词库'
-    not_found: '未找到0该词库:%file,MCDNDC将不会加载本词库'
+    not_found: '未找到该词库:%file,MCDNDC将不会加载本词库'
     amount: '本词库含有%amount个词条'
     line: '=============================================='
   help:

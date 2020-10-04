@@ -1,9 +1,11 @@
 package top.jingwenmc.mcdndc;
 
 import org.bstats.bukkit.Metrics;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import top.jingwenmc.mcdndc.commands.dndc.help;
-import top.jingwenmc.mcdndc.commands.dndc.next;
+import top.jingwenmc.mcdndc.commands.dndc.*;
+import top.jingwenmc.mcdndc.listeners.GameListener;
+import top.jingwenmc.mcdndc.listeners.ServerListener;
 import top.jingwenmc.mcdndc.managers.GameManager;
 import top.jingwenmc.mcdndc.managers.PlayerManager;
 import top.jingwenmc.mcdndc.managers.ProviderManager;
@@ -12,6 +14,7 @@ import top.jingwenmc.mcdndc.provider.TABProvider;
 import top.jingwenmc.mcdndc.util.ConfigAccessor;
 import top.jingwenmc.mcdndc.util.ConfigUtil;
 import top.jingwenmc.mcdndc.util.MessageUtil;
+import top.jingwenmc.mcdndc.util.UpdateUtil;
 
 import java.io.File;
 
@@ -49,11 +52,15 @@ public final class Main extends JavaPlugin{
         dndcCM.register(new help(),null);
         dndcCM.register(new help(),"help");
         dndcCM.register(new next(),"next");
-
-        MessageUtil.sendConsole("console.post_load");
+        dndcCM.register(new reload(),"reload");
+        dndcCM.register(new restart(),"restart");
+        dndcCM.register(new set(),"set");
         registerDefaultProviders();
         startMCDNDCVersionCheck();
         initWords();
+        registerListeners();
+
+        MessageUtil.sendConsole("console.post_load");
         MessageUtil.sendConsole("server.metrics");
         Metrics metrics =  new Metrics(this , 8607);
     }
@@ -81,8 +88,13 @@ public final class Main extends JavaPlugin{
     {
         gameManager.resetList();
     }
+    private void registerListeners()
+    {
+        Bukkit.getPluginManager().registerEvents(new ServerListener(),this);
+    }
     private void startMCDNDCVersionCheck()
     {
-
+        Bukkit.getPluginManager().registerEvents(new GameListener(),this);
+        UpdateUtil.checkUpdateAsync();
     }
 }
