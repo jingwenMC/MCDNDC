@@ -1,6 +1,5 @@
 package top.jingwenmc.mcdndc.commands.dndc;
 
-import com.sun.deploy.security.SelectableSecurityManager;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import top.jingwenmc.mcdndc.Main;
