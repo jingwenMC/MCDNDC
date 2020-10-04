@@ -18,9 +18,12 @@ public class MessageUtil {
         player.sendMessage(getPrefix() + getMessage(path));
     }
     public static String getPrefix() {
-        String r =  ChatColor.translateAlternateColorCodes('&', Main.lang.getConfig().getString(getLanguage() + ".prefix",null));
-        if(r==null) langError(getLanguage() + ".prefix");
-        return r;
+        String original = Main.lang.getConfig().getString(getLanguage() + ".prefix",null);
+        if(original==null) {
+            langError(getLanguage() + ".prefix");
+            return null;
+        }
+        return ChatColor.translateAlternateColorCodes('&', original);
     }
 
     public static String getLanguage() {
