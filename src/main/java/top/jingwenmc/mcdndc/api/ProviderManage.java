@@ -6,18 +6,18 @@ import top.jingwenmc.mcdndc.objects.MCDNDCProvider;
 public class ProviderManage {
     public static void registerExternalProvider(MCDNDCProvider provider,String providerName)
     {
-        Main.INSTANCE.providerManager.registerProvider(provider,providerName);
+        Main.getInstance().providerManager.registerProvider(provider,providerName);
     }
     public static void reloadProvider(boolean reloadConfig,boolean silent)
     {
-        Main.INSTANCE.providerManager.loadProvider(reloadConfig,silent);
+        Main.getInstance().providerManager.loadProvider(reloadConfig,silent);
     }
     public static void reloadProvider(boolean reloadConfig)
     {
-        Main.INSTANCE.providerManager.loadProvider(reloadConfig);
+        Main.getInstance().providerManager.loadProvider(reloadConfig);
     }
     public static void reloadProvider()
     {
-        Main.INSTANCE.providerManager.loadProvider();
+        Main.getInstance().providerManager.loadProvider();
     }
 }

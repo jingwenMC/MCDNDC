@@ -24,7 +24,7 @@ public class set extends JCommand {
             MessageUtil.sendPlayer(sender,"server.not_player");
             return false;
         }
-        GamePlayer gamePlayer = Main.INSTANCE.getPlayerManager().getGamePlayer(player);
+        GamePlayer gamePlayer = Main.getInstance().getPlayerManager().getGamePlayer(player);
         try {
             gamePlayer.setScore(Integer.parseInt(args[1]));
         }catch (NumberFormatException e)

@@ -29,7 +29,7 @@ public class next extends JCommand {
             MessageUtil.sendPlayer(sender,"server.not_player");
             return true;
         }
-        GamePlayer gp = Main.INSTANCE.getPlayerManager().getGamePlayer(player.getName());
+        GamePlayer gp = Main.getInstance().getPlayerManager().getGamePlayer(player.getName());
         boolean isNew = gp.getTopic() == null;
         CallResult callResult = gp.setNewTopic();
         if(callResult.equals(CallResult.CANCELED))return true;

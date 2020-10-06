@@ -22,7 +22,7 @@ public class reload extends JCommand {
         ConfigUtil.checkConfigVersion();
         Main.config.reloadConfig();
         Main.lang.reloadConfig();
-        Main.INSTANCE.providerManager.loadProvider(false);
+        Main.getInstance().providerManager.loadProvider(false);
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"dndc restart");
         return true;
     }

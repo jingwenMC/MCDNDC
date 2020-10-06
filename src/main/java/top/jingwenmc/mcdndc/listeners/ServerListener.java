@@ -20,14 +20,14 @@ public class ServerListener implements Listener {
     public void onJoin(PlayerJoinEvent evt)
     {
         if(!offline.containsKey(evt.getPlayer().getName()))
-            Main.INSTANCE.getPlayerManager().createGamePlayer(evt.getPlayer());
+            Main.getInstance().getPlayerManager().createGamePlayer(evt.getPlayer());
         else
         {
             offline.get(evt.getPlayer().getName()).cancel();
-            GamePlayer gp = Main.INSTANCE.getPlayerManager().getGamePlayer(evt.getPlayer());
+            GamePlayer gp = Main.getInstance().getPlayerManager().getGamePlayer(evt.getPlayer());
             gp.setPlayer(evt.getPlayer());
-            Main.INSTANCE.getPlayerManager().getMap().put(evt.getPlayer().getName(),gp);
-            Main.INSTANCE.providerManager.requestWordChange(gp,gp.getTopic());
+            Main.getInstance().getPlayerManager().getMap().put(evt.getPlayer().getName(),gp);
+            Main.getInstance().providerManager.requestWordChange(gp,gp.getTopic());
         }
         evt.setJoinMessage(ChatColor.YELLOW+evt.getPlayer().getName()+" "+ MessageUtil.getMessage("server.join"));
     }
@@ -39,12 +39,12 @@ public class ServerListener implements Listener {
         offline.put(evt.getPlayer().getName(), new BukkitRunnable() {
             @Override
             public void run() {
-                GamePlayer g = Main.INSTANCE.getPlayerManager().getMap().get(name);
+                GamePlayer g = Main.getInstance().getPlayerManager().getMap().get(name);
                 String word = g.getTopic();
-                Main.INSTANCE.getGameManager().words.add(word);
-                Main.INSTANCE.getPlayerManager().removeGamePlayer(name);
+                Main.getInstance().getGameManager().words.add(word);
+                Main.getInstance().getPlayerManager().removeGamePlayer(name);
                 offline.remove(name);
             }
-        }.runTaskLater(Main.INSTANCE,Main.config.getConfig().getLong("wait",1200)));
+        }.runTaskLater(Main.getInstance(),Main.config.getConfig().getLong("wait",1200)));
     }
 }

@@ -61,7 +61,7 @@ public class GamePlayer {
      * @param topic the topic will be set
      */
     public void setTopic(String topic) {
-        Main.INSTANCE.providerManager.requestWordChange(this,topic);
+        Main.getInstance().providerManager.requestWordChange(this,topic);
         this.topic = topic;
     }
 
@@ -76,7 +76,7 @@ public class GamePlayer {
         Main.getInstance().getServer().getPluginManager().callEvent(event);
         if(event.isCancelled())return CallResult.CANCELED;
         this.topic = Main.getInstance().getGameManager().newWord();
-        Main.INSTANCE.providerManager.requestWordChange(this,this.topic);
+        Main.getInstance().providerManager.requestWordChange(this,this.topic);
         if(topic==null)return CallResult.NO_WORD;
         else
             return CallResult.SUCCESS;

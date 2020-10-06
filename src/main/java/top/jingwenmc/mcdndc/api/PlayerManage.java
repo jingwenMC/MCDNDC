@@ -7,10 +7,10 @@ import top.jingwenmc.mcdndc.objects.GamePlayer;
 public class PlayerManage {
     public static GamePlayer getGamePlayerByPlayer(Player player)
     {
-        return Main.INSTANCE.getPlayerManager().getGamePlayer(player);
+        return Main.getInstance().getPlayerManager().getGamePlayer(player);
     }
     public static GamePlayer getGamePlayerByName(String name)
     {
-        return Main.INSTANCE.getPlayerManager().getGamePlayer(name);
+        return Main.getInstance().getPlayerManager().getGamePlayer(name);
     }
 }

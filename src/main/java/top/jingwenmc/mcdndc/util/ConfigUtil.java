@@ -45,10 +45,10 @@ public class ConfigUtil {
     {
         String ver = Main.config.getConfig().getString("config_version");
         assert ver != null;
-        if(!ver.equals(Main.cv))
+        if(!ver.equals(Main.CV))
         {
-            System.out.println("MCDNDC发生配置文件异常: 不正确的配置文件版本:"+ver+"(Expected:"+ Main.cv+")");
-            System.out.println("MCDNDC Config File Error: Incorrect config version:"+ver+"(Expected:"+ Main.cv+")");
+            System.out.println("MCDNDC发生配置文件异常: 不正确的配置文件版本:"+ver+"(Expected:"+ Main.CV +")");
+            System.out.println("MCDNDC Config File Error: Incorrect config version:"+ver+"(Expected:"+ Main.CV +")");
             saveNewConfig();
         }
     }

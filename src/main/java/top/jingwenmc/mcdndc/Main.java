@@ -18,14 +18,12 @@ import top.jingwenmc.mcdndc.util.ConfigUtil;
 import top.jingwenmc.mcdndc.util.MessageUtil;
 import top.jingwenmc.mcdndc.util.UpdateUtil;
 
-import java.io.File;
-
 /**
  * Main class of the project
  */
 public final class Main extends JavaPlugin{
-    public final static String cv = "1A";
-    public static Main INSTANCE;
+    public final static String CV = "1A";
+    private static Main instance;
 
     public static ConfigAccessor config;
     public static ConfigAccessor lang;
@@ -36,7 +34,7 @@ public final class Main extends JavaPlugin{
     public ProviderManager providerManager;
     @Override
     public void onEnable() {
-        INSTANCE = this;
+        instance = this;
         config = new ConfigAccessor(this,"config.yml");
         lang = new ConfigAccessor(this,"lang.yml");
         gameManager = new GameManager();
@@ -64,7 +62,7 @@ public final class Main extends JavaPlugin{
 
         MessageUtil.sendConsole("console.post_load");
         MessageUtil.sendConsole("server.metrics");
-        Metrics metrics =  new Metrics(this , 8607);
+        new Metrics(this , 8607);
     }
     @Override
     public void onDisable() {
@@ -76,7 +74,7 @@ public final class Main extends JavaPlugin{
         MessageUtil.sendConsole("console.unload");
     }
     public static Main getInstance() {
-        return INSTANCE;
+        return instance;
     }
 
     public GameManager getGameManager() {

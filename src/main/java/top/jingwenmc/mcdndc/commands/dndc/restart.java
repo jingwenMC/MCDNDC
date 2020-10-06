@@ -16,19 +16,19 @@ public class restart extends JCommand {
         if(sender.hasPermission("dndc.restart"))
         {
             MessageUtil.sendServer("game.restart");
-            Main.INSTANCE.getGameManager().resetList();
-            for(GamePlayer gamePlayer : Main.INSTANCE.getPlayerManager().getMap().values())
+            Main.getInstance().getGameManager().resetList();
+            for(GamePlayer gamePlayer : Main.getInstance().getPlayerManager().getMap().values())
             {
                 gamePlayer.setScore(0);
                 gamePlayer.setTopic(null);
-                Main.INSTANCE.providerManager.requestWordChange(gamePlayer,null);
-                Main.INSTANCE.getGameManager().words.clear();
+                Main.getInstance().providerManager.requestWordChange(gamePlayer,null);
+                Main.getInstance().getGameManager().words.clear();
             }
             for(Player p : Bukkit.getOnlinePlayers())
             {
                 Bukkit.dispatchCommand(p,"dndc next");
             }
-            Main.INSTANCE.getServer().getPluginManager().callEvent(new NewGameEvent());
+            Main.getInstance().getServer().getPluginManager().callEvent(new NewGameEvent());
         }
         else
         {
