@@ -2,6 +2,8 @@ package top.jingwenmc.mcdndc;
 
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.jingwenmc.mcdndc.commands.dndc.*;
 import top.jingwenmc.mcdndc.listeners.GameListener;
@@ -66,6 +68,11 @@ public final class Main extends JavaPlugin{
     }
     @Override
     public void onDisable() {
+        //Prevent Bugs
+        for (Player p : Bukkit.getOnlinePlayers())
+        {
+            p.kickPlayer(ChatColor.AQUA+"[MCDNDC-KICK] Server Restarting / Reloading / An error occurred"+"(服务器重启/插件重载/发生了错误)");
+        }
         MessageUtil.sendConsole("console.unload");
     }
     public static Main getInstance() {

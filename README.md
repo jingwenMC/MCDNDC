@@ -54,13 +54,14 @@ dndc.play         | 允许进行/dndc next   |玩家
 dndc.set          | 允许设置分数         |OP
 dndc.keep.add[暂无]     | 允许添加词语到保管器 |玩家
 dndc.keep.use[暂无]     | 允许从保管器获取词语 |玩家
-dndc.words[暂无]     | 允许使用词语编辑器 |OP
+dndc.words[暂无]     | 允许使用词语编辑器 |OP  
+
 注:`dndc.reload`权限必须要有`dndc.restart`权限才能起到作用
 
 ## 未来计划
  * 完成1.x的功能迁移
 
-## 开发者API
+## 开发者API(暂未提供)
 目前暂未提供Javadoc以及仓库地址
 
 ## 作者的话

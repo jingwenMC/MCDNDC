@@ -4,9 +4,9 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 /**
- * Custom Event Framework
+ * Custom Event Base
  */
-public class MCDNDCEvent extends Event {
+public class MCDNDCEvents extends Event {
     private static final HandlerList handlers = new HandlerList();
     @Override
     public HandlerList getHandlers() {

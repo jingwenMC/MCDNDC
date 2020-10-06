@@ -1,12 +1,11 @@
 package top.jingwenmc.mcdndc.events;
 
 import org.bukkit.event.Cancellable;
-import top.jingwenmc.mcdndc.managers.GameManager;
 import top.jingwenmc.mcdndc.objects.GamePlayer;
 /**
  * Custom Event that will call on a player changing his word
  */
-public class NewWordEvent extends MCDNDCEvent implements Cancellable{
+public class NewWordEvent extends MCDNDCEvents implements Cancellable{
     Boolean canceled = false;
     GamePlayer gamePlayer;
 

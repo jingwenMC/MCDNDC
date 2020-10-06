@@ -1,4 +1,4 @@
 package top.jingwenmc.mcdndc.events;
 
-public class NewGameEvent extends MCDNDCEvent {
+public class NewGameEvent extends MCDNDCEvents {
 }

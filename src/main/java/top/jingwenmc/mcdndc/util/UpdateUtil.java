@@ -58,7 +58,7 @@ public class UpdateUtil implements Listener {
     public static UpdateCheckResult updateExists()
     {
         String version_now = Main.getInstance().getDescription().getVersion();
-        if(version_now.contains("SNAPSHOT"))
+        if(version_now.contains("SNAPSHOT") || version_now.contains("INDEV"))
         {
             return UpdateCheckResult.SNAPSHOT;
         }
