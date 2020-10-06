@@ -96,8 +96,6 @@ public class UpdateUtil implements Listener {
             connection.setReadTimeout(20000);
             InputStream stream = connection.getInputStream();
             return streamToString(stream);
-        } catch (MalformedURLException e) {
-            ExceptionUtil.print(e);
         } catch (IOException e) {
             ExceptionUtil.print(e);
         }

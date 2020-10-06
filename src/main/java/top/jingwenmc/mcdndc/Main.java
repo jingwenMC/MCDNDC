@@ -18,11 +18,13 @@ import top.jingwenmc.mcdndc.util.ConfigUtil;
 import top.jingwenmc.mcdndc.util.MessageUtil;
 import top.jingwenmc.mcdndc.util.UpdateUtil;
 
+import java.util.Objects;
+
 /**
  * Main class of the project
  */
 public final class Main extends JavaPlugin{
-    public final static String CV = "1A";
+    public static final String CV = "1A";
     private static Main instance;
 
     public static ConfigAccessor config;
@@ -48,7 +50,7 @@ public final class Main extends JavaPlugin{
 
         MessageUtil.sendConsole("console.during_load");
         dndcCM = new SubCommandManager();
-        getCommand("dndc").setExecutor(dndcCM);
+        Objects.requireNonNull(getCommand("dndc")).setExecutor(dndcCM);
         dndcCM.register(new help(),null);
         dndcCM.register(new help(),"help");
         dndcCM.register(new next(),"next");

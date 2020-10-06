@@ -8,12 +8,6 @@ import java.util.logging.Level;
 
 public class ExceptionUtil {
     public static void print(Throwable e) {
-        if (Main.getInstance().getDataFolder() == null) {
-            System.out.println("MCDNDC UNEXPECTED ERROR:Cannot Get DataFolder While Recording An Error");
-            System.out.println("Printing StackTrace Directly...");
-            e.printStackTrace();
-            return;
-        }
         File eFile = new File(Main.getInstance().getDataFolder(), "errors.txt");
         try {
             if (!eFile.exists()) eFile.createNewFile();

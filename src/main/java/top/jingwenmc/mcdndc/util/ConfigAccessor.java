@@ -32,7 +32,7 @@ public class ConfigAccessor {
     private String fileName;
     private final JavaPlugin plugin;
 
-    private File configFile;
+    private final File configFile;
     private FileConfiguration fileConfiguration;
 
     public ConfigAccessor(JavaPlugin plugin, String fileName) {
@@ -99,16 +99,16 @@ public class ConfigAccessor {
                 (new File(configFile.getParent())).mkdirs();
                 try {
                     if(!configFile.createNewFile())throw new IllegalStateException();
-                } catch (IOException e) {
-                    ExceptionUtil.print(e);
-                } catch (IllegalStateException e) {
+                } catch (IOException | IllegalStateException e) {
                     ExceptionUtil.print(e);
                 }
             }
             try(OutputStream out = new FileOutputStream(configFile) ; InputStream inputStream = plugin.getResource(fileName)) {
                 byte[] buf = new byte[1024];
                 int len;
-                while ((len = inputStream.read(buf)) > 0) {
+                while (true) {
+                    assert inputStream != null;
+                    if (!((len = inputStream.read(buf)) > 0)) break;
                     out.write(buf, 0, len);
                 }
             } catch (IOException e) {

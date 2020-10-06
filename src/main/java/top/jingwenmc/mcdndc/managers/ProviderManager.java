@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ProviderManager {
-    private Map<String , MCDNDCProvider> map = new HashMap<>();
+    private final Map<String , MCDNDCProvider> map = new HashMap<>();
     private String now_provider = "DEFAULT";
     private boolean request_change = false;
     public void registerProvider(MCDNDCProvider provider,String providerName)
@@ -37,7 +37,7 @@ public class ProviderManager {
             MessageUtil.sendConsole("console.reload_config");
             Main.config.reloadConfig();
         }
-        boolean change = now_provider != ConfigUtil.getString("word_provider");
+        boolean change = !now_provider.equals(ConfigUtil.getString("word_provider"));
         now_provider= ConfigUtil.getString("word_provider");
         if(!map.containsKey(now_provider))
         {

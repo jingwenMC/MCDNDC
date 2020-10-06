@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ServerListener implements Listener {
-    private Map<String, BukkitTask> offline = new HashMap<>();
+    private final Map<String, BukkitTask> offline = new HashMap<>();
     @EventHandler
     public void onJoin(PlayerJoinEvent evt)
     {

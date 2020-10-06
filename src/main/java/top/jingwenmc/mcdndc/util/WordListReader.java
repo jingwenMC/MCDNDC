@@ -5,6 +5,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class WordListReader {
@@ -13,7 +14,7 @@ public class WordListReader {
     public static List<String> readWords(FileConfiguration configuration)
     {
         try {
-            int scv = -9999;
+            int scv;
             Set<String> set = configuration.getKeys(false);
             if (!set.contains("schema_version")) {
                 Bukkit.getLogger().info(MessageUtil.getPrefix() +
@@ -34,7 +35,7 @@ public class WordListReader {
                 }
                 List<String> rt = configuration.getStringList("words");
                 Bukkit.getLogger().info(MessageUtil.getPrefix() +
-                        MessageUtil.getMessage("words.name").replaceAll("%name", configuration.getString("name")));
+                        MessageUtil.getMessage("words.name").replaceAll("%name", Objects.requireNonNull(configuration.getString("name"))));
                 Bukkit.getLogger().info(MessageUtil.getPrefix() +
                         MessageUtil.getMessage("words.amount").replaceAll("%amount", String.valueOf(rt.size())));
                 return rt;
