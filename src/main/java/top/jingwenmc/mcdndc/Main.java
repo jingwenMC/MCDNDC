@@ -51,6 +51,7 @@ public final class Main extends JavaPlugin{
         MessageUtil.sendConsole("console.during_load");
         dndcCM = new SubCommandManager();
         Objects.requireNonNull(getCommand("dndc")).setExecutor(dndcCM);
+        Objects.requireNonNull(getCommand("dndc")).setTabCompleter(dndcCM);
         dndcCM.register(new help(),null);
         dndcCM.register(new help(),"help");
         dndcCM.register(new next(),"next");

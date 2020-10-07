@@ -3,16 +3,16 @@ package top.jingwenmc.mcdndc.managers;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
+import org.bukkit.util.StringUtil;
 import top.jingwenmc.mcdndc.objects.JCommand;
 import top.jingwenmc.mcdndc.util.MessageUtil;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class SubCommandManager implements CommandExecutor {
+public class SubCommandManager implements CommandExecutor, TabCompleter {
     Map<String, JCommand> map = new HashMap<>();
+    List<String> strings = new ArrayList<>();
     public boolean sendCommand(String[] args, CommandSender sender)
     {
         if(args.length==0 || !map.containsKey(args[0])) {
@@ -37,11 +37,17 @@ public class SubCommandManager implements CommandExecutor {
     }
     public void register(JCommand command,String root)
     {
+        if(isRegistered(root)) throw new IllegalArgumentException("Registered");
         map.put(root,command);
+        strings.add(root);
     }
     public void unregister(String root)
     {
-        map.remove(root);
+        if(isRegistered(root)) {
+            map.remove(root);
+            strings.remove(root);
+        }
+        else throw new IllegalArgumentException("Not Registered");
     }
     public boolean isRegistered(String root)
     {
@@ -53,5 +59,16 @@ public class SubCommandManager implements CommandExecutor {
         boolean isSuccess = sendCommand(args,sender);
         if(!isSuccess) MessageUtil.sendPlayer(sender,"server.no_cmd");
         return true;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        if(args.length==1) {
+            List<String> completions = new ArrayList<>();
+            StringUtil.copyPartialMatches(args[0], strings, completions);
+            Collections.sort(completions);
+            return completions;
+        }
+        return null;
     }
 }
