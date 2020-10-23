@@ -9,8 +9,8 @@ import java.util.Objects;
 import java.util.Set;
 
 public class WordListReader {
-    final static String required_versions = "1";
-    final static int latest_version = 1;
+    final static String REQUIRED_VERSIONS = "1";
+    final static int LATEST_VERSION = 1;
     public static List<String> readWords(FileConfiguration configuration)
     {
         try {
@@ -19,7 +19,7 @@ public class WordListReader {
             if (!set.contains("schema_version")) {
                 Bukkit.getLogger().info(MessageUtil.getPrefix() +
                         MessageUtil.getMessage("words.not_compatable").replaceAll("%ver", "[NOT FOUND]")
-                                .replaceAll("%latest", required_versions));
+                                .replaceAll("%latest", REQUIRED_VERSIONS));
                 return null;
             }
             scv = configuration.getInt("schema_version");
@@ -42,7 +42,7 @@ public class WordListReader {
             } else {
                 Bukkit.getLogger().info(MessageUtil.getPrefix() +
                         MessageUtil.getMessage("words.not_compatable").replaceAll("%ver", String.valueOf(scv))
-                                .replaceAll("%latest", required_versions));
+                                .replaceAll("%latest", REQUIRED_VERSIONS));
                 return null;
             }
         }

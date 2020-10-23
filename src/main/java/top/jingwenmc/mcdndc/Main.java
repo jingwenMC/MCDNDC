@@ -72,7 +72,7 @@ public final class Main extends JavaPlugin{
         //Prevent Bugs
         for (Player p : Bukkit.getOnlinePlayers())
         {
-            p.kickPlayer(ChatColor.AQUA+"[MCDNDC-KICK] Server Restarting / Reloading / An error occurred"+"(服务器重启/插件重载/发生了错误)");
+            p.kickPlayer(ChatColor.AQUA+"[MCDNDC] Server Restarting / Reloading / An exception occurred"+"(服务器重启/插件重载/发生了异常)");
         }
         MessageUtil.sendConsole("console.unload");
     }
