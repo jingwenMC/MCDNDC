@@ -6,7 +6,7 @@
 
     <groupId>top.jingwenmc</groupId>
     <artifactId>MCDNDC</artifactId>
-    <version>1.9.91-INDEV</version>
+    <version>1.9.92-INDEV</version>
     <packaging>jar</packaging>
 
     <name>MCDNDC</name>
