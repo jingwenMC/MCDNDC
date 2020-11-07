@@ -37,7 +37,7 @@ public class SubCommandManager implements CommandExecutor, TabCompleter {
     }
     public void register(JCommand command,String root)
     {
-        if(isRegistered(root)) throw new IllegalArgumentException("Registered");
+        if(isRegistered(root)) throw new IllegalArgumentException("Already Registered");
         map.put(root,command);
         strings.add(root);
     }

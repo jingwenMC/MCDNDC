@@ -3,7 +3,7 @@ zh_CN:
     author: 'jingwenMC' #预留
     compatable_version: '2.0.0' #预留
   prefix: '&b[MCDNDC]'
-  scoreboard: '&e&l积分' #需要scoreboard扩展
+  scoreboard: '&e&l积分' #需要internal_scoreboard扩展
   console:
     check_version: '正在检查配置文件版本...'
     reload_config: '正在重载配置文件...'
@@ -24,14 +24,14 @@ zh_CN:
     no_perm: '权限不足.'
     no_cmd: '未找到指令/错误的使用方法.'
     not_player: '不是游戏内玩家.'
-    not_int: '不是整数.' #wordkeeper扩展
+    not_int: '不是整数.' #internal_wordkeeper扩展
     metrics: '正在加载插件统计...'
     no_provider: 'MCDNDC没有找到所设置的词条显示方式,将在下次请求时尝试进行加载.'
-  keeper: #wordkeeper扩展
+  keeper: #internal_wordkeeper扩展
     success: '成功保管词语.'
     get: '成功获取词语.'
     not_found: '未找到词语.'
-  item_switch: #itemswitch扩展
+  item_switch: #internal_itemswitch扩展
     gave: '已给予物品'
     used: '你使用了右键换词'
     title: '&b切换词语'
@@ -49,7 +49,7 @@ zh_CN:
     dev_l5: '稳定版更新地址:'
     dev_l6: 'BUG反馈地址:'
     dev_l7: '感谢你的支持.'
-  gui: #gui扩展
+  gui: #internal_gui扩展
     title: '&1词语编辑器'
     edit_cancel: '&c取消编辑!'
     edit_success: '&a编辑成功!'
@@ -87,6 +87,23 @@ zh_CN:
     not_found: '未找到该词库:%file,MCDNDC将不会加载本词库'
     amount: '本词库含有%amount个词条'
     line: '=============================================='
+  extension:
+    about_1: 'MCDNDC Extension Manager v%version'
+    about_2: 'By: jingwenMC'
+    help:
+      - '&b[MCDNDC]MCDNDC扩展管理器 - 帮助页面'
+      - '&b[MCDNDC]=============================================='
+      - '&b[MCDNDC]主命令:/mcdndc extension'
+      - '&b[MCDNDC]子命令:'
+      - '&b[MCDNDC]  list    : 列出已经加载的扩展'
+      - '&b[MCDNDC]  enable  : 启用一个扩展'
+      - '&b[MCDNDC]  disable : 禁用一个扩展'
+    loaded: 'MCDNDC已经加载了%amount个扩展'
+    info_1: '扩展名称:%name'
+    info_2: '作者:%author  加载状态:%status'
+    btn_enable: '[启用]'
+    btn_disable: '[禁用]'
+    line: '=============================================='
   help:
     - '&b[MCDNDC]MCDNDC帮助页面'
     - '&b[MCDNDC]作者:jingwenMC'
@@ -99,6 +116,7 @@ zh_CN:
     - '&b[MCDNDC]   set <玩家> <分数> - 设置分数'
     - '&b[MCDNDC]   reload            - 重载配置'
     - '&b[MCDNDC]   restart           - 重载游戏'
+    - '&b[MCDNDC]   extension         - 打开扩展管理器'
     - '&b[MCDNDC]/wordkeeper:词语保管器. 别名:[/wk,/wkeeper]'
     - '&b[MCDNDC]子命令:'
     - '&b[MCDNDC]   set <词语代号> <词语> - 设置代号对应的词语'

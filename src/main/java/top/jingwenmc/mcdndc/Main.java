@@ -69,7 +69,7 @@ public final class Main extends JavaPlugin{
     }
     @Override
     public void onDisable() {
-        //Prevent Bugs
+        //Prevent Unexpected Condition
         for (Player p : Bukkit.getOnlinePlayers())
         {
             p.kickPlayer(ChatColor.AQUA+"[MCDNDC] Server Restarting / Reloading / An exception occurred"+"(服务器重启/插件重载/发生了异常)");
