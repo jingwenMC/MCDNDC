@@ -5,14 +5,31 @@ import top.jingwenmc.mcdndc.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
+import java.util.Map;
 import java.util.Objects;
 
 public class MessageUtil {
     public static void sendConsole(String path) {
         Bukkit.getLogger().info(getPrefix() + getMessage(path));
     }
+    public static void sendConsole(String path,String[] replaceFrom,String... replaceTo) {
+        String origin = getMessage(path);
+        for(int i = 0; i<replaceFrom.length; i++)
+        {
+            origin = origin.replaceAll(replaceFrom[i],replaceTo[i]);
+        }
+        Bukkit.getLogger().info(origin);
+    }
     public static void sendServer(String path) {
         Bukkit.broadcastMessage(getPrefix() + getMessage(path));
+    }
+    public static void sendServer(String path,String[] replaceFrom,String... replaceTo) {
+        String origin = getMessage(path);
+        for(int i = 0; i<replaceFrom.length; i++)
+        {
+            origin = origin.replaceAll(replaceFrom[i],replaceTo[i]);
+        }
+        Bukkit.broadcastMessage(origin);
     }
     public static String convert(String original)
     {
@@ -20,6 +37,14 @@ public class MessageUtil {
     }
     public static void sendPlayer(CommandSender player, String path) {
         player.sendMessage(getPrefix() + getMessage(path));
+    }
+    public static void sendPlayer(CommandSender player,String path,String[] replaceFrom,String... replaceTo) {
+        String origin = getMessage(path);
+        for(int i = 0; i<replaceFrom.length; i++)
+        {
+            origin = origin.replaceAll(replaceFrom[i],replaceTo[i]);
+        }
+        player.sendMessage(origin);
     }
     public static String getPrefix() {
         String original = Main.lang.getConfig().getString(getLanguage() + ".prefix",null);

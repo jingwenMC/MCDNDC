@@ -103,6 +103,9 @@ zh_CN:
     info_2: '作者:%author  加载状态:%status'
     btn_enable: '[启用]'
     btn_disable: '[禁用]'
+    on_enable: '正在启用扩展:%name'
+    on_disable: '正在禁用扩展:%name'
+    on_register: '扩展%name已注册'
     line: '=============================================='
   help:
     - '&b[MCDNDC]MCDNDC帮助页面'

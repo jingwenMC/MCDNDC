@@ -27,7 +27,7 @@ public class ServerListener implements Listener {
             GamePlayer gp = Main.getInstance().getPlayerManager().getGamePlayer(evt.getPlayer());
             gp.setPlayer(evt.getPlayer());
             Main.getInstance().getPlayerManager().getMap().put(evt.getPlayer().getName(),gp);
-            Main.getInstance().providerManager.requestWordChange(gp,gp.getTopic());
+            Main.getInstance().getProviderManager().requestWordChange(gp,gp.getTopic());
         }
         evt.setJoinMessage(ChatColor.YELLOW+evt.getPlayer().getName()+" "+ MessageUtil.getMessage("server.join"));
     }

@@ -20,14 +20,23 @@ public abstract class MCDNDCExtension {
         assert section != null;
         if(!section.isSet("enable"))section.set("enable",true);
     }
-    public void onLoad() {}
-    public void onUnload() {}
+
+    public void onEnable() {}
+
+    public void onDisable() {}
 
     public String getAuthor() {
         return author;
     }
     public String getExtensionName() {
         return extensionName;
+    }
+    public boolean isEnabled() {
+        return section.getBoolean("enable");
+    }
+    public void setEnabled(boolean enabled)
+    {
+        section.set("enable",enabled);
     }
 
     public final ConfigurationSection getConfigSection()

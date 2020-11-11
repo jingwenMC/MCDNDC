@@ -8,10 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import top.jingwenmc.mcdndc.commands.dndc.*;
 import top.jingwenmc.mcdndc.listeners.GameListener;
 import top.jingwenmc.mcdndc.listeners.ServerListener;
-import top.jingwenmc.mcdndc.managers.GameManager;
-import top.jingwenmc.mcdndc.managers.PlayerManager;
-import top.jingwenmc.mcdndc.managers.ProviderManager;
-import top.jingwenmc.mcdndc.managers.SubCommandManager;
+import top.jingwenmc.mcdndc.managers.*;
 import top.jingwenmc.mcdndc.provider.TABProvider;
 import top.jingwenmc.mcdndc.util.ConfigAccessor;
 import top.jingwenmc.mcdndc.util.ConfigUtil;
@@ -33,7 +30,8 @@ public final class Main extends JavaPlugin{
     private SubCommandManager dndcCM;
     private GameManager gameManager;
     private PlayerManager playerManager;
-    public ProviderManager providerManager;
+    private ExtensionManager extensionManager;
+    private ProviderManager providerManager;
     @Override
     public void onEnable() {
         instance = this;
@@ -42,6 +40,7 @@ public final class Main extends JavaPlugin{
         gameManager = new GameManager();
         playerManager = new PlayerManager();
         providerManager = new ProviderManager();
+        extensionManager = new ExtensionManager();
         config.saveDefaultConfig();
         lang.saveDefaultConfig();
 
@@ -87,6 +86,13 @@ public final class Main extends JavaPlugin{
     {
         return this.playerManager;
     }
+    public ProviderManager getProviderManager() {
+        return providerManager;
+    }
+    public ExtensionManager getExtensionManager() {
+        return extensionManager;
+    }
+
     private void registerDefaultProviders()
     {
         providerManager.registerProvider(new TABProvider(),"TAB");
