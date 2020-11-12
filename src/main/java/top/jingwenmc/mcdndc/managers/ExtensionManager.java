@@ -49,7 +49,7 @@ public class ExtensionManager {
 
     public MCDNDCExtension[] getExtensionsArray()
     {
-        return EXTENSIONS.values().toArray(new MCDNDCExtension[EXTENSIONS.size()]);
+        return EXTENSIONS.values().toArray(new MCDNDCExtension[0]);
     }
     //TODO
 }

@@ -80,3 +80,11 @@ dndc.words[暂无]     | 允许使用词语编辑器 |OP
 联系我的一些方式：  
 Bilibili:https://space.bilibili.com/289155331  
 Email:2313055824@qq.com(本插件问题请不要给我发送邮件，请提交一个issue)  
+
+## 致谢
+感谢 [JetBrains s.r.o.](https://www.jetbrains.com/?from=MCDNDC) 为本项目提供的IDE。
+[![jetbrains-variant-4.png](https://i.loli.net/2020/11/12/ZoW8CwaOEqk12Fj.png)](https://www.jetbrains.com/?from=MCDNDC)  
+
+感谢 [x夏言秋语x](https://space.bilibili.com/356477722/) 以及 
+[菜鸟名封](https://space.bilibili.com/304129459/) 还有 
+[肥皂不宅](https://space.bilibili.com/8689128/) 在本插件开发时提供的大力支持。
