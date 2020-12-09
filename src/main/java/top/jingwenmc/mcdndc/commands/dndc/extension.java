@@ -8,7 +8,9 @@ import top.jingwenmc.mcdndc.commands.dndc.extensions.list;
 import top.jingwenmc.mcdndc.managers.SubCommandManager;
 import top.jingwenmc.mcdndc.objects.JCommand;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class extension extends JCommand {
     SubCommandManager subCommandManager = new SubCommandManager();
@@ -18,8 +20,12 @@ public class extension extends JCommand {
     @Override
     public boolean onCommand(String[] args, CommandSender sender) {
         if(args.length==0)return subCommandManager.onCommand(sender,new String[]{});
-        args = Arrays.copyOfRange(args, 1, args.length);
-        return subCommandManager.onCommand(sender,args);
+        List<String> rt = new ArrayList<>();
+        for(int i=1;i<args.length;i++)
+        {
+            rt.add(args[i]);
+        }
+        return subCommandManager.onCommand(sender,rt.toArray(new String[0]));
     }
 
     public void registerSubCommand(String subCommand,JCommand jCommand) {
