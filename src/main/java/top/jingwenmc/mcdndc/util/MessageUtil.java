@@ -20,6 +20,16 @@ public class MessageUtil {
         }
         Bukkit.getLogger().info(origin);
     }
+    public static void sendConsole(boolean prefix,String path,String[] replaceFrom,String... replaceTo) {
+        if(prefix) {
+            String origin = getMessage(path);
+            for (int i = 0; i < replaceFrom.length; i++) {
+                origin = origin.replaceAll(replaceFrom[i], replaceTo[i]);
+            }
+            Bukkit.getLogger().info(convert(origin));
+        }
+        else sendConsole(path,replaceFrom,replaceTo);
+    }
     public static void sendServer(String path) {
         Bukkit.broadcastMessage(getPrefix() + getMessage(path));
     }

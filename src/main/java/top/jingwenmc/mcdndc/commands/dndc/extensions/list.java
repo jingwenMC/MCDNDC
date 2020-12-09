@@ -1,5 +1,10 @@
 package top.jingwenmc.mcdndc.commands.dndc.extensions;
 
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import top.jingwenmc.mcdndc.Main;
@@ -25,9 +30,19 @@ public class list extends JCommand {
                     new String[]{"%author","%status"},extension.getAuthor(),status);
             if(sender instanceof Player) {
                 Player player = (Player) sender;
-                String btn_enable = MessageUtil.getMessage("extension.btn_enable");
-                String btn_disable = MessageUtil.getMessage("extension.btn_disable");
-                player.sendRawMessage("[{\"text\":\""+btn_enable+"\",\"color\":\"green\",\"bold\":true,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/dndc extension enable "+extension.getExtensionName()+"\"}},{\"text\":\"            \",\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false},{\"text\":\""+btn_disable+"\",\"color\":\"red\",\"bold\":true,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/dndc extension disable "+extension.getExtensionName()+"\"}}]");
+                String enable = MessageUtil.getMessage("extension.btn_enable");
+                String disable = MessageUtil.getMessage("extension.btn_disable");
+                TextComponent enable_btn = new TextComponent(enable);
+                enable_btn.setColor(ChatColor.GREEN);
+                enable_btn.setBold(true);
+                enable_btn.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,"/dndc extension enable "+extension.getExtensionName()));
+                TextComponent disable_btn = new TextComponent(disable);
+                disable_btn.setColor(ChatColor.RED);
+                disable_btn.setBold(true);
+                disable_btn.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,"/dndc extension disable "+extension.getExtensionName()));
+                TextComponent blank = new TextComponent("            ");
+                TextComponent prefix = new TextComponent(MessageUtil.getPrefix());
+                player.spigot().sendMessage(prefix,enable_btn,blank,disable_btn);
             }
         }
         MessageUtil.sendPlayer(sender,"extension.line");

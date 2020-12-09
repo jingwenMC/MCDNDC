@@ -14,7 +14,8 @@ public class ExtensionManager {
         if(extension==null)throw new IllegalArgumentException("501 Extension Cannot Be Null");
         if(EXTENSIONS.containsKey(extension.getExtensionName()))throw new IllegalArgumentException("500 Extension Already Exists");
         EXTENSIONS.put(extension.getExtensionName(),extension);
-        MessageUtil.sendConsole("extension.on_register",new String[]{"%name"},extension.getExtensionName());
+        MessageUtil.sendConsole(true,"extension.on_register",new String[]{"%name"},extension.getExtensionName());
+        extension.onLoad();
     }
 
     public boolean enableExtension(String extensionName) throws IllegalArgumentException

@@ -11,10 +11,7 @@ import top.jingwenmc.mcdndc.listeners.ServerListener;
 import top.jingwenmc.mcdndc.managers.*;
 import top.jingwenmc.mcdndc.objects.JCommand;
 import top.jingwenmc.mcdndc.provider.TABProvider;
-import top.jingwenmc.mcdndc.util.ConfigAccessor;
-import top.jingwenmc.mcdndc.util.ConfigUtil;
-import top.jingwenmc.mcdndc.util.MessageUtil;
-import top.jingwenmc.mcdndc.util.UpdateUtil;
+import top.jingwenmc.mcdndc.util.*;
 
 import java.util.Objects;
 
@@ -63,6 +60,7 @@ public final class Main extends JavaPlugin{
         startMCDNDCVersionCheck();
         initWords();
         registerListeners();
+        ExtensionLoader.load();
 
         MessageUtil.sendConsole("console.post_load");
         MessageUtil.sendConsole("server.metrics");

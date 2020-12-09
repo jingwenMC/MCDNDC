@@ -19,9 +19,12 @@ public abstract class MCDNDCExtension {
 
         assert section != null;
         if(!section.isSet("enable"))section.set("enable",true);
+        Main.config.saveConfig();
     }
 
     public void onEnable() {}
+
+    public void onLoad() {}
 
     public void onDisable() {}
 
@@ -37,6 +40,7 @@ public abstract class MCDNDCExtension {
     public void setEnabled(boolean enabled)
     {
         section.set("enable",enabled);
+        Main.config.saveConfig();
     }
 
     public final ConfigurationSection getConfigSection()
