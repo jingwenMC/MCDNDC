@@ -13,25 +13,20 @@ import java.util.Arrays;
 import java.util.List;
 
 public class extension extends JCommand {
-    SubCommandManager subCommandManager = new SubCommandManager();
+    SubCommandManager subCommandManager;
     public extension() {
+        subCommandManager = new SubCommandManager();
         registerSubCommands();
     }
+
     @Override
     public boolean onCommand(String[] args, CommandSender sender) {
         if(args.length==0)return subCommandManager.onCommand(sender,new String[]{});
-        List<String> rt = new ArrayList<>();
-        for(int i=1;i<args.length;i++)
-        {
-            rt.add(args[i]);
-        }
-        return subCommandManager.onCommand(sender,rt.toArray(new String[0]));
+        return subCommandManager.onCommand(sender,args);
     }
 
-    public void registerSubCommand(String subCommand,JCommand jCommand) {
-        if(!subCommandManager.isRegistered(subCommand)) {
-            subCommandManager.register(jCommand,subCommand);
-        }
+    private void registerSubCommand(String subCommand,JCommand jCommand) {
+        subCommandManager.register(jCommand,subCommand);
     }
 
     public void registerSubCommands() {
