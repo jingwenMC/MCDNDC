@@ -17,7 +17,7 @@ public class SubCommandManager implements CommandExecutor, TabCompleter {
     {
         if(args.length==0 || !map.containsKey(args[0])) {
             if (map.containsKey(null)) {
-                return map.get(null).onCommand(null, sender);
+                return map.get(null).onCommand(new String[]{}, sender);
             }
             else return false;
         }

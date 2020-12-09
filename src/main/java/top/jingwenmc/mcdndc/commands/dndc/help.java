@@ -10,6 +10,7 @@ import java.util.List;
 public class help extends JCommand {
     @Override
     public boolean onCommand(String[] args, CommandSender sender) {
+        if(args.length!=0)return false;
         for(String s : (List<String>) MessageUtil.get("help"))
         {
             s = ChatColor.translateAlternateColorCodes('&',s);
