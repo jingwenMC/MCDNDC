@@ -17,7 +17,7 @@ public class extension extends JCommand {
     }
     @Override
     public boolean onCommand(String[] args, CommandSender sender) {
-        if(args.length==0)subCommandManager.onCommand(sender,null);
+        if(args.length==0)subCommandManager.onCommand(sender,new String[]{});
         args = Arrays.copyOfRange(args, 1, args.length);
         return subCommandManager.onCommand(sender,args);
     }
