@@ -19,11 +19,11 @@ public class ItemSwitchExtensionLoader extends MCDNDCExtension {
 
     @Override
     public void onEnable() {
-        System.out.println("Extension Enabled!");
+        //System.out.println("Extension Enabled!");
     }
 
     @Override
     public void onDisable() {
-        System.out.println("Extension Disabled!");
+        //System.out.println("Extension Disabled!");
     }
 }

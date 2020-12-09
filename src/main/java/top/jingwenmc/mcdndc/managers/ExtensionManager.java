@@ -26,6 +26,7 @@ public class ExtensionManager {
         MCDNDCExtension extension = EXTENSIONS.get(extensionName);
         if(!extension.isEnabled()) {
             extension.setEnabled(true);
+            extension.onEnable();
             return true;
         }
         return false;
@@ -37,6 +38,7 @@ public class ExtensionManager {
         MCDNDCExtension extension = EXTENSIONS.get(extensionName);
         if(extension.isEnabled()) {
             extension.setEnabled(false);
+            extension.onDisable();
             return true;
         }
         return false;
