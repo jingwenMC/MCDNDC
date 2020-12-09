@@ -39,12 +39,12 @@ public class SubCommandManager implements CommandExecutor, TabCompleter {
     {
         if(isRegistered(root)) throw new IllegalArgumentException("Already Registered");
         map.put(root,command);
-        strings.add(root);
+        if(root!=null)strings.add(root);
     }
     public void unregister(String root)
     {
         if(isRegistered(root)) {
-            map.remove(root);
+            if(root!=null)map.remove(root);
             strings.remove(root);
         }
         else throw new IllegalArgumentException("Not Registered");
