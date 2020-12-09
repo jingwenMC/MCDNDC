@@ -39,7 +39,7 @@ public class MessageUtil {
         player.sendMessage(getPrefix() + getMessage(path));
     }
     public static void sendPlayer(CommandSender player,String path,String[] replaceFrom,String... replaceTo) {
-        String origin = getMessage(path);
+        String origin = getPrefix() + getMessage(path);
         for(int i = 0; i<replaceFrom.length; i++)
         {
             origin = origin.replaceAll(replaceFrom[i],replaceTo[i]);

@@ -9,6 +9,7 @@ import top.jingwenmc.mcdndc.commands.dndc.*;
 import top.jingwenmc.mcdndc.listeners.GameListener;
 import top.jingwenmc.mcdndc.listeners.ServerListener;
 import top.jingwenmc.mcdndc.managers.*;
+import top.jingwenmc.mcdndc.objects.JCommand;
 import top.jingwenmc.mcdndc.provider.TABProvider;
 import top.jingwenmc.mcdndc.util.ConfigAccessor;
 import top.jingwenmc.mcdndc.util.ConfigUtil;
@@ -57,6 +58,7 @@ public final class Main extends JavaPlugin{
         dndcCM.register(new reload(),"reload");
         dndcCM.register(new restart(),"restart");
         dndcCM.register(new set(),"set");
+        dndcCM.register(new extension(),"extension");
         registerDefaultProviders();
         startMCDNDCVersionCheck();
         initWords();

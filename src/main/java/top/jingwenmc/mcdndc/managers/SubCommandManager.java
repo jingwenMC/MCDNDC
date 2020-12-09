@@ -30,7 +30,7 @@ public class SubCommandManager implements CommandExecutor, TabCompleter {
                 {
                     rt.add(args[i]);
                 }
-                return map.get(s).onCommand(rt.toArray(new String[args.length-1]),sender);
+                return map.get(s).onCommand(rt.toArray(new String[0]),sender);
             }
         }
         return false;
@@ -56,6 +56,12 @@ public class SubCommandManager implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        boolean isSuccess = sendCommand(args,sender);
+        if(!isSuccess) MessageUtil.sendPlayer(sender,"server.no_cmd");
+        return true;
+    }
+
+    public boolean onCommand(CommandSender sender, String[] args) {
         boolean isSuccess = sendCommand(args,sender);
         if(!isSuccess) MessageUtil.sendPlayer(sender,"server.no_cmd");
         return true;

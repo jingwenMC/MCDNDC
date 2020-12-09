@@ -88,7 +88,7 @@ zh_CN:
     amount: '本词库含有%amount个词条'
     line: '=============================================='
   extension:
-    about_1: 'MCDNDC Extension Manager v%version'
+    about_1: 'MCDNDC Extension Manager'
     about_2: 'By: jingwenMC'
     help:
       - '&b[MCDNDC]MCDNDC扩展管理器 - 帮助页面'
@@ -104,8 +104,11 @@ zh_CN:
     btn_enable: '[启用]'
     btn_disable: '[禁用]'
     on_enable: '正在启用扩展:%name'
+    enabled: '扩展已经启用'
     on_disable: '正在禁用扩展:%name'
+    disabled: '扩展已经禁用'
     on_register: '扩展%name已注册'
+    not_found: '未找到相关扩展.'
     line: '=============================================='
   help:
     - '&b[MCDNDC]MCDNDC帮助页面'

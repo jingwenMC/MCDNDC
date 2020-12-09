@@ -9,18 +9,18 @@ import java.util.Map;
 public class ExtensionManager {
     private final Map<String , MCDNDCExtension> EXTENSIONS = new HashMap<>();
 
-    public void registerNewExtension(MCDNDCExtension extension)
+    public void registerNewExtension(MCDNDCExtension extension) throws IllegalArgumentException
     {
-        if(extension==null)throw new IllegalArgumentException("Extension Cannot Be Null");
-        if(EXTENSIONS.containsKey(extension.getExtensionName()))throw new IllegalArgumentException("Exension Already Exists");
+        if(extension==null)throw new IllegalArgumentException("501 Extension Cannot Be Null");
+        if(EXTENSIONS.containsKey(extension.getExtensionName()))throw new IllegalArgumentException("500 Extension Already Exists");
         EXTENSIONS.put(extension.getExtensionName(),extension);
         MessageUtil.sendConsole("extension.on_register",new String[]{"%name"},extension.getExtensionName());
     }
 
-    public boolean enableExtension(String extensionName)
+    public boolean enableExtension(String extensionName) throws IllegalArgumentException
     {
         if(extensionName == null || (!EXTENSIONS.containsKey(extensionName)))
-            throw new IllegalArgumentException("Extension Not Found");
+            throw new IllegalArgumentException("404 Extension Not Found");
         MCDNDCExtension extension = EXTENSIONS.get(extensionName);
         if(!extension.isEnabled()) {
             extension.setEnabled(true);
@@ -28,10 +28,10 @@ public class ExtensionManager {
         }
         return false;
     }
-    public boolean disableExtension(String extensionName)
+    public boolean disableExtension(String extensionName) throws IllegalArgumentException
     {
         if(extensionName == null || (!EXTENSIONS.containsKey(extensionName)))
-            throw new IllegalArgumentException("Extension Not Found");
+            throw new IllegalArgumentException("404 Extension Not Found");
         MCDNDCExtension extension = EXTENSIONS.get(extensionName);
         if(extension.isEnabled()) {
             extension.setEnabled(false);
@@ -40,10 +40,10 @@ public class ExtensionManager {
         return false;
     }
 
-    public MCDNDCExtension getExtension(String extensionName)
+    public MCDNDCExtension getExtension(String extensionName) throws IllegalArgumentException
     {
         if(extensionName == null || (!EXTENSIONS.containsKey(extensionName)))
-            throw new IllegalArgumentException("Extension Not Found");
+            throw new IllegalArgumentException("404 Extension Not Found");
         return EXTENSIONS.get(extensionName);
     }
 
