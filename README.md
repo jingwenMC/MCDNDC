@@ -65,7 +65,7 @@ dndc.words[暂无]     | 允许使用词语编辑器 |OP
  * 完成1.x的功能迁移
    * internal_scoreboard扩展
    * internal_wordkeeper扩展
-   * internal_itemswitch扩展
+   * internal_itemswitch扩展 [Finished]
    * internal_gui扩展
  * 增加原生词语显示的功能
  * 开发者API文档
