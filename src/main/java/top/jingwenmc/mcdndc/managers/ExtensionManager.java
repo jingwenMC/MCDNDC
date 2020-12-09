@@ -16,6 +16,7 @@ public class ExtensionManager {
         EXTENSIONS.put(extension.getExtensionName(),extension);
         MessageUtil.sendConsole(true,"extension.on_register",new String[]{"%name"},extension.getExtensionName());
         extension.onLoad();
+        if(extension.isEnabled())extension.onEnable();
     }
 
     public boolean enableExtension(String extensionName) throws IllegalArgumentException
