@@ -34,3 +34,13 @@ words:
 #Default: 1A
 #Added:v0.1.0
 config_version: 1A
+
+#Name:扩展设置
+#Note:扩展的相关设置，详细可见Wiki(正在搭建)
+#Default: [Object]
+#Added:v2.0.0
+extension:
+  internal_itemswitch:
+    enable: true
+    command: '/getitem'
+    command_perm: 'none'

@@ -24,8 +24,6 @@ public class ItemSwitchListener implements Listener {
     static ConfigurationSection section;
     public void init() {
         this.section = Main.getInstance().getExtensionManager().getExtension("internal_itemswitch").getConfigSection();
-        if(!section.contains("enabled"))
-        section.set("enabled",true);
         if(!section.contains("command"))
         section.set("command","/getitem");
         if(!section.contains("command_perm"))
