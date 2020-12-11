@@ -3,6 +3,7 @@ version: ${project.version}
 main: top.jingwenmc.mcdndc.Main
 api-version: '1.13'
 authors: [jingwenMC]
+softdepend: [TAB]
 description: MinecraftDoNotDoChallange
 website: jingwenmc.top
 commands:

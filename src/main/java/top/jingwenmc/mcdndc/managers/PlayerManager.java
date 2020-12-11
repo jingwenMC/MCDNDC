@@ -45,8 +45,9 @@ public class PlayerManager {
 
     public GamePlayer getGamePlayer(String name) throws NullPointerException{
         GamePlayer gp = map.get(name);
-        if(gp == null)
-        throw new NullPointerException("Cannot Found The Player");
+        if(gp == null) {
+            throw new NullPointerException("Cannot Found The Player");
+        }
         return gp;
     }
 

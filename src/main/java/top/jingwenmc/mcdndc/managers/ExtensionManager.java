@@ -55,5 +55,4 @@ public class ExtensionManager {
     {
         return EXTENSIONS.values().toArray(new MCDNDCExtension[0]);
     }
-    //TODO
 }

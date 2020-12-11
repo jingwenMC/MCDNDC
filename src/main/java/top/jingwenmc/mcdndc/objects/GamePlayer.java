@@ -3,6 +3,7 @@ import org.bukkit.entity.Player;
 import top.jingwenmc.mcdndc.enums.CallResult;
 import top.jingwenmc.mcdndc.events.NewWordEvent;
 import top.jingwenmc.mcdndc.Main;
+import top.jingwenmc.mcdndc.managers.GameManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -61,6 +62,7 @@ public class GamePlayer {
      * @param topic the topic will be set
      */
     public void setTopic(String topic) {
+        if(topic == null || topic.isEmpty())Main.getInstance().getProviderManager().requestWordChange(this,"[NULL]");
         Main.getInstance().getProviderManager().requestWordChange(this,topic);
         this.topic = topic;
     }
@@ -75,11 +77,10 @@ public class GamePlayer {
         NewWordEvent event = new NewWordEvent(this);
         Main.getInstance().getServer().getPluginManager().callEvent(event);
         if(event.isCancelled())return CallResult.CANCELED;
-        this.topic = Main.getInstance().getGameManager().newWord();
-        Main.getInstance().getProviderManager().requestWordChange(this,this.topic);
-        if(topic==null)return CallResult.NO_WORD;
-        else
-            return CallResult.SUCCESS;
+        String newTopic = Main.getInstance().getGameManager().newWord();
+        if(newTopic==null || GameManager.words.isEmpty())return CallResult.NO_WORD;
+        setTopic(newTopic);
+        return CallResult.SUCCESS;
     }
 
     public void setPlayer(Player player) {

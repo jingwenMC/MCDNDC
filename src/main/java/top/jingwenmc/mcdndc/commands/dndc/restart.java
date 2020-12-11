@@ -20,9 +20,8 @@ public class restart extends JCommand {
             for(GamePlayer gamePlayer : Main.getInstance().getPlayerManager().getMap().values())
             {
                 gamePlayer.setScore(0);
-                gamePlayer.setTopic(null);
-                Main.getInstance().getProviderManager().requestWordChange(gamePlayer,null);
-                Main.getInstance().getGameManager().words.clear();
+                gamePlayer.setTopic("&r");
+                Main.getInstance().getProviderManager().requestWordChange(gamePlayer,"&r");
             }
             for(Player p : Bukkit.getOnlinePlayers())
             {

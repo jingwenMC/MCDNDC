@@ -2,24 +2,26 @@ package top.jingwenmc.mcdndc.objects;
 
 import org.bukkit.configuration.ConfigurationSection;
 import top.jingwenmc.mcdndc.Main;
+import top.jingwenmc.mcdndc.util.ConfigUtil;
 
 public abstract class MCDNDCExtension {
-    private ConfigurationSection section;
     private String author;
     private String extensionName;
+    private String sectionName;
 
     public MCDNDCExtension(String extensionName,String author)
     {
         this.extensionName = extensionName;
         this.author = author;
-        String sectionName = "extension."+extensionName;
-        if(Main.config.getConfig().isSet(sectionName))
-        section = Main.config.getConfig().getConfigurationSection(sectionName);
-        else section = Main.config.getConfig().createSection(sectionName);
-
-        assert section != null;
-        if(!section.isSet("enable"))section.set("enable",true);
-        Main.config.saveConfig();
+        sectionName = "extension."+extensionName;
+        if(!Main.config.getConfig().contains(sectionName)) {
+            Main.config.getConfig().createSection(sectionName);
+            Main.config.saveConfig();
+        }
+        if(!getConfigSection().isSet("enable")) {
+            getConfigSection().set("enable",true);
+            Main.config.saveConfig();
+        }
     }
 
     public void onEnable() {}
@@ -35,16 +37,20 @@ public abstract class MCDNDCExtension {
         return extensionName;
     }
     public boolean isEnabled() {
-        return section.getBoolean("enable");
+        return getConfigSection().getBoolean("enable");
     }
     public void setEnabled(boolean enabled)
     {
-        section.set("enable",enabled);
+        getConfigSection().set("enable",enabled);
         Main.config.saveConfig();
     }
 
     public final ConfigurationSection getConfigSection()
     {
-        return section;
+        return ConfigUtil.getConfigurationSection(sectionName);
+    }
+
+    public final void saveConfig() {
+        Main.config.saveConfig();
     }
 }

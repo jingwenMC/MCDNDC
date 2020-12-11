@@ -1,46 +1,14 @@
-####################
-#MCDNDC Config File
-#Config Language: 简体中文/Chinese(Simplified)
-#You Can Download More Language At https://github.com/jingwenMC/MCDNDC/tree/master/langs
-####################
-#作者:jingwenMC
-#开源许可:GPL-3
-#版本:v${project.version}
-####################
-
-#Name:选择语言
-#Note:取决于lang.yml的设定
-#Defaut: zh_CN
-#Added:v1.0.0
+# ###################
+# MCDNDC Config File
+# More info is on the official wiki:[Work In Progress]
+# ###################
 lang: zh_CN
-
-#Name:选择词条显示的显示方式
-#Note:目前插件自带:[TAB],外部扩展插件可以通过访问相关API进行注册
-#    TAB - 使用外部插件TAB
-#Defaut: TAB
-#Added:v2.0.0
 word_provider: TAB
-
-#Name:词库列表
-#Note:请按列表的格式填写一个或者多个yml文件,词库会保存在插件目录下的words文件夹
-#Default:
-#  - 'words.yml'
-#Added:v2.0.0
 words:
   - 'words.yml'
-
-#Name:配置文件版本
-#Note:此项用于配置文件结构版本的确认。为防止出错，请不要自行更改
-#Default: 1A
-#Added:v0.1.0
-config_version: 1A
-
-#Name:扩展设置
-#Note:扩展的相关设置，详细可见Wiki(正在搭建)
-#Default: [Object]
-#Added:v2.0.0
 extension:
   internal_itemswitch:
     enable: true
-    command: '/getitem'
-    command_perm: 'none'
+    command: /getitem
+    command_perm: none
+config_version: 1A

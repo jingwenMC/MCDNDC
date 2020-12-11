@@ -5,11 +5,12 @@ import top.jingwenmc.mcdndc.util.*;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class GameManager {
-    public List<String> words = new ArrayList<>();
+    public static List<String> words = new ArrayList<>();
     public String newWord()
     {
         if(words.size()==0)return null;
@@ -24,6 +25,7 @@ public class GameManager {
     {
         try {
             ConfigUtil.checkConfigVersion();
+            words.clear();
             for (String s : ConfigUtil.getStringList("words")) {
                 MessageUtil.sendConsole("words.line");
                 Bukkit.getLogger().info(MessageUtil.getPrefix() +
