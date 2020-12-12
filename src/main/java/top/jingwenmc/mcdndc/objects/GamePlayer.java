@@ -62,7 +62,7 @@ public class GamePlayer {
      * @param topic the topic will be set
      */
     public void setTopic(String topic) {
-        if(topic == null || topic.isEmpty())Main.getInstance().getProviderManager().requestWordChange(this,"[NULL]");
+        if(topic == null || topic.isEmpty())Main.getInstance().getProviderManager().requestWordChange(this,"&r");
         Main.getInstance().getProviderManager().requestWordChange(this,topic);
         this.topic = topic;
     }

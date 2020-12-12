@@ -51,7 +51,7 @@ public class ConfigAccessor {
 
     public void forceRename(String name) {
         fileName = name;
-        configFile.renameTo(new File(plugin.getDataFolder(),name));
+        if(!configFile.renameTo(new File(plugin.getDataFolder(),name)))ExceptionUtil.print(new IllegalStateException("Cannot Force Rename"));
         reloadConfig();
     }
 

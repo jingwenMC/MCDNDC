@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import top.jingwenmc.mcdndc.Main;
 import top.jingwenmc.mcdndc.objects.JCommand;
+import top.jingwenmc.mcdndc.objects.MCDNDCExtension;
 import top.jingwenmc.mcdndc.util.ConfigUtil;
 import top.jingwenmc.mcdndc.util.MessageUtil;
 
@@ -23,6 +24,10 @@ public class reload extends JCommand {
         Main.config.reloadConfig();
         Main.lang.reloadConfig();
         Main.getInstance().getProviderManager().loadProvider(false);
+        for(MCDNDCExtension extension : Main.getInstance().getExtensionManager().getExtensionsArray()) {
+            extension.onDisable();
+            extension.onEnable();
+        }
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"dndc restart");
         return true;
     }
