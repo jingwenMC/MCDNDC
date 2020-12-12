@@ -3,7 +3,8 @@
 
 ----------
 当前的最新正式版本:1.9.92-BETA  
-当前的最新快照版本:暂无快照
+当前的最新快照版本:1.9.93-SNAPSHOT  
+快照构建地址:https://github.com/jingwenMC/MCDNDC/actions
 
 ## MCDNDC-2.0Beta
 到了今天,MCDNDC2.x终于发布了第一个测试版。
