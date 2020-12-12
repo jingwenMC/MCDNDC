@@ -9,7 +9,7 @@ import top.jingwenmc.mcdndc.commands.dndc.*;
 import top.jingwenmc.mcdndc.listeners.GameListener;
 import top.jingwenmc.mcdndc.listeners.ServerListener;
 import top.jingwenmc.mcdndc.managers.*;
-import top.jingwenmc.mcdndc.objects.JCommand;
+import top.jingwenmc.mcdndc.objects.MCDNDCExtension;
 import top.jingwenmc.mcdndc.provider.TABProvider;
 import top.jingwenmc.mcdndc.util.*;
 
@@ -60,7 +60,7 @@ public final class Main extends JavaPlugin{
         startMCDNDCVersionCheck();
         initWords();
         registerListeners();
-        ExtensionLoader.load();
+        Loader.loadExtension();
 
         MessageUtil.sendConsole("console.post_load");
         MessageUtil.sendConsole("server.metrics");
@@ -68,7 +68,10 @@ public final class Main extends JavaPlugin{
     }
     @Override
     public void onDisable() {
-        //Prevent Unexpected Condition
+        for(MCDNDCExtension extension : getExtensionManager().getExtensionsArray()) {
+            extension.onDisable();
+        }
+        //Prevent Unexpected Condition (eg. reload)
         for (Player p : Bukkit.getOnlinePlayers())
         {
             p.kickPlayer(ChatColor.AQUA+"[MCDNDC] Server Stopped / Reloading / An exception occurred"+"(服务器停止/插件重载/发生了异常)");

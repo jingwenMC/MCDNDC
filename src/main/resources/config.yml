@@ -11,4 +11,9 @@ extension:
     enable: true
     command: /getitem
     command_perm: none
+  internal_scoreboard:
+    enable: true
+    method: SIDEBAR
+    interval: 20
+    add_score_on_switch: true
 config_version: 1A

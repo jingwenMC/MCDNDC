@@ -21,6 +21,7 @@ public class ProviderManager {
     }
     public void requestWordChange(GamePlayer gamePlayer,String word)
     {
+        if(word==null)word = "&r";
         if(request_change)loadProvider(true,true);
         if(!map.containsKey(now_provider))
         {

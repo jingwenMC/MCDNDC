@@ -31,7 +31,7 @@ public class next extends JCommand {
         }
         GamePlayer gp = Main.getInstance().getPlayerManager().getGamePlayer(player);
         boolean isNew = gp.getTopic() == null;
-        CallResult callResult = gp.setNewTopic();
+        CallResult callResult = gp.setNewTopic(isNew);
         if(callResult.equals(CallResult.CANCELED))return true;
         if(callResult.equals(CallResult.SUCCESS))
         {

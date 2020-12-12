@@ -72,13 +72,15 @@ public class GamePlayer {
      * @return Return {@link CallResult}.NO_WORD if topic list is empty;
      * Return {@link CallResult}.CANCELED if event was canceled
      */
-    public CallResult setNewTopic()
+    public CallResult setNewTopic(boolean isNew)
     {
-        NewWordEvent event = new NewWordEvent(this);
+        NewWordEvent event = new NewWordEvent(this,isNew);
         Main.getInstance().getServer().getPluginManager().callEvent(event);
         if(event.isCancelled())return CallResult.CANCELED;
-        String newTopic = Main.getInstance().getGameManager().newWord();
-        if(newTopic==null || GameManager.words.isEmpty())return CallResult.NO_WORD;
+        boolean flag = GameManager.words.isEmpty();
+        String newTopic;
+        if(!flag)newTopic = Main.getInstance().getGameManager().newWord();
+        else return CallResult.NO_WORD;
         setTopic(newTopic);
         return CallResult.SUCCESS;
     }

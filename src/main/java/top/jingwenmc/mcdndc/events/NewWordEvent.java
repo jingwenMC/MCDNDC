@@ -7,10 +7,12 @@ import top.jingwenmc.mcdndc.objects.GamePlayer;
  */
 public class NewWordEvent extends MCDNDCEvents implements Cancellable{
     Boolean canceled = false;
+    boolean isNew = false;
     GamePlayer gamePlayer;
 
-    public NewWordEvent(GamePlayer gamePlayer) {
+    public NewWordEvent(GamePlayer gamePlayer,boolean isNew) {
         this.gamePlayer = gamePlayer;
+        this.isNew = isNew;
     }
 
     /**
@@ -19,6 +21,10 @@ public class NewWordEvent extends MCDNDCEvents implements Cancellable{
      */
     public GamePlayer getGamePlayer() {
         return gamePlayer;
+    }
+
+    public boolean isNew() {
+        return isNew;
     }
 
     @Override

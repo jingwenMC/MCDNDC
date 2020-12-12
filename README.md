@@ -63,7 +63,7 @@ dndc.words[暂无]     | 允许使用词语编辑器 |OP
 以下计划将在`2.0.0`正式版本发布之前完成:
  * 完成扩展管理器 [Finished]
  * 完成1.x的功能迁移
-   * internal_scoreboard扩展
+   * internal_scoreboard扩展 [Finished]
    * internal_wordkeeper扩展
    * internal_itemswitch扩展 [Finished]
    * internal_gui扩展
