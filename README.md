@@ -28,7 +28,7 @@
 ## 前置插件
 ```
 使用TAB插件显示模式需要:
-TAB v2.8.7及以上 - 可以在 https://www.spigotmc.org/resources/57806/ 获取
+TAB v2.8.7及以上 - 可以在 https://github.com/NEZNAMY/TAB/releases 获取
 ```
 
 ## 插件下载
